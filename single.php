@@ -127,11 +127,11 @@ remove_filter( 'the_excerpt', 'wptexturize' );
 			height: 13px;
 		}
 		::-webkit-scrollbar-thumb{
-			background: var(--cardbg);
+			background: var(--hover);
 			border-radius: 0px;
 		}
 		::-webkit-scrollbar-thumb:hover{
-			background: #B3AFB3;
+			background: var(--selection);
 		}
 		::-webkit-scrollbar-track{
 			background: var(--bg);
@@ -291,7 +291,7 @@ remove_filter( 'the_excerpt', 'wptexturize' );
             background-color: var(--selection);
         }
         #main .wp-block-quote {
-            margin: 3em 0px 0 2em;
+            margin: 3em 0 0 2em;
         }
         #main .wp-block-quote p{
             border-left: solid var(--text) 5px;
@@ -419,6 +419,9 @@ remove_filter( 'the_excerpt', 'wptexturize' );
                 font-size: 19px;
                 line-height: 24px;
 			}
+            #main .wp-block-quote {
+                margin: 1em 0 0 1em;
+            }
 			#main .wp-block-table{
 				font-size: 14px;
             }

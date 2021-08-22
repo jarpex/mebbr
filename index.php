@@ -45,6 +45,8 @@
             --border: #e9e9e9;
             --hover: #ccc;
             --bg: #edeef0;
+            --selection: rgba(254, 235, 239, 0.99);
+            --codeselection:  rgba(53, 59, 72, 0.99);
         }
 
         body.dark-theme {
@@ -53,8 +55,11 @@
             --border: #353535;
             --hover: #454545;
             --box: rgb(33, 36, 37);
+            --selection: rgba(53, 59, 72, 0.99);
+            --codeselection: rgba(254, 235, 239, 0.99);
         }
 
+        /*Скроллбар*/
         ::-webkit-scrollbar{
 			width: 13px;
 			height: 13px;
@@ -70,6 +75,29 @@
 			background: var(--bg);
 			border-radius: 0px;
 		}
+
+        /*Выделение*/
+        body:not(.dark-theme) ::selection, #main a:not(.spotlight){
+            background: var(--selection);
+        }
+        .dark-theme ::selection, .dark-theme #main a:not(.spotlight){
+            background:  var(--selection);
+            color: var(--text);
+        }
+        .hljs::selection, .hljs span::selection{
+            background: var(--codeselection) !important;
+            color: var(--bg);
+        }
+
+        /*Запрет выделения*/
+        .site-header, .social_icons, .more-link, .navigation {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
 
         /*Все, что касается шрифтов.*/
         @font-face {
@@ -537,9 +565,6 @@
             color: var(--text);
             display: block;
             text-align: center;
-            -webkit-transition: .4s;
-            -o-transition: .4s;
-            transition: .4s;
         }
 
         .page-numbers {
@@ -572,9 +597,6 @@
             opacity: .7;
             text-decoration: none;
             cursor: pointer;
-            -webkit-transition: all .5s ease;
-            -o-transition: all .5s ease;
-            transition: all .5s ease;
             font-size: 18px;
             -ms-flex-pack: distribute;
             justify-content: space-around;
