@@ -336,7 +336,7 @@ remove_filter( 'the_excerpt', 'wptexturize' );
             transition: opacity 0.5s ease-in-out 0s;
         }
         /*Запрет на выделения*/
-        #gotop{
+        #gotop, #menu_combo, .theme_icon, #footer_combo, .social_icons{
             -moz-user-select: none;
             -webkit-user-select: none;
             -ms-user-select: none;
