@@ -462,7 +462,7 @@ remove_filter( 'the_excerpt', 'wptexturize' );
                 <a href="//mebbr.ru/lifehacks/"> 💡&nbsp;Lifehacks</a>
             </div>
         </div>
-        <form class="search_form" role="search" method="get" id="searchform" action="//mebbr.ru">
+        <form class="search_form" role="search" method="get" id="searchform" action="//mebbr.ru" autocomplete="off">
             <div class="search">
                 <input name="s" class="searchbox" placeholder="Search" type="text" maxlength="100"/>
                 <input type="submit" id="searchsubmit" class="search_icon" value="🔍">
