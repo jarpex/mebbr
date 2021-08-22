@@ -164,6 +164,11 @@ remove_filter( 'the_excerpt', 'wptexturize' );
             text-decoration: none;
             color: var(--text);
         }
+        #logo:hover, .menu a:hover {
+            -webkit-text-decoration-skip: ink;
+            text-decoration-skip: ink;
+            text-decoration: underline;
+        }
         .search{
             position: relative;
         }
@@ -211,7 +216,7 @@ remove_filter( 'the_excerpt', 'wptexturize' );
             max-width: 720px;
 			margin: 0 auto;
         }
-        #main h1,h2,h3{
+        #main h1,h2,h3,h4,h5,h6{
             font-family: 'PT Serif', serif;
             font-weight: 400;
             text-align: left;

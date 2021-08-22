@@ -90,7 +90,7 @@
         }
 
         /*Запрет выделения*/
-        .site-header, .social_icons, .more-link, .navigation {
+        .site-header, .social_icons, .more-link, .navigation, .post-categories, .card a img {
             -webkit-touch-callout: none;
             -webkit-user-select: none;
             -khtml-user-select: none;
