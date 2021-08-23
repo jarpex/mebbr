@@ -37,6 +37,23 @@
     <link rel="dns-prefetch" href="//adservice.google.com">
     <link rel="dns-prefetch" href="//googleads.g.doubleclick.net">
     <title>MEBBR — The most interesting things from IT, but not only.</title>
+    <script async type="text/javascript">
+        var currentTheme = localStorage.getItem("theme");
+        if (currentTheme === null) {
+            const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+            if (prefersDarkScheme.matches) {
+                currentTheme = "dark";
+            } else {
+                currentTheme = "light";
+            }
+        }
+        if (currentTheme == "dark") {
+            document.body.classList.add("dark-theme");
+        }
+        if (currentTheme == "light") {
+            document.body.classList.remove("dark-theme");
+        }
+    </script>
     <style>
         /*Переменные цвета:*/
         body {
@@ -746,23 +763,6 @@
     </div>
     <?php wp_footer()?>
 </body>
-<script async type="text/javascript">
-    var currentTheme = localStorage.getItem("theme");
-    if (currentTheme === null) {
-        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-        if (prefersDarkScheme.matches) {
-            currentTheme = "dark";
-        } else {
-            currentTheme = "light";
-        }
-    }
-    if (currentTheme == "dark") {
-        document.body.classList.add("dark-theme");
-    }
-    if (currentTheme == "light") {
-        document.body.classList.remove("dark-theme");
-    }
-</script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
 <script defer>
     hljs.initHighlightingOnLoad();
