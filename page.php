@@ -15,7 +15,7 @@ remove_filter( 'the_excerpt', 'wptexturize' );
     <link rel="preconnect" href="//static.mebbr.ru">
     <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2016'%3E%3Ctext%20x='0'%20y='14'%3E🔥%3C/text%3E%3C/svg%3E" type="image/svg+xml" />
     <title><?php the_title();?></title>
-    <script type="module">
+    <script type="text/javascript">
         const btn = document.querySelector(".theme_icon");
         var currentTheme = localStorage.getItem("theme");
         if (currentTheme === null) {
