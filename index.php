@@ -37,7 +37,7 @@
     <link rel="dns-prefetch" href="//adservice.google.com">
     <link rel="dns-prefetch" href="//googleads.g.doubleclick.net">
     <title>MEBBR — The most interesting things from IT, but not only.</title>
-    <script async type="text/javascript">
+    <script type="text/javascript">
         var currentTheme = localStorage.getItem("theme");
         if (currentTheme === null) {
             const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
