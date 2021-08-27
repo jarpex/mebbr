@@ -37,23 +37,6 @@
     <link rel="dns-prefetch" href="//adservice.google.com">
     <link rel="dns-prefetch" href="//googleads.g.doubleclick.net">
     <title>MEBBR — The most interesting things from IT, but not only.</title>
-    <script type="text/javascript">
-        var currentTheme = localStorage.getItem("theme");
-        if (currentTheme === null) {
-            const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-            if (prefersDarkScheme.matches) {
-                currentTheme = "dark";
-            } else {
-                currentTheme = "light";
-            }
-        }
-        if (currentTheme == "dark") {
-            document.body.classList.add("dark-theme");
-        }
-        if (currentTheme == "light") {
-            document.body.classList.remove("dark-theme");
-        }
-    </script>
     <style>
         /*Переменные цвета:*/
         body {
@@ -75,7 +58,28 @@
             --selection: rgba(53, 59, 72, 0.99);
             --codeselection: rgba(254, 235, 239, 0.99);
         }
-
+        @media (prefers-color-scheme: dark) {
+            body{
+                --text: rgba(232, 230, 227, 0.999);
+                --bg: rgba(14, 15, 15, 0.999);
+                --border: #353535;
+                --hover: #454545;
+                --box: rgb(33, 36, 37);
+                --selection: rgba(53, 59, 72, 0.99);
+                --codeselection: rgba(254, 235, 239, 0.99);
+            }
+        }
+        @media (prefers-color-scheme: light) {
+            body{
+                --text: rgba(18, 18, 18, 0.999);
+                --box: rgba(255, 255, 255, 0.999);
+                --border: #e9e9e9;
+                --hover: #ccc;
+                --bg: #edeef0;
+                --selection: rgba(254, 235, 239, 0.99);
+                --codeselection:  rgba(53, 59, 72, 0.99);
+            }
+        }
         /*Скроллбар*/
         ::-webkit-scrollbar{
 			width: 13px;
@@ -763,6 +767,23 @@
     </div>
     <?php wp_footer()?>
 </body>
+<script async type="text/javascript">
+        var currentTheme = localStorage.getItem("theme");
+        if (currentTheme === null) {
+            const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+            if (prefersDarkScheme.matches) {
+                currentTheme = "dark";
+            } else {
+                currentTheme = "light";
+            }
+        }
+        if (currentTheme == "dark") {
+            document.body.classList.add("dark-theme");
+        }
+        if (currentTheme == "light") {
+            document.body.classList.remove("dark-theme");
+        }
+</script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
 <script defer>
     hljs.initHighlightingOnLoad();
