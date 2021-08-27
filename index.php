@@ -713,7 +713,7 @@
     </style>
 </head>
 
-<body class="dark-theme">
+<body>
     <?php wp_head()?>
     <aside class="site-header" role="complementary">
         <a href="//mebbr.ru" class="site-header__title">
