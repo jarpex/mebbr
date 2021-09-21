@@ -523,6 +523,15 @@ h6 {
   text-align: left;
 }
 
+#main .wp-block-quote {
+  margin: 1em 0 0 1em;
+}
+
+#main .wp-block-quote p{
+  border-left: solid var(--text) 5px;
+  padding-left: 35px;
+}
+
 #main .wp-block-embed {
   margin: 2em 0 0 0;
 }
