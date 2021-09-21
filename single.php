@@ -238,20 +238,20 @@ remove_filter( 'the_excerpt', 'wptexturize' );
             transition: opacity 0.5s ease-in-out 0s;
         }
         /*Запрет на выделения*/
-        #gotop, #menu_combo, #footer_combo, .social_icons{
+       /* #gotop, #menu_combo, #footer_combo, .social_icons{
             -moz-user-select: none;
             -webkit-user-select: none;
             -ms-user-select: none;
             user-select: none;            
         }
         /*Фикс выдеделения при нажатии*/
-        #gotop:hover {
+       /*#gotop:hover {
             -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important; 
             -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important; 
             outline: none !important;
         }
         /*lists*/
-        #main li a{
+        /*#main li a{
             background: none !important;
         }
         #main ol{
@@ -260,7 +260,7 @@ remove_filter( 'the_excerpt', 'wptexturize' );
             list-style-type: upper-roman;
         }
         /*footer*/
-        footer {
+        /*footer {
             flex-direction: column;
             max-width: 720px;
             margin: 4em auto 0 auto;
@@ -288,7 +288,7 @@ remove_filter( 'the_excerpt', 'wptexturize' );
             header, footer, #gotop{
                 display:none;
             }
-        }
+        }*/
     </style>
 </head>
 <body>
