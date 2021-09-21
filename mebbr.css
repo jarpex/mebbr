@@ -389,7 +389,8 @@ body {
   font-size: 21px;
 }
 
-body ::selection, #main a:not(.spotlight){
+body ::selection,
+#main a:not(.spotlight) {
   background: var(--selection);
   color: var(--text);
 }
@@ -610,6 +611,14 @@ footer {
   align-items: start;
 }
 
+#footer_combo a {
+  margin-right: 1em;
+}
+
+footer a {
+  color: var(--text);
+}
+
 .social_icons {
   width: 100%;
   display: flex;
@@ -617,6 +626,10 @@ footer {
   align-items: center;
   font-family: "mebbr20";
   margin: 1.5em 0 2em 0;
+}
+
+.social_icons a {
+  text-decoration: none;
 }
 
 /*Scrollbars*/
@@ -698,7 +711,8 @@ footer {
   font-style: italic;
 }
 
-.hljs::selection, .hljs span::selection{
+.hljs::selection,
+.hljs span::selection {
   background: var(--codeselection) !important;
   color: var(--bg);
 }
