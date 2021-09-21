@@ -525,6 +525,7 @@ h6 {
 
 #main ol, #main ul{
   margin: 0 0 1em 0;
+  line-height: 29px;
 }
 
 #main .wp-block-quote {
@@ -609,11 +610,6 @@ article img {
 
 #main .wp-block-quote {
   margin: 1em 0 0 1em;
-}
-
-#main ol {
-  margin: 0;
-  line-height: 29px;
 }
 
 footer {
