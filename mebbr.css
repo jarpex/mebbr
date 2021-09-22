@@ -389,6 +389,19 @@ footer a {
   margin: 1.5em 0 2em
 }
 
+ #gotop, #menu_combo, #footer_combo, .social_icons{
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;            
+}
+
+#gotop:hover {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important; 
+  -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important; 
+  outline: none !important;
+}
+
 .social_icons a {
   text-decoration: none
 }
@@ -458,7 +471,6 @@ footer a {
   color: var(--bg)
 }
 
-/*Fonts*/
 @font-face {
   font-family: "mebbr20";
   src: url('//static.mebbr.ru/fonts/mebbr20.eot');
@@ -469,18 +481,20 @@ footer a {
        url("//static.mebbr.ru/fonts/mebbr/mebbr20.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'PT Serif';
-  font-style: normal;
-  font-weight: 400;
   src: url('//static.mebbr.ru/fonts/PTSerif.eot');
   src: local(''),
        url("//static.mebbr.ru/fonts/mebbr/PTSerif.eot?#iefix") format("embedded-opentype"),
        url("//static.mebbr.ru/fonts/mebbr/PTSerif.woff2") format("woff2"),
        url("//static.mebbr.ru/fonts/mebbr/PTSerif.woff") format("woff"),
        url("//static.mebbr.ru/fonts/mebbr/PTSerif.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -493,6 +507,7 @@ footer a {
        url("//static.mebbr.ru/fonts/mebbr/Mont.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -502,8 +517,8 @@ footer a {
        url("//static.mebbr.ru/fonts/mebbr/Inconsolata.eot?#iefix") format("embedded-opentype"),
        url("//static.mebbr.ru/fonts/mebbr/Inconsolata.woff2") format("woff2"),
        url("//static.mebbr.ru/fonts/mebbr/Inconsolata.woff") format("woff"),
-       url("//static.mebbr.ru/fonts/mebbr/Inconsolata.ttf") format("truetype");
-       
+       url("//static.mebbr.ru/fonts/mebbr/Inconsolata.ttf") format("truetype");      
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
