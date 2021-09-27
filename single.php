@@ -20,8 +20,26 @@ wp_head();
     <link rel="preload" href="//static.mebbr.ru/css/mebbr.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="//static.mebbr.ru/css/mebbr.css"></noscript>
     <style>
+        body {
+            --text: rgba(18, 18, 18, 0.999);
+            --bg: rgba(255, 255, 255, 0.999);
+            --border: #e9e9e9;
+            --hover: #ccc;
+            --box: #edeef0;
+            --selection: rgba(254, 235, 239, 0.99);
+            --codeselection: rgba(53, 59, 72, 0.99);
+            margin: 0;
+            color: var(--text);
+            background-color: var(--bg);
+            font-family: Mont-Regular, 'Open Sans', 'Lato', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+            text-rendering: optimizeSpeed;
+            margin: 0;
+            text-align: justify;
+            font-size: 21px;
+        }
+
         @media (prefers-color-scheme: dark) {
-            body{
+            body {
                 --text: rgba(232, 230, 227, 0.999);
                 --bg: rgba(14, 15, 15, 0.999);
                 --border: #353535;
@@ -31,20 +49,100 @@ wp_head();
                 --codeselection: rgba(254, 235, 239, 0.99);
             }
         }
+
         @media screen and (prefers-color-scheme: light) {
-            body{
+            body {
                 --text: rgba(18, 18, 18, 0.999);
                 --bg: rgba(255, 255, 255, 0.999);
                 --border: #e9e9e9;
                 --hover: #ccc;
                 --box: #edeef0;
                 --selection: rgba(254, 235, 239, 0.99);
-                --codeselection:  rgba(53, 59, 72, 0.99);
+                --codeselection: rgba(53, 59, 72, 0.99);
             }
         }
-        body {
+        #menu_combo,
+        header {
+            align-items: center;
+        }
+
+        #menu_combo,
+        footer,
+        header {
+            flex-direction: column;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #logo {
+            margin: 1em 0 .5em;
+            text-decoration: none;
             color: var(--text);
-            background-color: var(--bg);
+            font-size: 48px;
+            line-height: 48px;
+        }
+
+        #menu_combo {
+            font-size: 20px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: var(--text);
+        }
+        #searchform {
+            padding-top: 20px;
+        }
+
+        .search {
+            position: relative;
+        }
+        .searchbox {
+            min-width: 60vw;
+            background-color: var(--box);
+            border-radius: 8px;
+            margin: 0;
+            border: 0;
+            color: var(--text);
+            display: block;
+            font-size: 14px;
+            line-height: 1.5;
+            min-height: 40px;
+            outline: 0;
+            padding: 0 29px 0 14px;
+        }
+        .search_icon {
+            font-family: "mebbr20";
+            color: var(--text);
+            opacity: .7;
+            font-size: 15px;
+            right: 7px;
+            line-height: 40px;
+            position: absolute;
+            top: 0;
+            border-style: none;
+            background-color: transparent;
+        }
+
+        #main {
+            width: 90%;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        #main h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'PT Serif', serif;
+            font-weight: 400;
+            text-align: left;
+        }
+
+        #main h1 {
+            font-size: 35px;
         }
     </style>
 </head>
