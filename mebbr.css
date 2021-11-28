@@ -437,6 +437,12 @@ footer a {
   color: var(--bg);
 }
 
+@media (min-width: 1200px) and (orientation: landscape){
+  #gotop{
+    
+  }
+}
+
 @font-face {
   font-family: "mebbr20";
   src: url(//static.mebbr.ru/fonts/mebbr/mebbr20.woff2) format("woff2"), url(//static.mebbr.ru/fonts/mebbr/mebbr20.woff) format("woff"), url(//static.mebbr.ru/fonts/mebbr/mebbr20.ttf) format("truetype");
