@@ -1,7 +1,4 @@
 <?php
-remove_filter( 'the_title', 'wptexturize' );
-remove_filter( 'the_content', 'wptexturize' );
-remove_filter( 'the_excerpt', 'wptexturize' );
 wp_deregister_script('jquery');
 wp_head();
 ?>
@@ -17,8 +14,15 @@ wp_head();
     <link rel="preconnect" href="//static.mebbr.ru">
     <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2016'%3E%3Ctext%20x='0'%20y='14'%3E🔥%3C/text%3E%3C/svg%3E" type="image/svg+xml" />
     <title><?php the_title();?></title>
-    <link rel="preload" href="//static.mebbr.ru/css/mebbr.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="//592422.selcdn.ru/static/css/mebbr.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="//static.mebbr.ru/css/mebbr.css"></noscript>
+    <link rel="preload" href="//static.mebbr.ru/fonts/mebbr/mebbr20.woff2">
+    <link rel="preload" href="//static.mebbr.ru/fonts/mebbr/Inconsolata.woff2">
+    <link rel="preload" href="//static.mebbr.ru/fonts/mebbr/PTSerif.woff2">
+    <link rel="preload" href="//static.mebbr.ru/fonts/mebbr/Mont.woff2">
+    <link rel="dns-prefetch" href="//googletagservices.com">
+    <link rel="dns-prefetch" href="//mc.yandex.ru">
+    <link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
     <style>
         body {
             --text: rgba(18, 18, 18, 0.999);
@@ -28,11 +32,10 @@ wp_head();
             --box: #edeef0;
             --selection: rgba(254, 235, 239, 0.99);
             --codeselection: rgba(53, 59, 72, 0.99);
-            margin: 0;
             color: var(--text);
             background-color: var(--bg);
             font-family: Mont-Regular, 'Open Sans', 'Lato', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-            text-rendering: optimizeSpeed;
+            text-rendering: optimizeLegibility;
             margin: 0;
             text-align: justify;
             font-size: 21px;
@@ -159,7 +162,7 @@ wp_head();
         </div>
         <form class="search_form" role="search" method="get" id="searchform" action="//mebbr.ru" autocomplete="off">
             <div class="search">
-                <input name="s" class="searchbox" placeholder="Search" type="text" maxlength="100"/>
+                <input name="s" class="searchbox" placeholder="Search" type="text" maxlength="100" required/>
                 <input type="submit" id="searchsubmit" class="search_icon" value="🔍">
             </div>
         </form>

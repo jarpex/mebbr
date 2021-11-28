@@ -2,30 +2,14 @@
 			'html5',
 			array(
 				'search-form',
-				'comment-form',
-				'comment-list',
 				'gallery',
 				'caption',
 			)
-		); ?>
-<?php add_theme_support( 'post-thumbnails' ); ?>
-<?php add_filter( 'preprocess_comment', 'wpb_preprocess_comment' );
-function wpb_preprocess_comment($comment) {
-    if ( strlen( $comment['comment_content'] ) > 5000 ) {
-        wp_die('Комментарий слишком длинный. Комментарий не должен быть более 5000 символов.');
-    }
-if ( strlen( $comment['comment_content'] ) < 60 ) {
-        wp_die('Комментарий слишком короткий. Комментарий не должен быть менее 60 символов.');
-    }
-    return $comment;
-} ?>
-<?php add_filter('comment_form_default_fields', 'sheens_unset_url_field');
-function sheens_unset_url_field ( $fields ) {
-  if ( isset($fields['url'] ))
-  unset ( $fields['url'] );
-  return $fields;
-}
+		); 
 ?>
+
+<?php add_theme_support( 'post-thumbnails' ); ?>
+
 <?php function wp_corenavi() {
   global $wp_query;
   $pages = '';
@@ -74,4 +58,10 @@ function webp_is_displayable($result, $path) {
   return $result;
 }
 add_filter('file_is_displayable_image', 'webp_is_displayable', 10, 2);
+?>
+
+<?php
+remove_filter( 'the_title', 'wptexturize' );
+remove_filter( 'the_content', 'wptexturize' );
+remove_filter( 'the_excerpt', 'wptexturize' );
 ?>

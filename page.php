@@ -356,6 +356,7 @@ remove_filter( 'the_excerpt', 'wptexturize' );
         }
         #gotop,.theme_icon,.search_icon{
             transition: opacity 0.5s ease-in-out 0s;
+            background-color: transparent;
         }
         /*Запрет на выделения*/
         #gotop, #menu_combo, .theme_icon, #footer_combo, .social_icons{

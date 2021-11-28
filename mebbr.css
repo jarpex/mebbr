@@ -164,9 +164,12 @@ template {
   display: none;
 }
 
-#main a:not(.spotlight),
 body ::selection {
   background: var(--selection);
+  color: var(--text);
+}
+
+#main a:not(.spotlight) {
   color: var(--text);
 }
 
@@ -436,7 +439,7 @@ footer a {
 
 @font-face {
   font-family: "mebbr20";
-  src: local(), url(//static.mebbr.ru/fonts/mebbr/mebbr20.woff2) format("woff2"), url(//static.mebbr.ru/fonts/mebbr/mebbr20.woff) format("woff"), url(//static.mebbr.ru/fonts/mebbr/mebbr20.ttf) format("truetype");
+  src: url(//static.mebbr.ru/fonts/mebbr/mebbr20.woff2) format("woff2"), url(//static.mebbr.ru/fonts/mebbr/mebbr20.woff) format("woff"), url(//static.mebbr.ru/fonts/mebbr/mebbr20.ttf) format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -444,7 +447,7 @@ footer a {
 
 @font-face {
   font-family: 'PT Serif';
-  src: local(), url(//static.mebbr.ru/fonts/mebbr/PTSerif.woff2) format("woff2"), url(//static.mebbr.ru/fonts/mebbr/PTSerif.woff) format("woff"), url(//static.mebbr.ru/fonts/mebbr/PTSerif.ttf) format("truetype");
+  src: url(//static.mebbr.ru/fonts/mebbr/PTSerif.woff2) format("woff2"), url(//static.mebbr.ru/fonts/mebbr/PTSerif.woff) format("woff"), url(//static.mebbr.ru/fonts/mebbr/PTSerif.ttf) format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -452,7 +455,7 @@ footer a {
 
 @font-face {
   font-family: 'Mont-Regular';
-  src: local(), url(//static.mebbr.ru/fonts/mebbr/Mont.woff2) format("woff2"), url(//static.mebbr.ru/fonts/mebbr/Mont.woff) format("woff"), url(//static.mebbr.ru/fonts/mebbr/Mont.ttf) format("truetype");
+  src: url(//static.mebbr.ru/fonts/mebbr/Mont.woff2) format("woff2"), url(//static.mebbr.ru/fonts/mebbr/Mont.woff) format("woff"), url(//static.mebbr.ru/fonts/mebbr/Mont.ttf) format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -460,7 +463,7 @@ footer a {
 
 @font-face {
   font-family: 'Inconsolata';
-  src: local(), url(//static.mebbr.ru/fonts/mebbr/Inconsolata.woff2) format("woff2"), url(//static.mebbr.ru/fonts/mebbr/Inconsolata.woff) format("woff"), url(//static.mebbr.ru/fonts/mebbr/Inconsolata.ttf) format("truetype");
+  src: url(//static.mebbr.ru/fonts/mebbr/Inconsolata.woff2) format("woff2"), url(//static.mebbr.ru/fonts/mebbr/Inconsolata.woff) format("woff"), url(//static.mebbr.ru/fonts/mebbr/Inconsolata.ttf) format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
