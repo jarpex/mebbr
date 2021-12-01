@@ -8,18 +8,18 @@ wp_head();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="twitter:creator" content="@DefaultJarpex">
-    <link rel="canonical" href="<?php get_page_link(); ?>">
     <link rel="alternate" type="application/rss+xml" title="MEBBR » Feed" href="//mebbr.ru/feed/">
     <link rel="next" href="//mebbr.ru/">
     <link rel="preconnect" href="//static.mebbr.ru">
+    <link rel="preconnect" href="//cdn.mebbr.ru">
     <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2016'%3E%3Ctext%20x='0'%20y='14'%3E🔥%3C/text%3E%3C/svg%3E" type="image/svg+xml" />
     <title><?php the_title();?></title>
     <link rel="preload" href="//592422.selcdn.ru/static/css/mebbr.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="//static.mebbr.ru/css/mebbr.css"></noscript>
-    <link rel="preload" href="//static.mebbr.ru/fonts/mebbr/mebbr20.woff2">
-    <link rel="preload" href="//static.mebbr.ru/fonts/mebbr/Inconsolata.woff2">
-    <link rel="preload" href="//static.mebbr.ru/fonts/mebbr/PTSerif.woff2">
-    <link rel="preload" href="//static.mebbr.ru/fonts/mebbr/Mont.woff2">
+    <link rel="preload" href="//static.mebbr.ru/fonts/mebbr/mebbr20.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="//static.mebbr.ru/fonts/mebbr/Inconsolata.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="//static.mebbr.ru/fonts/mebbr/PTSerif.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="//static.mebbr.ru/fonts/mebbr/Mont.woff2" as="font"type="font/woff2" crossorigin>
     <link rel="dns-prefetch" href="//googletagservices.com">
     <link rel="dns-prefetch" href="//mc.yandex.ru">
     <link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
@@ -34,11 +34,10 @@ wp_head();
             --codeselection: rgba(53, 59, 72, 0.99);
             color: var(--text);
             background-color: var(--bg);
-            font-family: Mont-Regular, 'Open Sans', 'Lato', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+            font: 21px Mont-Regular, 'Open Sans', 'Lato', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
             text-rendering: optimizeLegibility;
             margin: 0;
             text-align: justify;
-            font-size: 21px;
         }
 
         @media (prefers-color-scheme: dark) {
@@ -146,6 +145,45 @@ wp_head();
 
         #main h1 {
             font-size: 35px;
+        }
+
+        @media (min-width: 1200px) and (orientation: landscape){
+            header, #menu_combo {
+                flex-direction: row;
+                align-items: center;
+            }
+            #searchform{
+                padding: 0;
+                margin: 0;
+            }
+            .searchbox{
+                max-width: 50vw;
+                min-width: 30vw;
+                margin: 1vw;
+            }
+            .search_icon {
+                right: 30px;
+            }
+            #logo{
+                margin: 1vw;
+            }
+            #menu_combo{
+                font-size: 21px;
+            }
+            #menu_combo .menu{
+                margin: 0;
+            }
+            #main h1 {
+                font-size: 48px;
+            }
+            #main h2 {
+                margin: 2em 0 -1em;
+            }
+            #main p {
+                font-size: 21px;
+                line-height: 32px;
+                margin-top: 2em;
+            }
         }
     </style>
 </head>
