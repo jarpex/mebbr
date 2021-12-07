@@ -17,6 +17,25 @@ body ::selection {
     user-select: none;
 }
 
+::-webkit-scrollbar {
+    width: 13px;
+    height: 13px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--hover);
+    border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--selection);
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg);
+    border-radius: 0;
+}
+
 .hljs {
     display: block;
     overflow-x: auto;
