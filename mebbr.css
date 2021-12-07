@@ -444,8 +444,8 @@ footer a {
 }
 
 @font-face {
-  font-family: "mebbr20";
-  src: url(//static.mebbr.ru/fonts/mebbr/mebbr20.woff2) format("woff2"), url(//static.mebbr.ru/fonts/mebbr/mebbr20.woff) format("woff"), url(//static.mebbr.ru/fonts/mebbr/mebbr20.ttf) format("truetype");
+  font-family: "mebbr";
+  src: url(//static.mebbr.ru/fonts/mebbr/mebbr.woff2) format("woff2"), url(//static.mebbr.ru/fonts/mebbr/mebbr.woff) format("woff"), url(//static.mebbr.ru/fonts/mebbr/mebbr.ttf) format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;

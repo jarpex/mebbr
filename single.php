@@ -14,9 +14,9 @@ wp_head();
     <link rel="preconnect" href="//cdn.mebbr.ru">
     <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2016'%3E%3Ctext%20x='0'%20y='14'%3E🔥%3C/text%3E%3C/svg%3E" type="image/svg+xml" />
     <title><?php the_title();?></title>
-    <link rel="preload" href="//592422.selcdn.ru/static/css/mebbr.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="//static.mebbr.ru/css/mebbr.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="//static.mebbr.ru/css/mebbr.css"></noscript>
-    <link rel="preload" href="//static.mebbr.ru/fonts/mebbr/mebbr20.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="//static.mebbr.ru/fonts/mebbr/mebbr.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="//static.mebbr.ru/fonts/mebbr/Inconsolata.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="//static.mebbr.ru/fonts/mebbr/PTSerif.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="//static.mebbr.ru/fonts/mebbr/Mont.woff2" as="font"type="font/woff2" crossorigin>
@@ -63,9 +63,21 @@ wp_head();
                 --codeselection: rgba(53, 59, 72, 0.99);
             }
         }
+        img.emoji {
+            display: inline !important;
+            border: none !important;
+            box-shadow: none !important;
+            height: 1em !important;
+            width: 1em !important;
+            margin: 0 0.07em !important;
+            vertical-align: -0.1em !important;
+            background: none !important;
+            padding: 0 !important;
+        }
         #menu_combo,
         header {
             align-items: center;
+            background: var(--box);
         }
 
         #menu_combo,
@@ -91,6 +103,7 @@ wp_head();
         .menu a {
             text-decoration: none;
             color: var(--text);
+            white-space: nowrap;
         }
         #searchform {
             padding-top: 20px;
@@ -101,7 +114,7 @@ wp_head();
         }
         .searchbox {
             min-width: 60vw;
-            background-color: var(--box);
+            background-color: var(--bg);
             border-radius: 8px;
             margin: 0;
             border: 0;
@@ -114,7 +127,7 @@ wp_head();
             padding: 0 29px 0 14px;
         }
         .search_icon {
-            font-family: "mebbr20";
+            font-family: "mebbr";
             color: var(--text);
             opacity: .7;
             font-size: 15px;
@@ -173,6 +186,9 @@ wp_head();
             #menu_combo .menu{
                 margin: 0;
             }
+            .menu a{
+                margin-right: 10px;
+            }
             #main h1 {
                 font-size: 48px;
             }
@@ -192,15 +208,15 @@ wp_head();
         <div id="menu_combo">
             <a id="logo" href="//mebbr.ru">MEBBR</a>
             <div class="menu">
-                <a href="//mebbr.ru/software/"> 💾&nbsp;Software</a>
-                <a href="//mebbr.ru/hardware/"> 🔩&nbsp;Hardware</a>
-                <a href="//mebbr.ru/internet/"> 🌍&nbsp;Internet</a>
-                <a href="//mebbr.ru/lifehacks/"> 💡&nbsp;Lifehacks</a>
+                <a href="//mebbr.ru/software/"> <img draggable="false" role="img" class="emoji" alt="💾" src="//static.mebbr.ru/fonts/mebbr/1f4be.svg">&nbsp;Программы</a>
+                <a href="//mebbr.ru/hardware/"> <img draggable="false" role="img" class="emoji" alt="🔩" src="//static.mebbr.ru/fonts/mebbr/1f529.svg">&nbsp;Железо</a>
+                <a href="//mebbr.ru/internet/"> <img draggable="false" role="img" class="emoji" alt="🌍" src="//static.mebbr.ru/fonts/mebbr/1f30d.svg">&nbsp;Интернет</a>
+                <a href="//mebbr.ru/lifehacks/"> <img draggable="false" role="img" class="emoji" alt="💡" src="//static.mebbr.ru/fonts/mebbr/1f4a1.svg">&nbsp;Лайфхаки</a>
             </div>
         </div>
         <form class="search_form" role="search" method="get" id="searchform" action="//mebbr.ru" autocomplete="off">
             <div class="search">
-                <input name="s" class="searchbox" placeholder="Search" type="text" maxlength="100" required/>
+                <input name="s" class="searchbox" placeholder="Поиск" type="text" maxlength="100" required/>
                 <input type="submit" id="searchsubmit" class="search_icon" value="🔍">
             </div>
         </form>

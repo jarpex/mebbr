@@ -1,0 +1,118 @@
+body ::selection {
+    background: var(--selection);
+    color: var(--text);
+}
+
+/*Запрет выделения*/
+.header,
+.post-categories,
+.more-link,
+.more-box,
+.card a img {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: .5em;
+    background: #282a36;
+    border-radius: 8px;
+    font-family: Inconsolata, Hack, Terminus, monospace;
+}
+
+.hljs-built_in,
+.hljs-link,
+.hljs-section,
+.hljs-selector-tag {
+    color: #8be9fd;
+}
+
+.hljs-keyword {
+    color: #ff79c6;
+}
+
+.hljs,
+.hljs-subst {
+    color: #f8f8f2;
+}
+
+.hljs-title {
+    color: #50fa7b;
+}
+
+.hljs-addition,
+.hljs-attr,
+.hljs-bullet,
+.hljs-meta,
+.hljs-name,
+.hljs-string,
+.hljs-symbol,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable {
+    color: #f1fa8c;
+}
+
+.hljs-comment,
+.hljs-deletion,
+.hljs-quote {
+    color: #6272a4;
+}
+
+.hljs-literal,
+.hljs-number {
+    color: #bd93f9;
+}
+
+.hljs-emphasis {
+    font-style: italic;
+}
+
+.hljs span::selection,
+.hljs::selection {
+    background: var(--codeselection) !important;
+    color: var(--bg);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+@font-face {
+    font-family: 'Mont-Regular';
+    src: url(//static.mebbr.ru/fonts/mebbr/Mont.woff2) format("woff2"), url(//static.mebbr.ru/fonts/mebbr/Mont.woff) format("woff"), url(//static.mebbr.ru/fonts/mebbr/Mont.ttf) format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inconsolata';
+    src: url(//static.mebbr.ru/fonts/mebbr/Inconsolata.woff2) format("woff2"), url(//static.mebbr.ru/fonts/mebbr/Inconsolata.woff) format("woff"), url(//static.mebbr.ru/fonts/mebbr/Inconsolata.ttf) format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "mebbr";
+    src: url(//static.mebbr.ru/fonts/mebbr/mebbr.woff2) format("woff2"), url(//static.mebbr.ru/fonts/mebbr/mebbr.woff) format("woff"), url(//static.mebbr.ru/fonts/mebbr/mebbr.ttf) format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PT Serif';
+    src: url(//static.mebbr.ru/fonts/mebbr/PTSerif.woff2) format("woff2"), url(//static.mebbr.ru/fonts/mebbr/PTSerif.woff) format("woff"), url(//static.mebbr.ru/fonts/mebbr/PTSerif.ttf) format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
