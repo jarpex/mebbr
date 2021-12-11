@@ -3,50 +3,41 @@ wp_deregister_script('jquery');
 wp_head();
 ?>
 <!DOCTYPE html>
-<html lang="ru">
+{html_lang}
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon"
-        href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2016'%3E%3Ctext%20x='0'%20y='14'%3E🔥%3C/text%3E%3C/svg%3E"
-        type="image/svg+xml" />
-    <link rel="manifest" href="//static.mebbr.ru/site.webmanifest?v=gAdP3v0QAo">
-    <meta name="msapplication-TileColor" content="#111111">
-    <meta name="msapplication-config" content="//static.mebbr.ru/browserconfig.xml?v=gAdP3v0QAo">
-    <meta name="theme-color" content="#111111">
-    <meta name="theme-color" content="#111">
-    <meta name="description" content="Всё самое интересное из мира IT, и не только." />
-    <meta property="og:title" content="MEBBR — Всё самое интересное из мира IT, и не только." />
-    <meta property="og:description" content="Всё самое интересное из мира IT, и не только." />
-    <meta property="og:image" content="https://static.mebbr.ru/img/mebbr/MEBBR-OG.jpg" />
+    {site_icon}
+    {site_manifest}
+    {msapplication-TileColor}
+    {msapplication-config}
+    {meta_theme-color}
+    <meta name="description" content="{site_description}" />
+    <meta property="og:title" content="{site_title}" />
+    <meta property="og:description" content="{site_description}" />
+    <meta property="og:image" content="{og:image}" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://mebbr.ru" />
+    <meta property="og:url" content="https:{site:url}" />
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="MEBBR — Всё самое интересное из мира IT, и не только.">
-    <meta name="twitter:description" content="Всё самое интересное из мира IT, и не только.">
-    <meta name="twitter:url" content="https://mebbr.ru">
-    <meta name="twitter:image" content="https://static.mebbr.ru/apple-touch-icon.png" />
-    <meta name="twitter:domain" content="mebbr.ru">
-    <meta name="twitter:site" content="@RU_MEBBR">
-    <meta name="twitter:creator" content="@DefaultJarpex">
-    <link rel="canonical" href="//mebbr.ru/">
-    <link rel="alternate" type="application/rss+xml" title="MEBBR » Feed" href="//mebbr.ru/feed/">
+    <meta name="twitter:title" content="{site_title}">
+    <meta name="twitter:description" content="{site_description}">
+    <meta name="twitter:url" content="https:{site:url}">
+    <meta name="twitter:image" content="{og:image}" />
+    <meta name="twitter:domain" content="{site:domain}">
+    <meta name="twitter:site" content="{twitter:site}">
+    <meta name="twitter:creator" content="{twitter:creator}">
+    <link rel="canonical" href="{site:url}">
+    <link rel="alternate" type="application/rss+xml" title={RSS:Title} href="{RSS:href}">
     <link rel="next" href="<?php the_permalink(); ?>">
-    <link rel="preconnect" href="//static.mebbr.ru">
-    <link rel="preconnect" href="//cdn.mebbr.ru">
-    <link rel="preload" href="//static.mebbr.ru/css/mebbr_index.css" as="style"
+    {index:link:preconnect}
+    <link rel="preload" href="{index:stylesheet}" as="style"
         onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
-        <link rel="stylesheet" href="//static.mebbr.ru/css/mebbr_index.css"></noscript>
-    <link rel="preload" href="//static.mebbr.ru/fonts/mebbr/mebbr.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="//static.mebbr.ru/fonts/mebbr/Inconsolata.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="//static.mebbr.ru/fonts/mebbr/PTSerif.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="//static.mebbr.ru/fonts/mebbr/Mont.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="dns-prefetch" href="//googletagservices.com">
-    <link rel="dns-prefetch" href="//mc.yandex.ru">
-    <link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
-    <title>MEBBR — Всё самое интересное из мира IT, и не только.</title>
+        <link rel="stylesheet" href="{index:stylesheet}"></noscript>
+    {index:link:preload}
+    {index:dns:prefetch}
+    <title>{site_title}</title>
     <style>
         body {
             --text: rgba(18, 18, 18, 0.999);
@@ -486,38 +477,22 @@ wp_head();
 
 <body>
     <aside class="header" role="complementary">
-        <a href="//mebbr.ru" class="logo">
-            MEBBR
+        <a href="{site:url}" class="logo">
+            {site:name}
         </a>
         <p class="header_desc">
-            Всё самое интересное из мира IT, и не только.
+            {site_description}
         </p>
         <div class="header_flex">
-            <form class="search_form" role="search" method="get" id="searchform" action="//mebbr.ru" autocomplete="off">
+            <form class="search_form" role="search" method="get" id="searchform" action="{site:url}" autocomplete="off">
                 <div class="search">
                     <input name="s" class="searchbox" placeholder="Поиск" type="text" maxlength="100" required />
                     <input type="submit" id="searchsubmit" class="search_icon" value="🔍">
                 </div>
             </form>
-            <nav class="nav" role="navigation">
-                <a class="nav_href" href="//mebbr.ru/software/"><img draggable="false" role="img" class="emoji" alt="💾"
-                        src="//static.mebbr.ru/fonts/mebbr/1f4be.svg"><span class="nav_span">Программы</span></a>
-                <a class="nav_href" href="//mebbr.ru/hardware/"><img draggable="false" role="img" class="emoji" alt="🔩"
-                        src="//static.mebbr.ru/fonts/mebbr/1f529.svg"><span class="nav_span">Железо</span></a>
-                <a class="nav_href" href="//mebbr.ru/internet/"><img draggable="false" role="img" class="emoji" alt="🌍"
-                        src="//static.mebbr.ru/fonts/mebbr/1f30d.svg"><span class="nav_span">Интернет</span></a>
-                <a class="nav_href" href="//mebbr.ru/lifehacks/"><img draggable="false" role="img" class="emoji"
-                        alt="💡" src="//static.mebbr.ru/fonts/mebbr/1f4a1.svg"><span
-                        class="nav_span">Лайфхаки</span></a>
-            </nav>
+            {index:navigation}
         </div>
-        <div class="social_icons">
-            <a href="//twitter.com/RU_MEBBR/"></a>
-            <a href="//vk.com/mebbr"></a>
-            <a href="//www.youtube.com/playlist?list=PLJ52LZ9E-uowOubcIPh3yDGKKcryQ5-Mm"></a>
-            <a href="//t.me/RU_MEBBR/"></a>
-            <a href="//mebbr.ru/feed/"></a>
-        </div>
+        {index:social_icons}
     </aside>
     <main class="site-main" role="main">
         <div class="blocks-wrapper">
@@ -534,9 +509,7 @@ wp_head();
                                 <?php the_title(); ?>
                             </a>
                         </h2>
-                        <div class="cat">
-                            <?php the_category(); ?>
-                        </div>
+                        {index:category}
                         <?php the_content('Читать'); ?>
                     </div>
                 </div>
@@ -551,24 +524,5 @@ wp_head();
     </main>
     <?php wp_footer()?>
 </body>
-<script async type="text/javascript" src="//static.mebbr.ru/js/mebbr_highlight.js"></script>
-<script async type="text/javascript">
-    (function (m, e, t, r, i, k, a) {
-        m[i] = m[i] || function () {
-            (m[i].a = m[i].a || []).push(arguments)
-        };
-        m[i].l = 1 * new Date();
-        k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(
-            k, a)
-    })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-    ym(43402149, "init", {
-        clickmap: true,
-        trackLinks: true,
-        accurateTrackBounce: true,
-        webvisor: true
-    });
-</script> <noscript>
-    <div><img src="https://mc.yandex.ru/watch/43402149" style="position:absolute; left:-9999px;" alt="" /></div>
-</noscript>
-
+{index:js}
 </html>

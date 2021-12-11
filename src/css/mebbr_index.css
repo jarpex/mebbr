@@ -127,11 +127,3 @@ a:hover {
     font-style: normal;
     font-display: swap;
 }
-
-@font-face {
-    font-family: 'PT Serif';
-    src: url(//static.mebbr.ru/fonts/mebbr/PTSerif.woff2) format("woff2"), url(//static.mebbr.ru/fonts/mebbr/PTSerif.woff) format("woff"), url(//static.mebbr.ru/fonts/mebbr/PTSerif.ttf) format("truetype");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
