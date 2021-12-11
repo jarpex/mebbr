@@ -192,6 +192,12 @@ wp_head();
             padding-bottom: 2.1em;
         }
 
+        .message {
+            position: absolute;
+            top: 50%;
+            margin-top: -5em;
+        }
+
         .card {
             background: var(--box);
             margin: 4.75em 0;
@@ -431,6 +437,11 @@ wp_head();
                 width: 100%;
             }
 
+            .message {
+                position: relative;
+                margin-top: 3em;
+            }
+
             .card {
                 margin: 30px 0;
                 flex-direction: column;
@@ -513,9 +524,10 @@ wp_head();
                         <?php the_content('Читать'); ?>
                     </div>
                 </div>
-                <?php endwhile; else : ?>
-                <?php _e( "Мы не смогли ничего найти по твоему запросу :с" ); ?>
-                <?php endif; ?>
+                <?php endwhile; else :
+                    get_template_part( 'content', 'none' );
+                endif;
+                ?>
             </div>
             <div class="more-box">
                 <?php if (function_exists('wp_corenavi')) wp_corenavi(); ?>

@@ -4,7 +4,7 @@ import sys
 import os
 import shutil
 
-current_ver = "3.1.1"
+current_ver = "3.1.3"
 
 os.system("")
 if __name__ == "__main__":
@@ -93,6 +93,7 @@ build_file("/src/theme/style.css", "/build/theme/", "/build/theme/style.css")
 copy_file("{Theme_Icon}","/build/theme/screenshot.png")
 copy_file("{Theme_Functions}","/build/theme/functions.php")
 copy_file("{Theme_Comments}","/build/theme/comments.php")
+copy_file("{Theme_Content_None}","/build/theme/content-none.php")
 build_file("/src/theme/index.php", "/build/theme/", "/build/theme/index.php")
 build_file("/src/theme/single.php", "/build/theme/", "/build/theme/single.php")
 build_file("/src/theme/single.php", "/build/theme/", "/build/theme/page.php")

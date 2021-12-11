@@ -104,6 +104,10 @@ a:hover {
     text-decoration: underline;
 }
 
+.search_icon:hover {
+    cursor: pointer;
+}
+
 @font-face {
     font-family: 'Mont-Regular';
     src: url(//static.mebbr.ru/fonts/mebbr/Mont.woff2) format("woff2"), url(//static.mebbr.ru/fonts/mebbr/Mont.woff) format("woff"), url(//static.mebbr.ru/fonts/mebbr/Mont.ttf) format("truetype");
