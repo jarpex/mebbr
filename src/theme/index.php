@@ -12,7 +12,6 @@ wp_head();
     {site_manifest}
     {msapplication-TileColor}
     {msapplication-config}
-    {meta_theme-color}
     <meta name="description" content="{site_description}" />
     <meta property="og:title" content="{site_title}" />
     <meta property="og:description" content="{site_description}" />
@@ -190,12 +189,6 @@ wp_head();
             width: 60vw;
             margin: 0 auto;
             padding-bottom: 2.1em;
-        }
-
-        .message {
-            position: absolute;
-            top: 50%;
-            margin-top: -5em;
         }
 
         .card {

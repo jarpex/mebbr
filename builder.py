@@ -4,14 +4,14 @@ import sys
 import os
 import shutil
 
-current_ver = "3.1.3"
+current_ver = "3.1.4"
 
 os.system("")
 if __name__ == "__main__":
     if len (sys.argv) > 1:
         cfg_file = sys.argv[1] + ".cfg"
     else:
-        cfg_file = "config.cfg"
+        cfg_file = "mebbr.cfg"
 
 class bcolors:
     RED  = '\033[91m'
