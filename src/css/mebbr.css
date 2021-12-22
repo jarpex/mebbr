@@ -223,7 +223,7 @@ body ::selection {
 
 #main ol,
 #main ul {
-  margin: 0 0 1em;
+  margin: .5em 0 1em;
   line-height: 29px;
 }
 
@@ -439,7 +439,23 @@ footer a {
 
 @media (min-width: 1200px) and (orientation: landscape){
   #gotop{
-    
+    display: block;
+    position: fixed;
+    bottom: 3vw;
+    right: 3vw;
+    background: none;
+    font-family: "mebbr";
+    border: none;
+    color: var(--text);
+    opacity: .2;
+    cursor: pointer;
+    font-size: 2em;
+  }
+  #gotop:hover{
+    opacity: .7;
+  }
+  #main ul {
+    margin: 2em 0 0 .5em;
   }
 }
 

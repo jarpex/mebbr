@@ -14,10 +14,10 @@ if __name__ == "__main__":
         cfg_file = "mebbr.cfg"
 
 class bcolors:
-    RED  = '\033[91m'
-    ENDC = '\033[0m'
-    GREEN = '\033[92m'
-    CYAN = '\033[96m'
+    RED   =  '\033[91m'
+    ENDC  =  '\033[0m'
+    GREEN =  '\033[92m'
+    CYAN  =  '\033[96m'
 
 def sanitaze_key(key, args_dict):
     val = ""
