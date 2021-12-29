@@ -394,8 +394,8 @@ wp_head();
             }
 
             .search {
-                width: 60vw;
                 margin: 0 auto;
+                width: fit-content;
             }
 
             .searchbox {
@@ -405,6 +405,8 @@ wp_head();
                 min-height: 40px;
                 padding: 0 29px 0 14px;
                 margin-bottom: 21px;
+                width: auto;
+                min-width: 60vw;
             }
 
             .search_icon {
