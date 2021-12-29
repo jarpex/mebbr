@@ -161,6 +161,7 @@ wp_head();
 
         .nav_href {
             display: flex;
+            align-items: center;
             margin: .96em 0;
         }
 
