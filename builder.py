@@ -4,7 +4,7 @@ import sys
 import os
 import shutil
 
-current_ver = "3.1.9"
+current_ver = "3.1.11"
 
 os.system("")
 if __name__ == "__main__":

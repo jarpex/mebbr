@@ -210,6 +210,7 @@ wp_head();
         .padding {
             padding: 2.4em 2.4em 1.92em 2.4em;
             box-sizing: border-box;
+            min-width: 100%;
         }
 
         .title {
