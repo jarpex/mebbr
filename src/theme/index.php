@@ -78,6 +78,10 @@ wp_head();
             }
         }
 
+        html{
+            font-size: .85vw;
+        }
+
         a {
             color: var(--text);
             text-decoration: none;
@@ -104,6 +108,7 @@ wp_head();
 
         .header_desc {
             text-align: center;
+            font-size: .95em;
             margin: 1.2em 0 2.35em 0;
         }
 
@@ -137,10 +142,10 @@ wp_head();
             color: var(--text);
             opacity: .7;
             font-size: .8em;
-            right: 2%;
-            line-height: 2.5em;
+            right: 4%;
+            padding: 0;
             position: absolute;
-            top: 9%;
+            top: 35%;
             border-style: none;
             background-color: transparent;
         }
@@ -210,7 +215,6 @@ wp_head();
         .padding {
             padding: 2.4em 2.4em 1.92em 2.4em;
             box-sizing: border-box;
-            min-width: 100%;
         }
 
         .title {
@@ -262,89 +266,7 @@ wp_head();
             }
         }
 
-        @media (min-width: 640px) {
-            html {
-                font-size: 5.25px;
-            }
-        }
-
-        @media (min-width: 800px) {
-            html {
-                font-size: 6.5625px;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            html {
-                font-size: 8.4px;
-            }
-        }
-
-        @media (min-width: 1136px) {
-            html {
-                font-size: 9.31875px;
-            }
-        }
-
-        @media (min-width: 1280px) {
-            html {
-                font-size: 10.5px;
-            }
-        }
-
-        @media (min-width: 1366px) {
-            html {
-                font-size: 11.20546875px;
-            }
-        }
-
-        @media (min-width: 1600px) {
-            html {
-                font-size: 13.125px;
-            }
-        }
-
-        @media (min-width: 1920px) {
-            html {
-                font-size: 15.75px;
-            }
-        }
-
-        @media (min-width: 2048px) {
-            html {
-                font-size: 16.8px;
-            }
-        }
-
-        @media (min-width: 2560px) {
-            html {
-                font-size: 21px;
-            }
-        }
-
-        @media (min-width: 3200px) {
-            html {
-                font-size: 26.25px;
-            }
-        }
-
-        @media (min-width: 3840px) {
-            html {
-                font-size: 31.5px;
-            }
-        }
-
-        @media (min-width: 5120px) {
-            html {
-                font-size: 42px;
-            }
-        }
-
-        @media (min-width: 7680px) {
-            html {
-                font-size: 63px;
-            }
-        }
+        
 
         @media (max-width: 1199px) and (orientation: portrait) {
             body {
@@ -442,25 +364,26 @@ wp_head();
             .card {
                 margin: 30px 0;
                 flex-direction: column;
+                border-radius: 3.75em;
             }
 
             .card_img {
                 min-width: 100%;
                 min-height: 200px;
-                border-radius: .75em .75em 0 0;
+                border-radius: 3.75em 3.75em 0 0;
             }
 
             .padding {
-                padding: 1em 7.5vw 1.25em;
+                padding: 5em 7.5vw 6em;
             }
 
             .title {
-                font-size: 1.5em;
+                font-size: 8em;
                 margin: 0 0 7.5px 0;
             }
 
             .post-categories {
-                font-size: 1em;
+                font-size: 4.5em;
             }
 
             .category {
@@ -473,6 +396,7 @@ wp_head();
 
             .more-link {
                 margin: 0 auto;
+                font-size: 4.5em;
             }
 
             .social_icons {

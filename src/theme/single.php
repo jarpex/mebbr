@@ -225,4 +225,19 @@ wp_head();
     <?php wp_footer()?>
 </body>
 {article:js}
+<script type="text/javascript">
+    window.onload = function(){
+        const sp = document.getElementsByClassName('spotlight');
+        const length = sp.length;
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+            for (let i = 0; i < length; ++i){
+                sp[i].setAttribute('data-theme',"dark");
+            }      
+        }else{
+            for (let i = 0; i < length; ++i){
+                sp[i].setAttribute('data-theme',"white");
+            }   
+        }
+    }
+</script>
 </html>
