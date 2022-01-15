@@ -145,7 +145,7 @@ wp_head();
             right: 4%;
             padding: 0;
             position: absolute;
-            top: 35%;
+            top: 32.5%;
             border-style: none;
             background-color: transparent;
         }
@@ -215,6 +215,7 @@ wp_head();
         .padding {
             padding: 2.4em 2.4em 1.92em 2.4em;
             box-sizing: border-box;
+            width: -webkit-fill-available;
         }
 
         .title {
@@ -241,7 +242,7 @@ wp_head();
             border-radius: .5em;
             margin: 2.4em auto 0;
             max-width: 7.2em;
-            padding: .45em .9em .35em .9em;
+            padding: .45em 1em;
             text-align: center;
         }
 
@@ -340,6 +341,7 @@ wp_head();
                 right: 7px;
                 line-height: 40px;
                 position: absolute;
+                padding: revert;
                 top: 0;
                 border-style: none;
                 background-color: transparent;
@@ -395,8 +397,18 @@ wp_head();
             }
 
             .more-link {
-                margin: 0 auto;
+                margin: 1.5em auto 0;
                 font-size: 4.5em;
+            }
+
+            .page-numbers{
+                margin: 0 .5em;
+                font-size: 5em;
+                padding: .55em 1em;
+            }
+
+            .more-box {
+                padding-bottom: 8em;
             }
 
             .social_icons {
