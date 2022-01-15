@@ -31,7 +31,7 @@
 		margin: 2em 0 0 0;
 	}
 	.message_title {
-		font-size: 2em;
+		font-size: 12em;
 	}
 	.message_img {
 		position: relative;
@@ -40,7 +40,7 @@
 		display: block;
 	}
 	.message_content {
-		font-size: 1.25em;
+		font-size: 7em;
 	}
 }
 </style>
