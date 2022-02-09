@@ -7,9 +7,7 @@
 			)
 		); 
 ?>
-
 <?php add_theme_support( 'post-thumbnails' ); ?>
-
 <?php function wp_corenavi() {
   global $wp_query;
   $pages = '';
@@ -30,7 +28,6 @@
   echo $pages . paginate_links($a);
   if ($max > 1) echo '</div>';
 } ?>
-
 <?php 
 //** *Enable upload for webp image files.*/
 function webp_upload_mimes($existing_mimes) {
@@ -59,7 +56,6 @@ function webp_is_displayable($result, $path) {
 }
 add_filter('file_is_displayable_image', 'webp_is_displayable', 10, 2);
 ?>
-
 <?php
 remove_filter( 'the_title', 'wptexturize' );
 remove_filter( 'the_content', 'wptexturize' );

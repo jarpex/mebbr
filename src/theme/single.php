@@ -74,7 +74,7 @@ wp_head();
         }
 
         #menu_combo,
-        footer,
+        #footer,
         header {
             flex-direction: column;
             display: flex;
@@ -132,7 +132,7 @@ wp_head();
             background-color: transparent;
         }
 
-        #main {
+        #main, #related {
             width: 90%;
             max-width: 720px;
             margin: 0 auto;
@@ -153,6 +153,32 @@ wp_head();
             font-size: 35px;
         }
 
+        /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+        #related {
+            border-top: solid black 5px;
+            padding: 0px 5vw;
+            box-sizing: border-box;
+            margin-top: 2em;
+        }
+
+        #related-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            font-size: .85em;
+        }
+
+        .rel-title {
+            font-size: .75em;
+            margin: 1.4em 0;
+            color: var(--text);
+            display: block;
+        }
+
+        footer{
+            background: var(--border);
+        }
+        /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
         @media (min-width: 1200px) and (orientation: landscape){
             header, #menu_combo {
                 flex-direction: row;
@@ -193,6 +219,11 @@ wp_head();
                 line-height: 32px;
                 margin-top: 2em;
             }
+            /* !!!!!!!!!!!!!!!!!!!!!!!!!*/
+            #related {
+                padding: 0px 2vw;
+            }
+            /* !!!!!!!!!!!!!!!!!!!!!!!!!!!*/
         }
     </style>
 </head>
@@ -217,9 +248,39 @@ wp_head();
             <h2>Мы не смогли ничего найти по твоему запросу :с</h2>
         <?php endif; ?>
     </article>
+    <div id="related">
+        <?php
+            $categories = get_the_category($post->ID);
+            if ($categories) {
+                $category_ids = array();
+                foreach($categories as $individual_category) $category_ids[] = $individual_category->term_id;
+                $args=array(
+                    'category__in' => $category_ids,
+                    'post__not_in' => array($post->ID),
+                    'showposts'=>4,
+                    'orderby'=>rand,
+                    'caller_get_posts'=>1);
+                $my_query = new wp_query($args);
+                if( $my_query->have_posts() ) {
+                    echo '<div id="related-header"><h2>Читайте также</h2><img draggable="false" role="img" class="emoji" alt="🧐" src="//static.mebbr.ru/fonts/mebbr/1f9d0.svg"></div>';
+                    while ($my_query->have_posts()) {
+                        $my_query->the_post();
+                        ?>
+                            <a class="rel-title" href="<?php the_permalink(); ?>">
+                                <?php the_title(); ?>
+                            </a>
+                        <?php
+                    }
+                }
+                wp_reset_query();
+            }
+        ?>
+    </div>
     <footer>
-        {article:footer_combo}
-        {article:social_icons}
+        <div id="footer">
+            {article:footer_combo}
+            {article:social_icons}
+        </div>
     </footer>
     <button id="gotop" onclick="window.scroll({ top: 0, left: 0, behavior: 'smooth' })"></button>
     <?php wp_footer()?>

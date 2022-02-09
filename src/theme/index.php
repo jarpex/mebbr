@@ -4,7 +4,6 @@ wp_head();
 ?>
 <!DOCTYPE html>
 {html_lang}
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,7 +25,7 @@ wp_head();
     <meta name="twitter:domain" content="{site:domain}">
     <meta name="twitter:site" content="{twitter:site}">
     <meta name="twitter:creator" content="{twitter:creator}">
-    <link rel="canonical" href="{site:url}">
+    <link rel="canonical" href="https:{site:url}">
     <link rel="alternate" type="application/rss+xml" title={RSS:Title} href="{RSS:href}">
     <link rel="next" href="<?php the_permalink(); ?>">
     {index:link:preconnect}
