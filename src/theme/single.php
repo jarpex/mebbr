@@ -284,10 +284,11 @@ wp_head();
             <h2>Мы не смогли ничего найти по твоему запросу :с</h2>
         <?php endif; ?>
     </article>
-    <div id="related">
+    
         <?php
             $categories = get_the_category($post->ID);
             if ($categories) {
+                echo '<div id="related">';
                 $category_ids = array();
                 foreach($categories as $individual_category) $category_ids[] = $individual_category->term_id;
                 $args=array(
@@ -309,9 +310,9 @@ wp_head();
                     }
                 }
                 wp_reset_query();
+                echo '</div>';
             }
         ?>
-    </div>
     <footer>
         <div id="footer">
             {article:footer_combo}

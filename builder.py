@@ -116,7 +116,7 @@ try:
     ver.write(next_ver[0] + "." + next_ver[1] + "." + str(next_ver[2]))
     ver.close()
 except:
-    print(bcolors.RED + 'Failed while updating your version file' + bcolors.ENDC)
+    print(bcolors.RED + 'Failed to update your version file' + bcolors.ENDC)
     quit()
 
 print("Build version: " + bcolors.GREEN + current_ver + bcolors.ENDC)
