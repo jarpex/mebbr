@@ -4,8 +4,6 @@ import sys
 import os
 import shutil
 
-current_ver = "3.3.56"
-
 os.system("")
 if __name__ == "__main__":
     if len (sys.argv) > 1:
@@ -64,6 +62,18 @@ def copy_file(fin, fout):
         print(bcolors.RED + "Cannot create " + fout + bcolors.ENDC)
         quit()
 
+current_ver = ""
+print("Reading " + bcolors.CYAN + "version" + bcolors.ENDC)
+try:
+    ver = io.open("version", mode="r", encoding="utf-8")
+    current_ver = ver.readline()
+    ver.close()
+except:
+    print(bcolors.RED + 'There is a problem with your version file' + bcolors.ENDC)
+    quit()
+
+print("Build version: " + bcolors.GREEN + current_ver + bcolors.ENDC)
+
 print("Reading " + bcolors.CYAN + os.getcwd() + "/" + cfg_file + bcolors.ENDC)
 try:
     cfg = io.open(cfg_file, mode="r", encoding="utf-8")
@@ -97,5 +107,18 @@ copy_file("{Theme_Content_None}","/build/theme/content-none.php")
 build_file("/src/theme/index.php", "/build/theme/", "/build/theme/index.php")
 build_file("/src/theme/single.php", "/build/theme/", "/build/theme/single.php")
 build_file("/src/theme/single.php", "/build/theme/", "/build/theme/page.php")
+
+print("Updating " + bcolors.CYAN + "minor version" + bcolors.ENDC)
+try:
+    ver = io.open("version", mode="w", encoding="utf-8")
+    next_ver = current_ver.split(".")
+    next_ver[2] = int(next_ver[2]) + 1
+    ver.write(next_ver[0] + "." + next_ver[1] + "." + str(next_ver[2]))
+    ver.close()
+except:
+    print(bcolors.RED + 'Failed while updating your version file' + bcolors.ENDC)
+    quit()
+
+print("Build version: " + bcolors.GREEN + current_ver + bcolors.ENDC)
 
 print(bcolors.GREEN + "THEME " + sanitaze_key("{Theme_Name}", config) + " WAS BUILT SUCESS" + bcolors.ENDC)
