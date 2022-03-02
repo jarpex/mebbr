@@ -7,9 +7,9 @@ import shutil
 os.system("")
 if __name__ == "__main__":
     if len (sys.argv) > 1:
-        cfg_file = sys.argv[1] + ".cfg"
+        cfg_file = "config/" + sys.argv[1] + ".cfg"
     else:
-        cfg_file = "mebbr.cfg"
+        cfg_file = "config/mebbr.cfg"
 
 class bcolors:
     RED   =  '\033[91m'
