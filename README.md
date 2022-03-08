@@ -1,6 +1,6 @@
 ## Description
 
-A monolithic, highly optimized, debloated (a part) WordPress theme written from scratch specifically for Asya's sites.
+A monolithic, highly optimized, debloated (a part) WordPress theme written from scratch specifically for Asya’s sites.
 
 ### Installation
 
@@ -16,15 +16,22 @@ A monolithic, highly optimized, debloated (a part) WordPress theme written from 
 
 ### Configuration
 
-Create a configuration file for your website like "/config/example.cfg". Configuration files should be placed at **/config/** directory. Each parameter should be placed for one line. To create a newline in your configuration file you should use a **&newline&** command. There is also available a **&tab&** command for better code legibility.
+Create a configuration file for your website like «/config/example.cfg». Configuration files should be placed at **/config/** directory. Each parameter should be placed for one line. To create a newline in your configuration file you should use a **&newline&** command. There is also available a **&tab&** command for better code legibility.
 
 ### Build
 
 To build the project, use the command:
 
-- python3 ./builder.py config.cfg
+- python3 ./main.py arguments
 
-Where instead of **config.cfg** use your configuration file.
+Available arguments:
+- config.cfg — specify your configuration file
+- config — alternate version to specify configuration file
+- --skip — do not upgrade theme version
+- --patch — increment a patch version
+- --minor — increment a minor version
+- --major — increment a major version
+- --help — show a help
 
 If no launch arguments are specified for the application, the theme will be built for the site [MEBBR](https://mebbr.ru/)
 
