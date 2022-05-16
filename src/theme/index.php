@@ -45,6 +45,8 @@ wp_head();
             --bg: #edeef0;
             --selection: rgba(254, 235, 239, 0.99);
             --codeselection: rgba(53, 59, 72, 0.99);
+            --searchbox_shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+            --header_shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
             color: var(--text);
             background-color: var(--bg);
             font-family: Mont-Regular, 'Open Sans', 'Lato', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
@@ -62,6 +64,7 @@ wp_head();
                 --box: rgb(33, 36, 37);
                 --selection: rgba(53, 59, 72, 0.99);
                 --codeselection: rgba(254, 235, 239, 0.99);
+                --svg_filter: brightness(0) saturate(100%) invert(86%) sepia(36%) saturate(15%) hue-rotate(357deg) brightness(94%) contrast(108%);
             }
         }
 
@@ -93,6 +96,7 @@ wp_head();
             height: 100vw;
             padding: 5vw;
             box-sizing: border-box;
+            box-shadow: var(--header_shadow);
         }
 
         .logo {
@@ -108,7 +112,7 @@ wp_head();
         .header_desc {
             text-align: center;
             font-size: 1.02em;
-            margin: 1.1em 0 2.35em 0;
+            margin: 1.12em 0 2.35em 0;
         }
 
         .header_flex {
@@ -121,33 +125,30 @@ wp_head();
         }
 
         .searchbox {
-            width: 100%;
+            width: 94.75%;
             background-color: var(--bg);
             border-radius: .5em;
-            margin: 0 auto 2.6em auto;
+            margin: 0.725em auto 2.6em auto;
             border: 0;
             color: var(--text);
             display: block;
             font-size: 1em;
-            line-height: 2.4em;
-            min-height: 2.4em;
+            line-height: 2.6em;
+            min-height: 2.6em;
             outline: 0;
-            padding: 0 1.4em 0 .65em;
+            padding: 0 1.4em 0 1.75em;
             font-family: Mont-Regular, 'Open Sans', 'Lato', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+            box-shadow: var(--searchbox_shadow);
+
         }
 
         .search_icon {
-            font-family: "mebbr";
+            position: absolute;
+            top: 0.8em;
+            right: 1.8em;
             color: var(--text);
             opacity: .7;
-            font-size: .8em;
-            line-height: 2.4em;
-            right: 4%;
-            padding: 0;
-            position: absolute;
-            top: 32.5%;
-            border-style: none;
-            background-color: transparent;
+            height: 1em;
         }
         img.emoji{
             display: inline !important;
@@ -160,14 +161,21 @@ wp_head();
             background: none !important;
             padding: 0 !important;
         }
+        .nav_flex {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         .nav {
-            font-size: 1.24em;
+            width: fit-content;
+            font-size: 1.65em;
         }
 
         .nav_href {
             display: flex;
             align-items: center;
-            margin: .96em 0;
+            margin: 0.7em 0 -0.2em;
         }
 
         .nav_span {
@@ -176,14 +184,22 @@ wp_head();
 
         .social_icons {
             font-size: 1.2em;
-            width: 20vw;
+            width: calc(100vw / 3);
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-family: "mebbr";
-            margin: 1.5em 0 2em;
+            padding: 2.125em 5em;
             position: fixed;
             bottom: 0;
+            left: 0;
+            box-sizing: border-box;
+        }
+
+        .social_icons a img {
+            height: 1.2em;
+            filter: var(--svg_filter);
+            opacity: .7;
         }
 
         .site-main {
@@ -295,7 +311,14 @@ wp_head();
                 flex-direction: column-reverse;
             }
 
+            .nav_flex {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
             .nav {
+                width: fit-content;
                 text-align: center;
                 margin: 0 20px;
                 font-size: 20px;
@@ -323,28 +346,20 @@ wp_head();
             }
 
             .searchbox {
-                border-radius: 8px;
-                font-size: 14px;
-                line-height: 1.5;
-                min-height: 40px;
-                padding: 0 29px 0 14px;
-                margin-bottom: 21px;
+                border-radius: 0.5em;
+                font-size: 4.5em;
+                line-height: 2em;
+                min-height: 3em;
+                padding: 0 2.5em 0 1.5em;
+                margin-bottom: 3em;
                 width: auto;
-                min-width: 60vw;
+                min-width: 75vw;
             }
 
             .search_icon {
-                font-family: "mebbr";
-                color: var(--text);
-                opacity: .7;
-                font-size: 15px;
-                right: 7px;
-                line-height: 40px;
-                position: absolute;
-                padding: revert;
-                top: 0;
-                border-style: none;
-                background-color: transparent;
+                right: 1.25em;
+                top: 1em;
+                height: 1.5em;
             }
 
             .site-main {
@@ -431,7 +446,7 @@ wp_head();
             <form class="search_form" role="search" method="get" id="searchform" action="{site:url}" autocomplete="off">
                 <div class="search">
                     <input name="s" class="searchbox" placeholder="Поиск" type="text" maxlength="100" required />
-                    <input type="submit" id="searchsubmit" class="search_icon" value="🔍">
+                    <input type="image" id="searchsubmit" class="search_icon" src="//mebbr.ru/img/search.svg">
                 </div>
             </form>
             {index:navigation}
