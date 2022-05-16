@@ -1,6 +1,6 @@
 body ::selection {
-    background: var(--selection);
-    color: var(--text);
+  background: var(--selection);
+  color: var(--text);
 }
 
 /*Запрет выделения*/
@@ -9,60 +9,60 @@ body ::selection {
 .more-link,
 .more-box,
 .card a img {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 ::-webkit-scrollbar {
-    width: .75vw;
-    height: .75vw;
+  width: 0.75vw;
+  height: 0.75vw;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--hover);
-    border-radius: 0;
+  background: var(--hover);
+  border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--selection);
+  background: var(--selection);
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--bg);
-    border-radius: 0;
+  background: var(--bg);
+  border-radius: 0;
 }
 
 .hljs {
-    display: block;
-    overflow-x: auto;
-    padding: .5em;
-    background: #282a36;
-    border-radius: 8px;
-    font-family: Inconsolata, Hack, Terminus, monospace;
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #282a36;
+  border-radius: 8px;
+  font-family: Inconsolata, Hack, Terminus, monospace;
 }
 
 .hljs-built_in,
 .hljs-link,
 .hljs-section,
 .hljs-selector-tag {
-    color: #8be9fd;
+  color: #8be9fd;
 }
 
 .hljs-keyword {
-    color: #ff79c6;
+  color: #ff79c6;
 }
 
 .hljs,
 .hljs-subst {
-    color: #f8f8f2;
+  color: #f8f8f2;
 }
 
 .hljs-title {
-    color: #50fa7b;
+  color: #50fa7b;
 }
 
 .hljs-addition,
@@ -76,58 +76,64 @@ body ::selection {
 .hljs-template-variable,
 .hljs-type,
 .hljs-variable {
-    color: #f1fa8c;
+  color: #f1fa8c;
 }
 
 .hljs-comment,
 .hljs-deletion,
 .hljs-quote {
-    color: #6272a4;
+  color: #6272a4;
 }
 
 .hljs-literal,
 .hljs-number {
-    color: #bd93f9;
+  color: #bd93f9;
 }
 
 .hljs-emphasis {
-    font-style: italic;
+  font-style: italic;
 }
 
 .hljs span::selection,
 .hljs::selection {
-    background: var(--codeselection) !important;
-    color: var(--bg);
+  background: var(--codeselection) !important;
+  color: var(--bg);
 }
 
 a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .search_icon:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 @font-face {
-    font-family: 'Mont-Regular';
-    src: url(//static.mebbr.ru/fonts/mebbr/Mont.woff2) format("woff2"), url(//static.mebbr.ru/fonts/mebbr/Mont.woff) format("woff"), url(//static.mebbr.ru/fonts/mebbr/Mont.ttf) format("truetype");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Mont-Regular";
+  src: url(//static.mebbr.ru/fonts/mebbr/Mont.woff2) format("woff2"),
+    url(//static.mebbr.ru/fonts/mebbr/Mont.woff) format("woff"),
+    url(//static.mebbr.ru/fonts/mebbr/Mont.ttf) format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Inconsolata';
-    src: url(//static.mebbr.ru/fonts/mebbr/Inconsolata.woff2) format("woff2"), url(//static.mebbr.ru/fonts/mebbr/Inconsolata.woff) format("woff"), url(//static.mebbr.ru/fonts/mebbr/Inconsolata.ttf) format("truetype");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Inconsolata";
+  src: url(//static.mebbr.ru/fonts/mebbr/Inconsolata.woff2) format("woff2"),
+    url(//static.mebbr.ru/fonts/mebbr/Inconsolata.woff) format("woff"),
+    url(//static.mebbr.ru/fonts/mebbr/Inconsolata.ttf) format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: "mebbr";
-    src: url(//static.mebbr.ru/fonts/mebbr/mebbr.woff2) format("woff2"), url(//static.mebbr.ru/fonts/mebbr/mebbr.woff) format("woff"), url(//static.mebbr.ru/fonts/mebbr/mebbr.ttf) format("truetype");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
+  font-family: "mebbr";
+  src: url(//static.mebbr.ru/fonts/mebbr/mebbr.woff2) format("woff2"),
+    url(//static.mebbr.ru/fonts/mebbr/mebbr.woff) format("woff"),
+    url(//static.mebbr.ru/fonts/mebbr/mebbr.ttf) format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }

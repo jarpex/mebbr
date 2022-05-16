@@ -87,7 +87,7 @@ wp_head();
         }
 
         .header {
-            width: 30vw;
+            width: calc(100vw / 3);
             background: var(--box);
             position: fixed;
             height: 100vw;
@@ -98,17 +98,17 @@ wp_head();
         .logo {
             text-decoration: none;
             color: var(--text);
-            font-size: 4.1em;
+            font-size: 5.75em;
             line-height: 1em;
             display: block;
             text-align: center;
-            margin: .58em 0 0 0;
+            margin: .1em 0 0 0;
         }
 
         .header_desc {
             text-align: center;
-            font-size: .95em;
-            margin: 1.2em 0 2.35em 0;
+            font-size: 1.02em;
+            margin: 1.1em 0 2.35em 0;
         }
 
         .header_flex {
@@ -129,7 +129,7 @@ wp_head();
             color: var(--text);
             display: block;
             font-size: 1em;
-            line-height: 1.5em;
+            line-height: 2.4em;
             min-height: 2.4em;
             outline: 0;
             padding: 0 1.4em 0 .65em;
@@ -141,6 +141,7 @@ wp_head();
             color: var(--text);
             opacity: .7;
             font-size: .8em;
+            line-height: 2.4em;
             right: 4%;
             padding: 0;
             position: absolute;
@@ -186,12 +187,12 @@ wp_head();
         }
 
         .site-main {
-            margin-left: 30vw;
-            width: 70vw;
+            margin-left: calc(100vw / 3);
+            width: calc((100vw / 3) * 2);
         }
 
         .blocks-wrapper {
-            width: 60vw;
+            width: 55vw;
             margin: 0 auto;
             padding-bottom: 2.1em;
         }

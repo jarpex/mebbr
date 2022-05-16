@@ -9,7 +9,6 @@ A monolithic, highly optimized, debloated (a part) WordPress theme written from 
 - git clone https://github.com/jarpex/mebbr
 - cd mebbr
 
-
 ## Usage
 
 ![MEBBR](https://github.com/jarpex/mebbr/raw/master/src/mebbr/mebbr.png)
@@ -25,6 +24,7 @@ To build the project, use the command:
 - python3 ./main.py arguments
 
 Available arguments:
+
 - config.cfg — specify your configuration file
 - config — alternate version to specify configuration file
 - --skip — do not upgrade theme version

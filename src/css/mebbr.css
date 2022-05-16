@@ -4,7 +4,6 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-
 details,
 main {
   display: block;
@@ -12,7 +11,7 @@ main {
 
 h1 {
   font-size: 2em;
-  margin: .83em 0;
+  margin: 0.83em 0;
 }
 
 hr {
@@ -56,11 +55,11 @@ sup {
 }
 
 sub {
-  bottom: -.25em;
+  bottom: -0.25em;
 }
 
 sup {
-  top: -.5em;
+  top: -0.5em;
 }
 
 img {
@@ -88,30 +87,30 @@ select {
   text-transform: none;
 }
 
-[type=button],
-[type=reset],
-[type=submit],
+[type="button"],
+[type="reset"],
+[type="submit"],
 button {
   -webkit-appearance: button;
 }
 
-[type=button]::-moz-focus-inner,
-[type=reset]::-moz-focus-inner,
-[type=submit]::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner,
 button::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
 
-[type=button]:-moz-focusring,
-[type=reset]:-moz-focusring,
-[type=submit]:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring,
 button:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
 fieldset {
-  padding: .35em .75em .625em;
+  padding: 0.35em 0.75em 0.625em;
 }
 
 legend {
@@ -129,24 +128,24 @@ textarea {
   overflow: auto;
 }
 
-[type=checkbox],
-[type=radio],
+[type="checkbox"],
+[type="radio"],
 legend {
   box-sizing: border-box;
   padding: 0;
 }
 
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
 
-[type=search] {
+[type="search"] {
   -webkit-appearance: textfield;
   outline-offset: -2px;
 }
 
-[type=search]::-webkit-search-decoration {
+[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -187,7 +186,9 @@ body ::selection {
 }
 
 .searchbox {
-  font-family: Mont-Regular, 'Open Sans', 'Lato', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  font-family: Mont-Regular, "Open Sans", "Lato", "Roboto", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Helvetica Neue",
+    sans-serif;
   user-select: auto;
 }
 
@@ -205,7 +206,7 @@ body ::selection {
 }
 
 #main p {
-  margin-top: .75em;
+  margin-top: 0.75em;
   font-size: 19px;
   line-height: 29px;
 }
@@ -223,7 +224,7 @@ body ::selection {
 
 #main ol,
 #main ul {
-  margin: .5em 0 1em;
+  margin: 0.5em 0 1em;
   line-height: 29px;
 }
 
@@ -376,7 +377,7 @@ article img {
 .hljs {
   display: block;
   overflow-x: auto;
-  padding: .5em;
+  padding: 0.5em;
   background: #282a36;
   border-radius: 8px;
   font-family: Inconsolata, Hack, Terminus, monospace;
@@ -437,8 +438,8 @@ article img {
   color: var(--bg);
 }
 
-@media (min-width: 1200px) and (orientation: landscape){
-  #gotop{
+@media (min-width: 1200px) and (orientation: landscape) {
+  #gotop {
     display: block;
     position: fixed;
     bottom: 3vw;
@@ -447,45 +448,53 @@ article img {
     font-family: "mebbr";
     border: none;
     color: var(--text);
-    opacity: .2;
+    opacity: 0.2;
     cursor: pointer;
     font-size: 2em;
   }
-  #gotop:hover{
-    opacity: .7;
+  #gotop:hover {
+    opacity: 0.7;
   }
   #main ul {
-    margin: 2em 0 0 .5em;
+    margin: 2em 0 0 0.5em;
   }
 }
 
 @font-face {
   font-family: "mebbr";
-  src: url(//static.mebbr.ru/fonts/mebbr/mebbr.woff2) format("woff2"), url(//static.mebbr.ru/fonts/mebbr/mebbr.woff) format("woff"), url(//static.mebbr.ru/fonts/mebbr/mebbr.ttf) format("truetype");
+  src: url(//static.mebbr.ru/fonts/mebbr/mebbr.woff2) format("woff2"),
+    url(//static.mebbr.ru/fonts/mebbr/mebbr.woff) format("woff"),
+    url(//static.mebbr.ru/fonts/mebbr/mebbr.ttf) format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'PT Serif';
-  src: url(//static.mebbr.ru/fonts/mebbr/PTSerif.woff2) format("woff2"), url(//static.mebbr.ru/fonts/mebbr/PTSerif.woff) format("woff"), url(//static.mebbr.ru/fonts/mebbr/PTSerif.ttf) format("truetype");
+  font-family: "PT Serif";
+  src: url(//static.mebbr.ru/fonts/mebbr/PTSerif.woff2) format("woff2"),
+    url(//static.mebbr.ru/fonts/mebbr/PTSerif.woff) format("woff"),
+    url(//static.mebbr.ru/fonts/mebbr/PTSerif.ttf) format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Mont-Regular';
-  src: url(//static.mebbr.ru/fonts/mebbr/Mont.woff2) format("woff2"), url(//static.mebbr.ru/fonts/mebbr/Mont.woff) format("woff"), url(//static.mebbr.ru/fonts/mebbr/Mont.ttf) format("truetype");
+  font-family: "Mont-Regular";
+  src: url(//static.mebbr.ru/fonts/mebbr/Mont.woff2) format("woff2"),
+    url(//static.mebbr.ru/fonts/mebbr/Mont.woff) format("woff"),
+    url(//static.mebbr.ru/fonts/mebbr/Mont.ttf) format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Inconsolata';
-  src: url(//static.mebbr.ru/fonts/mebbr/Inconsolata.woff2) format("woff2"), url(//static.mebbr.ru/fonts/mebbr/Inconsolata.woff) format("woff"), url(//static.mebbr.ru/fonts/mebbr/Inconsolata.ttf) format("truetype");
+  font-family: "Inconsolata";
+  src: url(//static.mebbr.ru/fonts/mebbr/Inconsolata.woff2) format("woff2"),
+    url(//static.mebbr.ru/fonts/mebbr/Inconsolata.woff) format("woff"),
+    url(//static.mebbr.ru/fonts/mebbr/Inconsolata.ttf) format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
