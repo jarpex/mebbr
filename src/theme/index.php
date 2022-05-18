@@ -144,11 +144,11 @@ wp_head();
 
         .search_icon {
             position: absolute;
-            top: 0.8em;
-            right: 1.8em;
-            color: var(--text);
+            top: 31.5%;
+            right: 6.75%;
+            filter: var(--svg_filter);
             opacity: .7;
-            height: 1em;
+            height: 1.01rem;
         }
         img.emoji{
             display: inline !important;
