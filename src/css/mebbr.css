@@ -196,36 +196,21 @@ body ::selection {
   display: none;
 }
 
-#main h2 {
-  margin: 1em 0 0;
-  font-size: 28px;
-}
-
-#main h3 {
-  font-size: 25px;
-}
-
 #main p {
   margin-top: 0.75em;
-  font-size: 19px;
-  line-height: 29px;
+  font-size: 17px;
+  line-height: 1.5em;
 }
 
 #main pre {
-  margin: 0 0 1em;
+  margin: 2rem 0 0;
   line-height: 28px;
 }
 
 #main pre code {
-  font-size: 19px;
-  line-height: 24px;
+  font-size: 1em;
+  line-height: 1.5em;
   text-align: left;
-}
-
-#main ol,
-#main ul {
-  margin: 0.5em 0 1em;
-  line-height: 29px;
 }
 
 #main .wp-block-quote p {
@@ -246,14 +231,22 @@ body ::selection {
   width: 100% !important;
 }
 
+#main .wp-block-video {
+  margin: 2rem 0 0;
+}
+
+article video {
+  border-radius: 0.75em;
+}
+
 .mebbr-image {
   margin: 30px 0;
   text-align: center;
 }
-
 article img {
   max-width: 100%;
   height: auto;
+  border-radius: 0.75em;
 }
 
 #main .lyte-wrapper,
@@ -377,10 +370,10 @@ article img {
 .hljs {
   display: block;
   overflow-x: auto;
-  padding: 0.5em;
+  padding: 0.5em 1em;
   background: #282a36;
-  border-radius: 8px;
-  font-family: Inconsolata, Hack, Terminus, monospace;
+  border-radius: 0.75em;
+  font-family: PTMonoWebRegular, monospace !important;
 }
 
 .hljs-built_in,
@@ -455,9 +448,6 @@ article img {
   #gotop:hover {
     opacity: 0.7;
   }
-  #main ul {
-    margin: 2em 0 0 0.5em;
-  }
 }
 
 @font-face {
@@ -491,11 +481,10 @@ article img {
 }
 
 @font-face {
-  font-family: "Inconsolata";
-  src: url(//static.mebbr.ru/fonts/mebbr/Inconsolata.woff2) format("woff2"),
-    url(//static.mebbr.ru/fonts/mebbr/Inconsolata.woff) format("woff"),
-    url(//static.mebbr.ru/fonts/mebbr/Inconsolata.ttf) format("truetype");
-  font-weight: 400;
+  font-family: "PTMonoWebRegular";
+  src: url(//static.mebbr.ru/fonts/mebbr/PT-Mono_Regular.woff2) format("woff2"),
+    url(//static.mebbr.ru/fonts/mebbr/PT-Mono_Regular.woff) format("woff");
+  font-weight: normal;
   font-style: normal;
   font-display: swap;
 }

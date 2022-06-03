@@ -17,6 +17,9 @@ wp_head();
     {article:preload}
     {article:dns-prefetch}
     <style>
+        html {
+            font: 17px Mont-Regular, 'Open Sans', 'Lato', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+        }
         body {
             --text: rgba(18, 18, 18, 0.999);
             --bg: rgba(255, 255, 255, 0.999);
@@ -27,10 +30,9 @@ wp_head();
             --codeselection: rgba(53, 59, 72, 0.99);
             color: var(--text);
             background-color: var(--bg);
-            font: 21px Mont-Regular, 'Open Sans', 'Lato', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
             text-rendering: optimizeLegibility;
             margin: 0;
-            text-align: justify;
+            text-align: left;
         }
 
         @media (prefers-color-scheme: dark) {
@@ -47,8 +49,8 @@ wp_head();
 
         @media screen and (prefers-color-scheme: light) {
             body {
-                --text: rgba(18, 18, 18, 0.999);
-                --bg: rgba(255, 255, 255, 0.999);
+                --text: rgba(30, 30, 30, 0.999);
+                --bg: rgba(249, 249, 249, 0.999);
                 --border: #e9e9e9;
                 --hover: #ccc;
                 --box: #edeef0;
@@ -134,7 +136,7 @@ wp_head();
 
         #main, #related {
             width: 90%;
-            max-width: 720px;
+            max-width: 650px;
             margin: 0 auto;
         }
 
@@ -147,41 +149,39 @@ wp_head();
             font-family: 'PT Serif', serif;
             font-weight: 400;
             text-align: left;
+            margin: 2.5em 0 0;
+            line-height: 1.5em;
         }
 
         #main h1 {
-            font-size: 35px;
+            margin-top: 2em;
+            font-size: 2.5rem;
+        }
+        #main h2 {
+            font-size: 2rem;
+        }
+
+        #main h3 {
+            font-size: 1.77rem;
+        }
+        #main h4 {
+            font-size: 1.625rem;
+        }
+        #main h5 {
+            font-size: 1.4rem;
+        }
+        #main h6 {
+            font-size: 1.25rem;
         }
 
         /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-        #main ul{
-            list-style-type: disclosure-closed;
+        #main ul, #main ol{
+            margin: 2em 0 0;
+            box-sizing: border-box;
         }
 
-        #main ol {
-            counter-reset: item;
-            padding-inline-start: 20px;
-        }
-
-        #main > ol{
-            padding-inline-start: 0px;
-        }
-
-        #main > ul{
-            padding-inline-start: 20px;
-        }
-
-        #main ol li {
-            display: block;
-        }
-
-        #main ol li:before {
-            content: counters(item, ".") " ";
-            counter-increment: item;
-        }
-
-        #main h2,  #main h3, #main h4, #main h5, #main h6 {
-            text-align: center;
+        #main li {
+            margin: 0 0 0.25rem 1rem;
         }
 
         #related {
@@ -195,7 +195,11 @@ wp_head();
             display: flex;
             align-items: baseline;
             justify-content: space-between;
-            font-size: .85em;
+            font-size: 1em;
+        }
+
+        #related-header h2 {
+            margin-top: 1em;
         }
 
         .rel-title {
@@ -238,26 +242,19 @@ wp_head();
             .menu a{
                 margin-right: 10px;
             }
-            #main h1 {
-                font-size: 48px;
-            }
-            #main h2 {
+            
+            #main p {
+                font-size: 17px;
+                line-height: 1.6em;
                 margin: 2em 0 0;
             }
-            #main p {
-                font-size: 21px;
-                line-height: 32px;
-                margin-top: 2em;
-            }
             /* !!!!!!!!!!!!!!!!!!!!!!!!!*/
-            #main ul{
-                margin-left: 0;
-            }
-            #main > ul{
-                padding-inline-start: 0px;
-            }
             #related {
                 padding: 0px 2vw;
+            }
+            
+            #related-container {
+                margin-bottom: 2.5em;
             }
             /* !!!!!!!!!!!!!!!!!!!!!!!!!!!*/
         }
@@ -295,11 +292,11 @@ wp_head();
                     'category__in' => $category_ids,
                     'post__not_in' => array($post->ID),
                     'showposts'=>4,
-                    'orderby'=>rand,
+                    'orderby'=>rand(),
                     'caller_get_posts'=>1);
                 $my_query = new wp_query($args);
                 if( $my_query->have_posts() ) {
-                    echo '<div id="related-header"><h2>Читайте также</h2><img draggable="false" role="img" class="emoji" alt="🧐" src="//static.mebbr.ru/fonts/mebbr/1f9d0.svg"></div>';
+                    echo '<div id="related-header"><h2>Читайте также</h2><img draggable="false" role="img" class="emoji" alt="🧐" src="//static.mebbr.ru/fonts/mebbr/1f9d0.svg"></div><div id="related-container">';
                     while ($my_query->have_posts()) {
                         $my_query->the_post();
                         ?>
@@ -310,7 +307,7 @@ wp_head();
                     }
                 }
                 wp_reset_query();
-                echo '</div>';
+                echo '</div></div>';
             }
         ?>
     <footer>
