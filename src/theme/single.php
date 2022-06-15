@@ -150,11 +150,12 @@ wp_head();
             font-weight: 400;
             text-align: left;
             margin: 2.5em 0 0;
-            line-height: 1.5em;
+            line-height: 1.2em;
+            word-break: break-word;
         }
 
         #main h1 {
-            margin-top: 2em;
+            margin-top: 1em;
             font-size: 2.5rem;
         }
         #main h2 {

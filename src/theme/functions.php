@@ -8,6 +8,13 @@
 		); 
 ?>
 <?php add_theme_support( 'post-thumbnails' ); ?>
+<?php function remove_more_jump_link($link) { 
+	$offset = strpos($link, '#more-');
+	if ($offset) { $end = strpos($link, '"',$offset); }
+	if ($end) { $link = substr_replace($link, '', $offset, $end-$offset); }
+	return $link;
+}
+add_filter('the_content_more_link', 'remove_more_jump_link'); ?>
 <?php function wp_corenavi() {
   global $wp_query;
   $pages = '';

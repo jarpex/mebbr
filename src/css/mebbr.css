@@ -202,6 +202,10 @@ body ::selection {
   line-height: 1.5em;
 }
 
+#main .advert {
+  margin-top: 0.75em;
+}
+
 #main pre {
   margin: 2rem 0 0;
   line-height: 28px;
@@ -447,6 +451,9 @@ article img {
   }
   #gotop:hover {
     opacity: 0.7;
+  }
+  #main .advert {
+    margin-top: 2em;
   }
 }
 
