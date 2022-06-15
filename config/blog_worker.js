@@ -39,7 +39,6 @@ const detect = () => {
   document.body.appendChild(fakeAd);
 
   let x_width = fakeAd.offsetHeight;
-  let msg = document.getElementById("msg");
 
   fakeAd.remove();
 
