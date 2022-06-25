@@ -277,6 +277,12 @@ wp_head();
     <article id="main" class="hyphenate">
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
             <h1><?php the_title(); ?></h1>
+            <div id="autor_card">
+                <a href="<?php echo get_the_author_meta('url'); ?>" target="_blank"><?php echo get_avatar( get_the_author_meta('user_email'), 100 ); ?></a>
+                <?php the_author(); ?>
+                <?php the_date(); ?>
+                <?php _e( 'На чтение', ' ' ); ?>: <?php echo gp_read_time(); ?> <?php _e( 'мин', ' ' ); ?>
+            </div>
             <?php the_content(); ?>
             <?php endwhile; else : ?>
             <h2>Мы не смогли ничего найти по твоему запросу :с</h2>
