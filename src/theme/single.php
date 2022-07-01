@@ -51,6 +51,7 @@ wp_head();
             body {
                 --text: rgba(30, 30, 30, 0.999);
                 --bg: rgba(249, 249, 249, 0.999);
+                --gray_400: #939393;
                 --border: #e9e9e9;
                 --hover: #ccc;
                 --box: #edeef0;
@@ -140,6 +141,39 @@ wp_head();
             margin: 0 auto;
         }
 
+        #main #autor_card {
+            margin: 1.175em 0 0;
+            display: flex;
+            align-items: center;
+        }
+
+        #main .post_meta {
+            margin: 0 0 0 0.647rem;
+            font-size: 0;
+        }
+
+        #main .avatar {
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        #main #autor_url {
+            display: block;
+            text-decoration: none;
+            font-size: 15px;
+            margin: 0;
+        }
+
+        #autor_card .post_date, #autor_card .reading_time {
+            color: var(--gray_400);
+            font-size: 13px;
+        }
+
+        #autor_card .reading_time::before{
+            content: '\2022';
+            padding: 0 0.412rem;
+        }
+
         #main h1,
         h2,
         h3,
@@ -147,23 +181,25 @@ wp_head();
         h5,
         h6 {
             font-family: 'PT Serif', serif;
-            font-weight: 400;
+            font-weight: 700;
             text-align: left;
-            margin: 2.5em 0 0;
+            margin: 2.35rem 0 0;
             line-height: 1.2em;
             word-break: break-word;
         }
 
         #main h1 {
-            margin-top: 1em;
-            font-size: 2.5rem;
+            margin-top: 2.647rem;
+            font-size: 2.235rem;
         }
         #main h2 {
-            font-size: 2rem;
+            font-size: 1.294rem;
+            margin: 4.06rem 0 -1.47rem;
         }
 
         #main h3 {
-            font-size: 1.77rem;
+            font-size: 1.176rem;
+            margin: 2.79rem 0 -1.47rem;
         }
         #main h4 {
             font-size: 1.625rem;
@@ -177,19 +213,58 @@ wp_head();
 
         /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
         #main ul, #main ol{
-            margin: 2em 0 0;
-            box-sizing: border-box;
+            margin: 2.35rem 0 0;
+            padding: 0;
         }
 
         #main li {
-            margin: 0 0 0.25rem 1rem;
+            margin: 1.34rem 0 -0.54rem 1.764rem;
+        }
+        
+        #article_tags {
+            margin: 2.35rem 0 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-content: center;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        #article_tags a {
+            color: var(--bg) !important; 
+            /* Убрать импортант доработав #main a:not(.spotlight) в #main a:not(.spotlight):not(#article_tags) */
+            background-color: var(--text);
+            text-decoration: none;
+            padding: 0.1rem 0.8rem;
+            margin: 0.5rem 0.4rem 0 0;
+        }
+
+        /* Объединить с .hljs */
+        #main pre code {
+            display: block;
+            overflow-x: auto;
+            padding: 0.5em 1em;
+            background: #282a36;
+            color: #f8f8f2;
+            border-radius: 0.75em;
+            font-family: PTMonoWebRegular,monospace!important;
+        }
+        #main .wp-block-quote {
+            margin: 2.35rem 0 0 -1.2rem !important;
+        }
+
+        #main .wp-block-quote p {
+            border-left: solid var(--text) 3px !important;
+            padding-left: calc(1.2rem - 3px) !important;
+            box-sizing: border-box;
         }
 
         #related {
             border-top: solid var(--text) 5px;
             padding: 0px 5vw;
             box-sizing: border-box;
-            margin-top: 2em;
+            margin-top: 2.35rem;
         }
 
         #related-header {
@@ -247,7 +322,7 @@ wp_head();
             #main p {
                 font-size: 17px;
                 line-height: 1.6em;
-                margin: 2em 0 0;
+                margin: 2.35rem 0 0;
             }
             /* !!!!!!!!!!!!!!!!!!!!!!!!!*/
             #related {
@@ -276,17 +351,42 @@ wp_head();
     </header>
     <article id="main" class="hyphenate">
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-            <h1><?php the_title(); ?></h1>
             <div id="autor_card">
-                <a href="<?php echo get_the_author_meta('url'); ?>" target="_blank"><?php echo get_avatar( get_the_author_meta('user_email'), 100 ); ?></a>
-                <?php the_author(); ?>
-                <?php the_date(); ?>
-                <?php _e( 'На чтение', ' ' ); ?>: <?php echo gp_read_time(); ?> <?php _e( 'мин', ' ' ); ?>
+                <a href="<?php echo get_the_author_meta('url'); ?>" target="_blank"><?php echo get_avatar( get_the_author_meta('user_email'), 50 ); ?></a>
+                <div class="post_meta">
+                    <a id="autor_url" href="<?php echo get_the_author_meta('url'); ?>" target="_blank"><?php the_author(); ?></a>
+                    <span class="post_date"><?php
+                        $pdate = get_the_date("Y", $echo = false);
+                        $cdate = date("Y");
+                        if ($pdate == $cdate){
+                            echo get_the_date("d F", $echo = false);
+                        }else{
+                            the_date();
+                        }
+                    ?></span>
+                    <span class="reading_time"><?php _e( '🕑', ' ' ); ?> <?php echo gp_read_time(); ?> <?php _e( 'мин', ' ' ); ?></span>
+                </div>
             </div>
+            <h1><?php the_title(); ?></h1>
+            
             <?php the_content(); ?>
             <?php endwhile; else : ?>
             <h2>Мы не смогли ничего найти по твоему запросу :с</h2>
         <?php endif; ?>
+        <?php if( has_tag() ) :  ?>
+            <div id="article_tags">
+                <?php 
+                    $posttags = get_the_tags();
+                    $html = "";
+                    if( $posttags ){
+                        foreach( $posttags as $tag ){
+                            $html .= '<a href="' . esc_attr( get_tag_link( $tag->term_id ) ) . '">' . "#" . $tag->name . '</a>';
+                        }
+                        echo $html;
+                    }
+                ?>
+            </div>
+        <?php  endif;  ?>
     </article>
     
         <?php
