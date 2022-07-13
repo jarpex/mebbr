@@ -1,0 +1,76 @@
+$tooltip: 0.3s;
+
+.icon {
+  transition: background-color ease-out $hover, scale $scale, opacity $opacity;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  opacity: 0%;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
+  outline: none !important;
+  svg {
+    fill: var(--button);
+  }
+  &:active {
+    transform: scale(0.95);
+    opacity: 90%;
+    background-color: var(--hover);
+  }
+}
+
+.tooltip {
+  opacity: 0;
+  position: fixed;
+  background-color: var(--bg);
+  color: var(--text);
+  top: 0;
+  left: 0;
+  padding: 0.6vw 1.2vw;
+  min-width: max-content;
+  user-select: none;
+  transition: opacity ease-in $tooltip;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 1vw;
+  line-height: 3ex;
+  font-size: 1vw;
+  font-family: Mont-Regular, "Open Sans", "Lato", "Roboto", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Helvetica Neue",
+    sans-serif;
+}
+
+@media (max-width: 1199px) {
+  .icon {
+    margin: 0;
+    opacity: 30%;
+    height: 46px;
+    width: 46px;
+    svg {
+      height: 21px;
+      width: 21px;
+    }
+  }
+  .tooltip {
+    display: none;
+  }
+}
+
+@media (min-width: 1200px) and (orientation: landscape) {
+  .icon {
+    font-size: 1vw;
+    margin: 0.5em 0;
+    opacity: 50%;
+    height: 2.4em;
+    width: 2.4em;
+    svg {
+      height: 1.25em;
+      width: 1.25em;
+    }
+    &:hover {
+      background-color: var(--hover);
+      opacity: 70%;
+    }
+  }
+}

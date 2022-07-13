@@ -1,52 +1,83 @@
 body {
   --text: rgba(18, 18, 18, 0.999);
-  --bg: rgba(123, 255, 255, 0.999);
+  --bg: rgba(255, 255, 255, 0.999);
   --border: #e9e9e9;
-  --hover: #ccc;
+  --hover: rgba(0, 0, 0, 0.3);
   --selection: rgba(254, 235, 239, 0.99);
-  --button: #8a8a8a;
+  --button: rgba(0, 0, 0);
+  --progress: #dbdbdb;
+}
+$hover: 0.6s;
+$scale: 0.3s;
+$opacity: 0.1s;
+
+#progress {
+  position: fixed;
+  top: 0;
+  background-color: var(--bg);
 }
 
-header {
-  height: 48px;
-  width: 100%;
+#progress-bar {
+  height: 3px;
+  background-color: var(--progress);
+  width: 0;
+}
+
+#navigation {
+  position: fixed;
+  left: 0px;
+  background-color: var(--bg);
+  box-sizing: border-box;
   display: flex;
-  .header__button {
-    padding: 12px 16px;
+  align-items: center;
+}
+
+@media (max-width: 1199px) {
+  #progress {
+    width: 100%;
+    left: 0;
   }
-  .hamburger {
-    fill: var(--button);
-    width: 24px;
-    height: 24px;
+  #navigation {
+    bottom: 0px;
+    height: 50px;
+    width: 100%;
+    padding: 0 15px;
+    justify-content: space-between;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
   }
-  #wrapper {
+
+  #navigation__gotop-desktop {
     display: none;
-    background-color: rgba(0, 0, 0, 0);
+  }
+}
+
+@media (min-width: 1200px) and (orientation: landscape) {
+  #progress {
+    width: calc(97vw - (100vw - 100%));
+    left: 3vw;
+  }
+
+  #navigation {
+    top: 0px;
     height: 100%;
-    overflow: hidden;
+    width: 3vw;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    justify-content: flex-end;
+    font-size: 1vw;
+
+    #navigation__gotop-mobile {
+      display: none;
+    }
+
+    #navigation__menu {
+      margin: calc(50vh - 6.775em) 0 1em;
+    }
+  }
+
+  #navigation__gotop-desktop {
     position: fixed;
-    top: 0;
-    width: 100vw;
-    z-index: 199;
-    transition: background-color 300ms linear;
-
-    #wrapper__panel {
-      background-color: var(--bg);
-      height: 100%;
-      font-size: 16px;
-      left: -251px;
-      outline: none;
-      overflow-y: scroll;
-      padding-top: 15px;
-      position: fixed;
-      top: 0;
-      transition: 0.5s;
-      width: 250px;
-      z-index: 200;
-    }
-
-    .active {
-      transform: translateX(250px);
-    }
+    right: 1em;
+    bottom: 1em;
   }
 }

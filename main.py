@@ -1,7 +1,7 @@
 #!/usr/bin/python
 from sys import argv
 from re import match as regmatch
-from os import path, getcwd, makedirs
+from os import path, getcwd, makedirs, system
 from shutil import rmtree, copyfile
 
 class bcolors:
@@ -153,6 +153,7 @@ def main(ver_upd, cfg_file):
     config["{Theme_Version}"] = [(f"{current_ver[0]}.{current_ver[1]}.{current_ver[2]}")]
     cleaning()
     ####################BUILDING######################
+    system("gulp styles")
     build_file("/src/theme/style.css", "/build/theme/", "/build/theme/style.css", config)
     copy_file("{Theme_Icon}","/build/theme/screenshot.png", config)
     copy_file("{Theme_Functions}","/build/theme/functions.php", config)
