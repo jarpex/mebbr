@@ -2,6 +2,8 @@ $tooltip: 0.3s;
 
 .icon {
   transition: background-color ease-out $hover, scale $scale, opacity $opacity;
+  background-color: transparent;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,6 +25,7 @@ $tooltip: 0.3s;
 
 .tooltip {
   opacity: 0;
+  pointer-events: none;
   position: fixed;
   background-color: var(--bg);
   color: var(--text);
@@ -33,7 +36,7 @@ $tooltip: 0.3s;
   user-select: none;
   transition: opacity ease-in $tooltip;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 1vw;
+  border-radius: 0.65vw;
   line-height: 3ex;
   font-size: 1vw;
   font-family: Mont-Regular, "Open Sans", "Lato", "Roboto", -apple-system,

@@ -14,6 +14,9 @@
     <style>
       html {
         font-size: 17px;
+        font-family: Mont-Regular, "Open Sans", "Lato", "Roboto", -apple-system,
+          BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell,
+          "Helvetica Neue", sans-serif;
       }
       article {
         width: 720px;
@@ -25,6 +28,93 @@
   <body>
     <div id="progress">
       <div id="progress-bar"></div>
+    </div>
+    <div id="search-popup" class="cd-popup" role="alert">
+      <div id="search-popup__bg" class="cd-popup-container">
+        <form
+          id="searchBox"
+          class="inputBox"
+          role="search"
+          method="get"
+          id="searchform"
+          action="//mebbr.ru"
+          autocomplete="off"
+        >
+          <label id="searchBox__label" class="inputBox__label">
+            <input
+              name="s"
+              type="text"
+              placeholder="Поиск по сайту"
+              minlength="1"
+              maxlength="150"
+              required
+              class="inputBox__input"
+              id="searchBox__input"
+            />
+            <button type="submit" id="searchsubmit" class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  d="m23.707 22.293-5.969-5.969a10.016 10.016 0 1 0-1.414 1.414l5.969 5.969a1 1 0 0 0 1.414-1.414ZM10 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8Z"
+                />
+              </svg>
+            </button>
+          </label>
+        </form>
+      </div>
+    </div>
+    <div id="category-popup" class="cd-popup" role="alert">
+      <div id="category-popup__bg" class="cd-popup-container">
+        <a href="//mebbr.ru" class="logo"> MEBBR </a>
+        <p class="header_desc">Всё самое интересное из мира IT, и не только.</p>
+        <div class="nav_flex">
+          <nav class="nav" role="navigation">
+            <a class="nav_href" href="//mebbr.ru/software/"
+              ><img
+                draggable="false"
+                role="img"
+                class="emoji"
+                alt="💾"
+                src="//static.mebbr.ru/fonts/mebbr/1f4be.svg"
+              /><span class="nav_span">Программы</span></a
+            >
+            <a class="nav_href" href="//mebbr.ru/hardware/"
+              ><img
+                draggable="false"
+                role="img"
+                class="emoji"
+                alt="🔩"
+                src="//static.mebbr.ru/fonts/mebbr/1f529.svg"
+              /><span class="nav_span">Железо</span></a
+            >
+            <a class="nav_href" href="//mebbr.ru/internet/"
+              ><img
+                draggable="false"
+                role="img"
+                class="emoji"
+                alt="🌍"
+                src="//static.mebbr.ru/fonts/mebbr/1f30d.svg"
+              /><span class="nav_span">Интернет</span></a
+            >
+            <a class="nav_href" href="//mebbr.ru/lifehacks/"
+              ><img
+                draggable="false"
+                role="img"
+                class="emoji"
+                alt="💡"
+                src="//static.mebbr.ru/fonts/mebbr/1f4a1.svg"
+              /><span class="nav_span">Лайфхаки</span></a
+            >
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div id="settings-popup" class="cd-popup" role="alert">
+      <div id="settings-popup__bg" class="cd-popup-container">
+        <a href="//mebbr.ru" class="logo"> MEBBR </a>
+        <p class="header_desc">Всё самое интересное из мира IT, и не только.</p>
+        
+        </div>
+      </div>
     </div>
     <nav id="navigation">
       <div class="tooltip-box">
@@ -65,7 +155,7 @@
         </svg>
       </figure>
       <div class="tooltip-box">
-        <figure id="navigation__menu" class="icon" onclick="goMenu()">
+        <figure id="navigation__menu" class="icon" onclick="goSettings()">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <circle cx="12" cy="2" r="2" />
             <circle cx="12" cy="12" r="2" />
@@ -789,6 +879,9 @@
     let ticking = false;
     let progressBar = document.getElementById("progress-bar");
     let main = document.getElementById("main");
+    let searchPopup = document.getElementById("search-popup");
+    let categoryPopup = document.getElementById("category-popup");
+    let settingsPopup = document.getElementById("settings-popup");
 
     const doSomething = (scrollPos) => {
       let percent =
@@ -819,6 +912,76 @@
 
     const goHome = () => {
       window.location.href = "//mebbr.ru";
+    };
+
+    const goSearch = () => {
+      if (searchPopup) {
+        if (searchPopup.classList.contains("is-visible")) {
+          searchPopup.classList.remove("is-visible");
+          searchPopup.removeEventListener("click", closeSearch);
+        } else {
+          settingsPopup.classList.remove("is-visible");
+          categoryPopup.classList.remove("is-visible");
+          searchPopup.classList.add("is-visible");
+          document.getElementById;
+          searchPopup.addEventListener("click", closeSearch);
+        }
+      }
+      document.getElementById("searchBox__input").focus();
+    };
+
+    const closeSearch = (e) => {
+      if (e.target !== e.currentTarget) return;
+      if (searchPopup) {
+        searchPopup.classList.remove("is-visible");
+        searchPopup.removeEventListener("click", closeSearch);
+      }
+    };
+
+    const goCategory = () => {
+      if (categoryPopup) {
+        if (categoryPopup.classList.contains("is-visible")) {
+          categoryPopup.classList.remove("is-visible");
+          categoryPopup.removeEventListener("click", closeCategory);
+        } else {
+          settingsPopup.classList.remove("is-visible");
+          searchPopup.classList.remove("is-visible");
+          categoryPopup.classList.add("is-visible");
+          document.getElementById;
+          categoryPopup.addEventListener("click", closeCategory);
+        }
+      }
+    };
+
+    const closeCategory = (e) => {
+      if (e.target !== e.currentTarget) return;
+      if (categoryPopup) {
+        categoryPopup.classList.remove("is-visible");
+        categoryPopup.removeEventListener("click", closeCategory);
+      }
+    };
+
+    const goSettings = () => {
+      if (settingsPopup) {
+        if (settingsPopup.classList.contains("is-visible")) {
+          settingsPopup.classList.remove("is-visible");
+          settingsPopup.removeEventListener("click", closeSettings);
+        } else {
+          categoryPopup.classList.remove("is-visible");
+          searchPopup.classList.remove("is-visible");
+          settingsPopup.classList.add("is-visible");
+          document.getElementById;
+          settingsPopup.addEventListener("click", closeSettings);
+        }
+      }
+    };
+
+    const closeSettings = (e) => {
+      if (e.target !== e.currentTarget) return;
+      if (settingsPopup) {
+        settingsPopup.classList.remove("is-visible");
+        settingsPopup.removeEventListener("click", closeSettings);
+      }
     };
 
     const goTop = () => {
