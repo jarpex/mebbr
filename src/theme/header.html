@@ -31,6 +31,9 @@
       }
       body {
         width: 100%;
+        background-color: var(--bg);
+        color: var(--text);
+
         --text: rgba(18, 18, 18, 0.999);
         --bg: rgba(255, 255, 255, 0.999);
         --hover: rgba(0, 0, 0, 0.3);
@@ -39,27 +42,25 @@
         --progress: #dbdbdb;
         --popupbg: rgba(0, 0, 0, 0.5);
         --border: rgba(0, 0, 0, 0.1);
-        --primary-light: #8abdff;
         --primary: #6d5dfc;
-        --primary-dark: #5b0eeb;
-
-        --white: #ffffff;
         --greyLight-1: #e4ebf5;
         --greyLight-2: #c8d0e7;
-        --greyLight-3: #bec8e4;
         --greyDark: #9baacf;
       }
       @media (prefers-color-scheme: dark) {
         body {
           --text: rgba(232, 230, 227, 0.999);
           --bg: rgba(14, 15, 15, 0.999);
-          --border: #353535;
           --hover: #454545;
-          --box: rgb(33, 36, 37);
           --selection: rgba(53, 59, 72, 0.99);
-          --codeselection: rgba(254, 235, 239, 0.99);
-          --svg_filter: brightness(0) saturate(100%) invert(86%) sepia(36%)
-            saturate(15%) hue-rotate(357deg) brightness(94%) contrast(108%);
+          --button: rgba(255, 255, 255, 0.999);
+          --progress: #dbdbdb;
+          --popupbg: rgba(0, 0, 0, 0.5);
+          --border: rgba(255, 255, 255, 0.1);
+          --primary: #e0e0e0;
+          --greyLight-1: #1f2227;
+          --greyLight-2: #090913;
+          --greyDark: #b7b7b7;
         }
       }
 
@@ -73,14 +74,9 @@
           --progress: #dbdbdb;
           --popupbg: rgba(0, 0, 0, 0.5);
           --border: rgba(0, 0, 0, 0.1);
-          --primary-light: #8abdff;
           --primary: #6d5dfc;
-          --primary-dark: #5b0eeb;
-
-          --white: #ffffff;
           --greyLight-1: #e4ebf5;
           --greyLight-2: #c8d0e7;
-          --greyLight-3: #bec8e4;
           --greyDark: #9baacf;
         }
       }
@@ -92,6 +88,48 @@
     </style>
   </head>
   <body>
+    <script>
+      var style = document.documentElement.style;
+      var style = document.getElementsByTagName("body")[0].style;
+
+      const setDark = () => {
+        style.setProperty("--text", "rgba(232, 230, 227, 0.999)");
+        style.setProperty("--bg", "rgba(14, 15, 15, 0.999)");
+        style.setProperty("--hover", "#454545");
+        style.setProperty("--selection", "rgba(53, 59, 72, 0.99)");
+        style.setProperty("--button", "rgba(255, 255, 255, 0.999)");
+        style.setProperty("--progress", "#dbdbdb");
+        style.setProperty("--popupbg", "rgba(0, 0, 0, 0.5)");
+        style.setProperty("--border", "rgba(255, 255, 255, 0.1)");
+        style.setProperty("--primary", "#e0e0e0");
+        style.setProperty("--greyLight-1", "#1f2227 ");
+        style.setProperty("--greyLight-2", "#090913");
+        style.setProperty("--greyDark", "#b7b7b7");
+      };
+
+      const setLight = () => {
+        style.setProperty("--text", "rgba(18, 18, 18, 0.999)");
+        style.setProperty("--bg", "rgba(255, 255, 255, 0.999)");
+        style.setProperty("--hover", "rgba(0, 0, 0, 0.3)");
+        style.setProperty("--selection", "rgba(254, 235, 239, 0.99)");
+        style.setProperty("--button", "rgba(0, 0, 0)");
+        style.setProperty("--progress", "#dbdbdb");
+        style.setProperty("--popupbg", "rgba(0, 0, 0, 0.5)");
+        style.setProperty("--border", "rgba(0, 0, 0, 0.1)");
+        style.setProperty("--primary", "#6d5dfc");
+        style.setProperty("--greyLight-1", "#e4ebf5");
+        style.setProperty("--greyLight-2", "#c8d0e7");
+        style.setProperty("--greyDark", "#9baacf");
+      };
+      var theme = localStorage.getItem("theme");
+      if (theme) {
+        if (theme == "dark") {
+          setDark();
+        } else if (theme == "light") {
+          setLight();
+        }
+      }
+    </script>
     <div id="progress">
       <div id="progress-bar"></div>
     </div>
@@ -1044,7 +1082,6 @@
     let settingsPopup = document.getElementById("settings-popup");
     let settingsPopupExit =
       settingsPopup.getElementsByClassName("cd-popup-mobile")[0];
-    let style = document.documentElement.style;
 
     const doSomething = (scrollPos) => {
       let percent =
@@ -1229,40 +1266,37 @@
       }
     }
 
-    const setDark = () => {
-      style.setProperty("--text", "rgba(255, 255, 255, 0.99)");
-      style.setProperty("--bg", "rgba(21, 21, 21, 0.99)");
-      style.setProperty("--border", "#353535");
-      style.setProperty("--hover", "#454545");
-    };
-
-    const setLight = () => {
-      style.setProperty("--text", "rgba(17, 17, 17, 0.99)");
-      style.setProperty("--bg", "rgba(255, 255, 255, 0.99)");
-      style.setProperty("--border", "#e9e9e9");
-      style.setProperty("--hover", "#ccc");
-    };
-
-    const setSystem = () => {
-      style.setProperty("--text", "rgba(17, 17, 17, 0.99)");
-      style.setProperty("--bg", "rgba(255, 255, 255, 0.99)");
-      style.setProperty("--border", "#e9e9e9");
-      style.setProperty("--hover", "#ccc");
-    };
-
     let radios = document
       .getElementById("theme-switcher")
       .getElementsByTagName("input");
     for (let i = 0; i < radios.length; i++) {
       radios[i].onclick = function () {
         if (this.value === "dark") {
+          localStorage.setItem("theme", "dark");
           setDark();
         } else if (this.value === "light") {
+          localStorage.setItem("theme", "light");
           setLight();
         } else {
-          setSystem();
+          localStorage.removeItem("theme");
+          if (
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches
+          ) {
+            setDark();
+          } else {
+            setLight();
+          }
         }
       };
+    }
+
+    if (theme) {
+      if (theme === "dark") {
+        document.getElementById("tab-3").checked = true;
+      } else if (theme === "light") {
+        document.getElementById("tab-2").checked = true;
+      }
     }
   </script>
 </html>

@@ -35,7 +35,7 @@ $tooltip: 0.3s;
   min-width: max-content;
   user-select: none;
   transition: opacity ease-in $tooltip;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border);
   border-radius: 0.65vw;
   line-height: 3ex;
   font-size: 1vw;

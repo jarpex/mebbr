@@ -523,7 +523,7 @@ template {
   color: var(--primary);
 }
 #settings-popup .segmented-control__color {
-  box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+  box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--bg);
   position: absolute;
   pointer-events: none;
 }
@@ -555,22 +555,24 @@ template {
   padding: 0.5em 1em;
   border: none;
   background-color: var(--bg);
+  color: var(--text);
 }
 #settings-popup #loginform #loginform__actions {
   box-sizing: border-box;
+}
+#settings-popup #loginform #loginform__actions figure svg {
+  fill: var(--text);
 }
 #settings-popup #loginform #loginform__actions input {
   border-radius: 6px;
   width: 50%;
   border: none;
   background-color: var(--bg);
+  color: var(--text);
   cursor: pointer;
 }
 #settings-popup #loginform #loginform__actions input:hover {
   text-decoration: underline;
-}
-#settings-popup #loginform figure svg {
-  fill: var(--bg);
 }
 
 #category-popup__bg .logo,
@@ -617,6 +619,11 @@ template {
   text-align: center;
   overflow-y: scroll;
   overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.cd-popup-container::-webkit-scrollbar {
+  display: none;
 }
 
 .is-visible .cd-popup-container {
@@ -671,7 +678,7 @@ template {
   }
   #settings-popup .segmented-control__1, #settings-popup .segmented-control__2, #settings-popup .segmented-control__3 {
     height: 3em;
-    font-size: 0.8em;
+    font-size: 0.7em;
   }
   #settings-popup .segmented-control__color {
     height: 3em;
@@ -883,7 +890,7 @@ template {
   min-width: max-content;
   user-select: none;
   transition: opacity ease-in 0.3s;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border);
   border-radius: 0.65vw;
   line-height: 3ex;
   font-size: 1vw;
