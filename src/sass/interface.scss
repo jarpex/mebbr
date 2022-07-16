@@ -228,6 +228,8 @@ $opacity: 0.1s;
 .cd-popup-container {
   background: var(--bg);
   text-align: center;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .is-visible .cd-popup-container {

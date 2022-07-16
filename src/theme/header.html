@@ -30,6 +30,7 @@
         color: var(--text);
       }
       body {
+        width: 100%;
         --text: rgba(18, 18, 18, 0.999);
         --bg: rgba(255, 255, 255, 0.999);
         --hover: rgba(0, 0, 0, 0.3);
@@ -1076,12 +1077,29 @@
       window.location.href = "//mebbr.ru";
     };
 
+    const preventScroll = () => {
+      let stylePosition = document.body.style.position;
+      if (stylePosition != "fixed") {
+        let position = window.scrollY;
+        document.body.style.position = "fixed";
+        document.body.style.top = `-${position}px`;
+      }
+    };
+
+    const allowScroll = () => {
+      const scrollY = document.body.style.top;
+      document.body.style.position = "";
+      document.body.style.top = "";
+      window.scrollTo(0, parseInt(scrollY || "0") * -1);
+    };
+
     const goSearch = () => {
       if (searchPopup) {
         if (searchPopup.classList.contains("is-visible")) {
           searchPopup.classList.remove("is-visible");
           searchPopup.removeEventListener("click", closeSearch);
           searchPopupExit.removeEventListener("click", goSearch);
+          allowScroll();
         } else {
           settingsPopup.classList.remove("is-visible");
           categoryPopup.classList.remove("is-visible");
@@ -1089,6 +1107,7 @@
           searchPopup.addEventListener("click", closeSearch);
           // goSearch используется для обхода проверки на нажатие child элементов внутри closeSearch
           searchPopupExit.addEventListener("click", goSearch);
+          preventScroll();
         }
       }
       document.getElementById("searchBox__input").focus();
@@ -1101,6 +1120,7 @@
       if (searchPopup) {
         searchPopup.classList.remove("is-visible");
         searchPopup.removeEventListener("click", closeSearch);
+        allowScroll();
       }
     };
 
@@ -1110,6 +1130,7 @@
           categoryPopup.classList.remove("is-visible");
           categoryPopup.removeEventListener("click", closeCategory);
           categoryPopupExit.removeEventListener("click", goCategory);
+          allowScroll();
         } else {
           settingsPopup.classList.remove("is-visible");
           searchPopup.classList.remove("is-visible");
@@ -1117,6 +1138,7 @@
           categoryPopup.addEventListener("click", closeCategory);
           // goCategory используется для обхода проверки на нажатие child элементов внутри closeSearch
           categoryPopupExit.addEventListener("click", goCategory);
+          preventScroll();
         }
       }
     };
@@ -1126,6 +1148,7 @@
       if (categoryPopup) {
         categoryPopup.classList.remove("is-visible");
         categoryPopup.removeEventListener("click", closeCategory);
+        allowScroll();
       }
     };
 
@@ -1135,6 +1158,7 @@
           settingsPopup.classList.remove("is-visible");
           settingsPopup.removeEventListener("click", closeSettings);
           settingsPopupExit.removeEventListener("click", goSettings);
+          allowScroll();
         } else {
           categoryPopup.classList.remove("is-visible");
           searchPopup.classList.remove("is-visible");
@@ -1142,6 +1166,7 @@
           settingsPopup.addEventListener("click", closeSettings);
           // goSettings используется для обхода проверки на нажатие child элементов внутри closeSearch
           settingsPopupExit.addEventListener("click", goSettings);
+          preventScroll();
         }
       }
     };
@@ -1151,6 +1176,7 @@
       if (settingsPopup) {
         settingsPopup.classList.remove("is-visible");
         settingsPopup.removeEventListener("click", closeSettings);
+        allowScroll();
       }
     };
 

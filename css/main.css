@@ -615,6 +615,8 @@ template {
 .cd-popup-container {
   background: var(--bg);
   text-align: center;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .is-visible .cd-popup-container {
