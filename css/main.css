@@ -456,6 +456,11 @@ template {
   user-select: none;
 }
 #category-popup img.emoji {
+  height: 1em !important;
+  width: 1em !important;
+  margin: 0 0.2em !important;
+  vertical-align: -0.1em !important;
+  padding: 0 !important;
   display: inline !important;
   border: none !important;
   box-shadow: none !important;
@@ -474,6 +479,10 @@ template {
 }
 #category-popup .nav_href:hover {
   text-decoration: underline;
+}
+#category-popup .nav_span {
+  margin: 0.1em 0 0 0.4em;
+  line-height: 1em;
 }
 
 #settings-popup {
@@ -632,6 +641,13 @@ template {
     max-height: 1.75em;
     max-width: 1.75em;
   }
+  #category-popup .nav_flex {
+    margin-top: 2em;
+    font-size: 1.25em;
+  }
+  #category-popup .nav_href {
+    margin: 1em 0 -0.2em;
+  }
   #category-popup__bg .logo,
 #settings-popup .logo {
     font-size: 4em;
@@ -689,23 +705,12 @@ template {
     max-height: 35px;
     max-width: 35px;
   }
-  #category-popup img.emoji {
-    height: 1em !important;
-    width: 1em !important;
-    margin: 0 0.2em !important;
-    vertical-align: -0.1em !important;
-    padding: 0 !important;
-  }
   #category-popup .nav_flex {
     margin-bottom: 5vw;
     font-size: 1.1vw;
   }
   #category-popup .nav_href {
     margin: 1.7em 0 -0.2em;
-  }
-  #category-popup .nav_span {
-    margin: 0.1em 0 0 0.4em;
-    line-height: 1em;
   }
   #settings-popup .settings-popup__bg-heading {
     padding: 0 2vw;

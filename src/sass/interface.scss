@@ -55,6 +55,11 @@ $opacity: 0.1s;
 #category-popup {
   user-select: none;
   img.emoji {
+    height: 1em !important;
+    width: 1em !important;
+    margin: 0 0.2em !important;
+    vertical-align: -0.1em !important;
+    padding: 0 !important;
     display: inline !important;
     border: none !important;
     box-shadow: none !important;
@@ -74,6 +79,10 @@ $opacity: 0.1s;
     &:hover {
       text-decoration: underline;
     }
+  }
+  .nav_span {
+    margin: 0.1em 0 0 0.4em;
+    line-height: 1em;
   }
 }
 
@@ -255,6 +264,17 @@ $opacity: 0.1s;
     }
   }
 
+  // Форма списка категорий на телефоне
+  #category-popup {
+    .nav_flex {
+      margin-top: 2em;
+      font-size: 1.25em;
+    }
+    .nav_href {
+      margin: 1em 0 -0.2em;
+    }
+  }
+
   // Логотип и описание на формах категории и настроек на телефонах
   #category-popup__bg .logo,
   #settings-popup .logo {
@@ -331,23 +351,12 @@ $opacity: 0.1s;
 
   // Форма списка категорий на ПК
   #category-popup {
-    img.emoji {
-      height: 1em !important;
-      width: 1em !important;
-      margin: 0 0.2em !important;
-      vertical-align: -0.1em !important;
-      padding: 0 !important;
-    }
     .nav_flex {
       margin-bottom: 5vw;
       font-size: 1.1vw;
     }
     .nav_href {
       margin: 1.7em 0 -0.2em;
-    }
-    .nav_span {
-      margin: 0.1em 0 0 0.4em;
-      line-height: 1em;
     }
   }
 
