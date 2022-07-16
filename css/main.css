@@ -427,6 +427,7 @@ template {
 }
 
 #search-popup #searchBox {
+  margin: 0;
   border-color: transparent;
   background-color: var(--border);
   display: flex;
@@ -452,6 +453,7 @@ template {
   box-shadow: none;
   box-sizing: border-box;
 }
+
 #category-popup {
   user-select: none;
 }

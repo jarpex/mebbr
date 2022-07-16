@@ -12,6 +12,7 @@ A monolithic, highly optimized, debloated (a part) WordPress theme written from 
 ## Usage
 
 ![MEBBR](https://github.com/jarpex/mebbr/raw/master/src/mebbr/mebbr.png)
+![MEBBR pages](https://github.com/jarpex/mebbr/raw/master/src/mebbr/mebbr_page.png)
 
 ### Configuration
 
