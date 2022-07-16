@@ -434,16 +434,19 @@ template {
   transition: background-color 0.1s linear, border-color 0.1s linear, box-shadow 0.1s linear, -webkit-box-shadow 0.1s linear;
 }
 #search-popup #searchBox #searchBox__label {
+  width: 100%;
   position: relative;
   display: flex;
   align-items: center;
 }
 #search-popup #searchBox #searchBox__label input {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  line-height: 1;
   color: var(--text);
   font: inherit;
-  line-height: 1;
   background-color: transparent;
-  border: 0;
   outline: none;
   appearance: none;
   box-shadow: none;
@@ -612,10 +615,29 @@ template {
     width: 100%;
     left: 0;
   }
+  #search-popup #searchBox {
+    border-radius: 9px;
+  }
+  #search-popup #searchBox #searchBox__label {
+    padding: 0 10px;
+  }
+  #search-popup #searchBox #searchBox__label input {
+    width: 100%;
+    height: 2.5em;
+    margin: 0 0 0 10px;
+    padding: 0;
+  }
+  #search-popup #searchBox #searchBox__label #searchsubmit {
+    max-height: 1.75em;
+    max-width: 1.75em;
+  }
   .cd-popup-container {
     width: 100%;
-    height: 100%;
-    padding: 0.75vw;
+    height: calc(100vh - 50px);
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    padding: 5em 2em;
   }
   .cd-popup-mobile.icon {
     position: fixed;
@@ -643,7 +665,6 @@ template {
     border-radius: 0.65vw;
   }
   #search-popup #searchBox #searchBox__label {
-    width: 100%;
     padding: 0 20px;
   }
   #search-popup #searchBox #searchBox__label input {
