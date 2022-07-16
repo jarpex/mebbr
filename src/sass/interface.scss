@@ -89,10 +89,16 @@ $opacity: 0.1s;
 // Форма настроек
 #settings-popup {
   .settings-popup__bg-heading {
+    margin-top: 2em;
+    padding: 0 2vw;
     text-align: left;
   }
   user-select: none;
   .segmented-control {
+    margin: 1em auto;
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+    border: solid 3px var(--border);
     background-color: var(--greyLight-1);
     display: flex;
     align-items: center;
@@ -109,6 +115,7 @@ $opacity: 0.1s;
     &__1,
     &__2,
     &__3 {
+      width: 33%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -122,6 +129,8 @@ $opacity: 0.1s;
     }
 
     &__color {
+      box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2),
+        inset -0.2rem -0.2rem 0.5rem var(--white);
       position: absolute;
       pointer-events: none;
     }
@@ -132,9 +141,11 @@ $opacity: 0.1s;
     transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   }
   #tab-2:checked ~ .segmented-control__color {
+    transform: translateX(100%);
     transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   }
   #tab-3:checked ~ .segmented-control__color {
+    transform: translateX(200%);
     transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   }
   #loginform {
@@ -147,6 +158,8 @@ $opacity: 0.1s;
       flex-direction: column;
       justify-content: space-evenly;
       input {
+        border-radius: 6px;
+        padding: 0.5em 1em;
         border: none;
         background-color: var(--bg);
       }
@@ -154,6 +167,8 @@ $opacity: 0.1s;
     #loginform__actions {
       box-sizing: border-box;
       input {
+        border-radius: 6px;
+        width: 50%;
         border: none;
         background-color: var(--bg);
         cursor: pointer;
@@ -275,6 +290,48 @@ $opacity: 0.1s;
     }
   }
 
+  // Форма настроек на телефоне
+  #settings-popup {
+    .segmented-control {
+      width: 100%;
+      height: 3em;
+      border-radius: 12px;
+
+      &__1,
+      &__2,
+      &__3 {
+        height: 3em;
+        font-size: 0.8em;
+      }
+      &__color {
+        height: 3em;
+        width: 33%;
+        margin-left: 0.5px;
+        border-radius: 9px;
+      }
+    }
+
+    #loginform {
+      flex-direction: column;
+      margin: 1em auto;
+      padding: 2em;
+      border-radius: 9px;
+      #loginform__inputs {
+        justify-content: space-between;
+        height: 5em;
+      }
+      #loginform__actions {
+        margin-top: 2em;
+        input {
+          padding: 0.4em 0.8em;
+        }
+      }
+      figure {
+        display: none;
+      }
+    }
+  }
+
   // Логотип и описание на формах категории и настроек на телефонах
   #category-popup__bg .logo,
   #settings-popup .logo {
@@ -362,22 +419,14 @@ $opacity: 0.1s;
 
   // Форма настроек на ПК
   #settings-popup {
-    .settings-popup__bg-heading {
-      padding: 0 2vw;
-    }
     .segmented-control {
-      margin: 1em auto;
-      grid-column: 3 / 4;
-      grid-row: 1 / 2;
       width: 24vw;
       height: 3vw;
-      border: solid 3px var(--border);
       border-radius: 1rem;
 
       &__1,
       &__2,
       &__3 {
-        width: 8vw;
         height: 3vw;
         font-size: 0.8vw;
       }
@@ -386,34 +435,18 @@ $opacity: 0.1s;
         width: 8vw;
         margin-left: 0.025vw;
         border-radius: 0.8rem;
-        box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2),
-          inset -0.2rem -0.2rem 0.5rem var(--white);
       }
-    }
-    #tab-2:checked ~ .segmented-control__color {
-      transform: translateX(8vw);
-    }
-    #tab-3:checked ~ .segmented-control__color {
-      transform: translateX(16vw);
     }
     #loginform {
       width: 80%;
       margin: 1vw auto 5vw;
       padding: 2vw;
       border-radius: 0.65vw;
-      #loginform__inputs {
-        input {
-          border-radius: 6px;
-          padding: 0.5em 1em;
-        }
-      }
       #loginform__actions {
         border-left: solid 3px var(--border);
         width: 50%;
         input {
-          border-radius: 6px;
           padding: 0.5em 1em;
-          width: 50%;
         }
       }
       figure {

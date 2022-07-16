@@ -489,9 +489,15 @@ template {
   user-select: none;
 }
 #settings-popup .settings-popup__bg-heading {
+  margin-top: 2em;
+  padding: 0 2vw;
   text-align: left;
 }
 #settings-popup .segmented-control {
+  margin: 1em auto;
+  grid-column: 3/4;
+  grid-row: 1/2;
+  border: solid 3px var(--border);
   background-color: var(--greyLight-1);
   display: flex;
   align-items: center;
@@ -505,6 +511,7 @@ template {
   color: var(--primary);
 }
 #settings-popup .segmented-control__1, #settings-popup .segmented-control__2, #settings-popup .segmented-control__3 {
+  width: 33%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -516,6 +523,7 @@ template {
   color: var(--primary);
 }
 #settings-popup .segmented-control__color {
+  box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
   position: absolute;
   pointer-events: none;
 }
@@ -524,9 +532,11 @@ template {
   transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 #settings-popup #tab-2:checked ~ .segmented-control__color {
+  transform: translateX(100%);
   transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 #settings-popup #tab-3:checked ~ .segmented-control__color {
+  transform: translateX(200%);
   transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 #settings-popup #loginform {
@@ -541,6 +551,8 @@ template {
   justify-content: space-evenly;
 }
 #settings-popup #loginform #loginform__inputs input {
+  border-radius: 6px;
+  padding: 0.5em 1em;
   border: none;
   background-color: var(--bg);
 }
@@ -548,6 +560,8 @@ template {
   box-sizing: border-box;
 }
 #settings-popup #loginform #loginform__actions input {
+  border-radius: 6px;
+  width: 50%;
   border: none;
   background-color: var(--bg);
   cursor: pointer;
@@ -648,6 +662,40 @@ template {
   #category-popup .nav_href {
     margin: 1em 0 -0.2em;
   }
+  #settings-popup .segmented-control {
+    width: 100%;
+    height: 3em;
+    border-radius: 12px;
+  }
+  #settings-popup .segmented-control__1, #settings-popup .segmented-control__2, #settings-popup .segmented-control__3 {
+    height: 3em;
+    font-size: 0.8em;
+  }
+  #settings-popup .segmented-control__color {
+    height: 3em;
+    width: 33%;
+    margin-left: 0.5px;
+    border-radius: 9px;
+  }
+  #settings-popup #loginform {
+    flex-direction: column;
+    margin: 1em auto;
+    padding: 2em;
+    border-radius: 9px;
+  }
+  #settings-popup #loginform #loginform__inputs {
+    justify-content: space-between;
+    height: 5em;
+  }
+  #settings-popup #loginform #loginform__actions {
+    margin-top: 2em;
+  }
+  #settings-popup #loginform #loginform__actions input {
+    padding: 0.4em 0.8em;
+  }
+  #settings-popup #loginform figure {
+    display: none;
+  }
   #category-popup__bg .logo,
 #settings-popup .logo {
     font-size: 4em;
@@ -712,20 +760,12 @@ template {
   #category-popup .nav_href {
     margin: 1.7em 0 -0.2em;
   }
-  #settings-popup .settings-popup__bg-heading {
-    padding: 0 2vw;
-  }
   #settings-popup .segmented-control {
-    margin: 1em auto;
-    grid-column: 3/4;
-    grid-row: 1/2;
     width: 24vw;
     height: 3vw;
-    border: solid 3px var(--border);
     border-radius: 1rem;
   }
   #settings-popup .segmented-control__1, #settings-popup .segmented-control__2, #settings-popup .segmented-control__3 {
-    width: 8vw;
     height: 3vw;
     font-size: 0.8vw;
   }
@@ -734,13 +774,6 @@ template {
     width: 8vw;
     margin-left: 0.025vw;
     border-radius: 0.8rem;
-    box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
-  }
-  #settings-popup #tab-2:checked ~ .segmented-control__color {
-    transform: translateX(8vw);
-  }
-  #settings-popup #tab-3:checked ~ .segmented-control__color {
-    transform: translateX(16vw);
   }
   #settings-popup #loginform {
     width: 80%;
@@ -748,18 +781,12 @@ template {
     padding: 2vw;
     border-radius: 0.65vw;
   }
-  #settings-popup #loginform #loginform__inputs input {
-    border-radius: 6px;
-    padding: 0.5em 1em;
-  }
   #settings-popup #loginform #loginform__actions {
     border-left: solid 3px var(--border);
     width: 50%;
   }
   #settings-popup #loginform #loginform__actions input {
-    border-radius: 6px;
     padding: 0.5em 1em;
-    width: 50%;
   }
   #settings-popup #loginform figure svg {
     width: 50px;
