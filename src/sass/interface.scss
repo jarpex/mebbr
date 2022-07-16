@@ -164,6 +164,7 @@ $opacity: 0.1s;
 // Логотип и описание на формах категории и настроек
 #category-popup__bg .logo,
 #settings-popup .logo {
+  line-height: 1em;
   text-decoration: none;
   color: var(--text);
   display: block;
@@ -252,6 +253,20 @@ $opacity: 0.1s;
         }
       }
     }
+  }
+
+  // Логотип и описание на формах категории и настроек на телефонах
+  #category-popup__bg .logo,
+  #settings-popup .logo {
+    font-size: 4em;
+    line-height: 1em;
+    margin: 0;
+  }
+
+  #category-popup__bg .header_desc,
+  #settings-popup .header_desc {
+    font-size: 0.75em;
+    margin: 1em 0 2em;
   }
 
   // Всплывающие окошки на телефонах
