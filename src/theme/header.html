@@ -12,11 +12,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
+      @font-face {
+        font-family: "Mont-Regular";
+        src: url(//static.mebbr.ru/fonts/mebbr/Mont.woff2) format("woff2"),
+          url(//static.mebbr.ru/fonts/mebbr/Mont.woff) format("woff"),
+          url(//static.mebbr.ru/fonts/mebbr/Mont.ttf) format("truetype");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
       html {
         font-size: 17px;
         font-family: Mont-Regular, "Open Sans", "Lato", "Roboto", -apple-system,
           BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell,
           "Helvetica Neue", sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+      }
+      body {
+        --text: rgba(18, 18, 18, 0.999);
+        --bg: rgba(255, 255, 255, 0.999);
+        --hover: rgba(0, 0, 0, 0.3);
+        --selection: rgba(254, 235, 239, 0.99);
+        --button: rgba(0, 0, 0);
+        --progress: #dbdbdb;
+        --popupbg: rgba(0, 0, 0, 0.5);
+        --border: rgba(0, 0, 0, 0.1);
+        --primary-light: #8abdff;
+        --primary: #6d5dfc;
+        --primary-dark: #5b0eeb;
+
+        --white: #ffffff;
+        --greyLight-1: #e4ebf5;
+        --greyLight-2: #c8d0e7;
+        --greyLight-3: #bec8e4;
+        --greyDark: #9baacf;
+      }
+      @media (prefers-color-scheme: dark) {
+        body {
+          --text: rgba(232, 230, 227, 0.999);
+          --bg: rgba(14, 15, 15, 0.999);
+          --border: #353535;
+          --hover: #454545;
+          --box: rgb(33, 36, 37);
+          --selection: rgba(53, 59, 72, 0.99);
+          --codeselection: rgba(254, 235, 239, 0.99);
+          --svg_filter: brightness(0) saturate(100%) invert(86%) sepia(36%)
+            saturate(15%) hue-rotate(357deg) brightness(94%) contrast(108%);
+        }
+      }
+
+      @media (prefers-color-scheme: light) {
+        body {
+          --text: rgba(18, 18, 18, 0.999);
+          --bg: rgba(255, 255, 255, 0.999);
+          --hover: rgba(0, 0, 0, 0.3);
+          --selection: rgba(254, 235, 239, 0.99);
+          --button: rgba(0, 0, 0);
+          --progress: #dbdbdb;
+          --popupbg: rgba(0, 0, 0, 0.5);
+          --border: rgba(0, 0, 0, 0.1);
+          --primary-light: #8abdff;
+          --primary: #6d5dfc;
+          --primary-dark: #5b0eeb;
+
+          --white: #ffffff;
+          --greyLight-1: #e4ebf5;
+          --greyLight-2: #c8d0e7;
+          --greyLight-3: #bec8e4;
+          --greyDark: #9baacf;
+        }
       }
       article {
         width: 720px;
@@ -31,6 +96,13 @@
     </div>
     <div id="search-popup" class="cd-popup" role="alert">
       <div id="search-popup__bg" class="cd-popup-container">
+        <figure class="cd-popup-mobile icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path
+              d="M23.707.293a1 1 0 0 0-1.414 0L12 10.586 1.707.293a1 1 0 0 0-1.414 0 1 1 0 0 0 0 1.414L10.586 12 .293 22.293a1 1 0 0 0 0 1.414 1 1 0 0 0 1.414 0L12 13.414l10.293 10.293a1 1 0 0 0 1.414 0 1 1 0 0 0 0-1.414L13.414 12 23.707 1.707a1 1 0 0 0 0-1.414Z"
+            />
+          </svg>
+        </figure>
         <form
           id="searchBox"
           class="inputBox"
@@ -64,6 +136,13 @@
     </div>
     <div id="category-popup" class="cd-popup" role="alert">
       <div id="category-popup__bg" class="cd-popup-container">
+        <figure class="cd-popup-mobile icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path
+              d="M23.707.293a1 1 0 0 0-1.414 0L12 10.586 1.707.293a1 1 0 0 0-1.414 0 1 1 0 0 0 0 1.414L10.586 12 .293 22.293a1 1 0 0 0 0 1.414 1 1 0 0 0 1.414 0L12 13.414l10.293 10.293a1 1 0 0 0 1.414 0 1 1 0 0 0 0-1.414L13.414 12 23.707 1.707a1 1 0 0 0 0-1.414Z"
+            />
+          </svg>
+        </figure>
         <a href="//mebbr.ru" class="logo"> MEBBR </a>
         <p class="header_desc">Всё самое интересное из мира IT, и не только.</p>
         <div class="nav_flex">
@@ -110,10 +189,78 @@
     </div>
     <div id="settings-popup" class="cd-popup" role="alert">
       <div id="settings-popup__bg" class="cd-popup-container">
+        <figure class="cd-popup-mobile icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path
+              d="M23.707.293a1 1 0 0 0-1.414 0L12 10.586 1.707.293a1 1 0 0 0-1.414 0 1 1 0 0 0 0 1.414L10.586 12 .293 22.293a1 1 0 0 0 0 1.414 1 1 0 0 0 1.414 0L12 13.414l10.293 10.293a1 1 0 0 0 1.414 0 1 1 0 0 0 0-1.414L13.414 12 23.707 1.707a1 1 0 0 0 0-1.414Z"
+            />
+          </svg>
+        </figure>
         <a href="//mebbr.ru" class="logo"> MEBBR </a>
         <p class="header_desc">Всё самое интересное из мира IT, и не только.</p>
-        
-        </div>
+        <p class="settings-popup__bg-heading">🌙 Выбор темы:</p>
+        <form name="theme" class="segmented-control" id="theme-switcher">
+          <input
+            type="radio"
+            name="radio2"
+            value="system"
+            id="tab-1"
+            checked=""
+          />
+          <label for="tab-1" class="segmented-control__1">
+            <p>💻 Системная</p></label
+          >
+
+          <input type="radio" name="radio2" value="light" id="tab-2" />
+          <label for="tab-2" class="segmented-control__2">
+            <p>🌞 Светлая</p></label
+          >
+
+          <input type="radio" name="radio2" value="dark" id="tab-3" />
+          <label for="tab-3" class="segmented-control__3">
+            <p>🌚 Темная</p></label
+          >
+
+          <div class="segmented-control__color"></div>
+        </form>
+        <p class="settings-popup__bg-heading">🪪 Авторизация:</p>
+        <form
+          name="loginform"
+          id="loginform"
+          action="https://mebbr.ru/wp-login.php"
+          method="post"
+        >
+          <div id="loginform__inputs">
+            <input type="text" name="log" id="user_login" placeholder="Логин" />
+            <input
+              type="password"
+              name="pwd"
+              id="user_pass"
+              placeholder="Пароль"
+            />
+          </div>
+          <div id="loginform__actions">
+            <figure>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  d="M12 12a6 6 0 1 0-6-6 6.006 6.006 0 0 0 6 6Zm0-10a4 4 0 1 1-4 4 4 4 0 0 1 4-4Zm0 12a9.01 9.01 0 0 0-9 9 1 1 0 0 0 2 0 7 7 0 0 1 14 0 1 1 0 0 0 2 0 9.01 9.01 0 0 0-9-9Z"
+                />
+              </svg>
+            </figure>
+            <input
+              type="submit"
+              name="wp-submit"
+              id="wp-submit"
+              value="Войти"
+            />
+            <input
+              type="hidden"
+              name="redirect_to"
+              value="https://mebbr.ru/wp-admin/"
+            />
+            <input type="hidden" name="testcookie" value="1" />
+          </div>
+        </form>
       </div>
     </div>
     <nav id="navigation">
@@ -880,8 +1027,15 @@
     let progressBar = document.getElementById("progress-bar");
     let main = document.getElementById("main");
     let searchPopup = document.getElementById("search-popup");
+    let searchPopupExit =
+      searchPopup.getElementsByClassName("cd-popup-mobile")[0];
     let categoryPopup = document.getElementById("category-popup");
+    let categoryPopupExit =
+      categoryPopup.getElementsByClassName("cd-popup-mobile")[0];
     let settingsPopup = document.getElementById("settings-popup");
+    let settingsPopupExit =
+      settingsPopup.getElementsByClassName("cd-popup-mobile")[0];
+    let style = document.documentElement.style;
 
     const doSomething = (scrollPos) => {
       let percent =
@@ -919,19 +1073,23 @@
         if (searchPopup.classList.contains("is-visible")) {
           searchPopup.classList.remove("is-visible");
           searchPopup.removeEventListener("click", closeSearch);
+          searchPopupExit.removeEventListener("click", goSearch);
         } else {
           settingsPopup.classList.remove("is-visible");
           categoryPopup.classList.remove("is-visible");
           searchPopup.classList.add("is-visible");
-          document.getElementById;
           searchPopup.addEventListener("click", closeSearch);
+          // goSearch используется для обхода проверки на нажатие child элементов внутри closeSearch
+          searchPopupExit.addEventListener("click", goSearch);
         }
       }
       document.getElementById("searchBox__input").focus();
     };
 
     const closeSearch = (e) => {
-      if (e.target !== e.currentTarget) return;
+      if (e.target !== searchPopup) {
+        return;
+      }
       if (searchPopup) {
         searchPopup.classList.remove("is-visible");
         searchPopup.removeEventListener("click", closeSearch);
@@ -943,12 +1101,14 @@
         if (categoryPopup.classList.contains("is-visible")) {
           categoryPopup.classList.remove("is-visible");
           categoryPopup.removeEventListener("click", closeCategory);
+          categoryPopupExit.removeEventListener("click", goCategory);
         } else {
           settingsPopup.classList.remove("is-visible");
           searchPopup.classList.remove("is-visible");
           categoryPopup.classList.add("is-visible");
-          document.getElementById;
           categoryPopup.addEventListener("click", closeCategory);
+          // goCategory используется для обхода проверки на нажатие child элементов внутри closeSearch
+          categoryPopupExit.addEventListener("click", goCategory);
         }
       }
     };
@@ -966,12 +1126,14 @@
         if (settingsPopup.classList.contains("is-visible")) {
           settingsPopup.classList.remove("is-visible");
           settingsPopup.removeEventListener("click", closeSettings);
+          settingsPopupExit.removeEventListener("click", goSettings);
         } else {
           categoryPopup.classList.remove("is-visible");
           searchPopup.classList.remove("is-visible");
           settingsPopup.classList.add("is-visible");
-          document.getElementById;
           settingsPopup.addEventListener("click", closeSettings);
+          // goSettings используется для обхода проверки на нажатие child элементов внутри closeSearch
+          settingsPopupExit.addEventListener("click", goSettings);
         }
       }
     };
@@ -1031,6 +1193,42 @@
           .getElementsByClassName("icon")[0]
           .addEventListener("mouseout", tooltipOpacity);
       }
+    }
+
+    const setDark = () => {
+      style.setProperty("--text", "rgba(255, 255, 255, 0.99)");
+      style.setProperty("--bg", "rgba(21, 21, 21, 0.99)");
+      style.setProperty("--border", "#353535");
+      style.setProperty("--hover", "#454545");
+    };
+
+    const setLight = () => {
+      style.setProperty("--text", "rgba(17, 17, 17, 0.99)");
+      style.setProperty("--bg", "rgba(255, 255, 255, 0.99)");
+      style.setProperty("--border", "#e9e9e9");
+      style.setProperty("--hover", "#ccc");
+    };
+
+    const setSystem = () => {
+      style.setProperty("--text", "rgba(17, 17, 17, 0.99)");
+      style.setProperty("--bg", "rgba(255, 255, 255, 0.99)");
+      style.setProperty("--border", "#e9e9e9");
+      style.setProperty("--hover", "#ccc");
+    };
+
+    let radios = document
+      .getElementById("theme-switcher")
+      .getElementsByTagName("input");
+    for (let i = 0; i < radios.length; i++) {
+      radios[i].onclick = function () {
+        if (this.value === "dark") {
+          setDark();
+        } else if (this.value === "light") {
+          setLight();
+        } else {
+          setSystem();
+        }
+      };
     }
   </script>
 </html>
