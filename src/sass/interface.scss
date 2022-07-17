@@ -208,6 +208,7 @@ $opacity: 0.1s;
   top: 0;
   height: 100%;
   width: 100%;
+  z-index: 11 !important;
   position: fixed;
   background-color: var(--popupbg);
   opacity: 0;
@@ -228,6 +229,7 @@ $opacity: 0.1s;
 }
 
 .cd-popup-container {
+  z-index: 12 !important;
   background: var(--bg);
   text-align: center;
   overflow-y: scroll;
@@ -255,6 +257,7 @@ $opacity: 0.1s;
   box-sizing: border-box;
   display: flex;
   align-items: center;
+  z-index: 10 !important;
 }
 
 // Маленькие экраны

@@ -596,6 +596,7 @@ template {
   top: 0;
   height: 100%;
   width: 100%;
+  z-index: 11 !important;
   position: fixed;
   background-color: var(--popupbg);
   opacity: 0;
@@ -617,6 +618,7 @@ template {
 }
 
 .cd-popup-container {
+  z-index: 12 !important;
   background: var(--bg);
   text-align: center;
   overflow-y: scroll;
@@ -638,11 +640,12 @@ template {
 
 #navigation {
   position: fixed;
-  left: 0px;
+  left: 0;
   background-color: var(--bg);
   box-sizing: border-box;
   display: flex;
   align-items: center;
+  z-index: 10 !important;
 }
 
 @media (max-width: 1199px) {
@@ -732,7 +735,7 @@ template {
     right: 1em;
   }
   #navigation {
-    bottom: 0px;
+    bottom: 0;
     height: 50px;
     width: 100%;
     padding: 0 15px;
@@ -837,7 +840,7 @@ template {
     display: none;
   }
   #navigation {
-    top: 0px;
+    top: 0;
     height: 100%;
     width: 3vw;
     border-right: 1px solid var(--border);
@@ -865,7 +868,7 @@ template {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  opacity: 0%;
+  opacity: 0;
   cursor: pointer;
   user-select: none;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;

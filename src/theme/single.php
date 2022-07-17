@@ -233,9 +233,9 @@ wp_head();
         }
 
         /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-        .hide {
+        /* .hide {
             display: none;
-        }
+        } */
         #main ul, #main ol{
             margin: 2.35rem 0 0;
             padding: 0;
@@ -787,32 +787,34 @@ wp_head();
     };
 
     const allowScroll = () => {
+      const scrollY = document.body.style.top;
       document.body.style.position = "";
       document.body.style.top = "";
-        window.scrollTo(0, beforeHide);
+      window.scrollTo(0, parseInt(scrollY || "0") * -1);
+        // window.scrollTo(0, beforeHide);
     };
 
-    var beforeHide = 0;
-    const hideAds = () => {
-        beforeHide = window.scrollY;
-        let ads = document.getElementsByClassName("advert");
-        for (let i = 0; i < ads.length; i++){
-            ads[i].classList.add("hide")
-        }
-    }
+    // var beforeHide = 0;
+    // const hideAds = () => {
+    //     beforeHide = window.scrollY;
+    //     let ads = document.getElementsByClassName("advert");
+    //     for (let i = 0; i < ads.length; i++){
+    //         ads[i].classList.add("hide")
+    //     }
+    // }
 
-    const showAds = () => {
-        let ads = document.getElementsByClassName("advert");
-        for (let i = 0; i < ads.length; i++){
-            ads[i].classList.remove("hide")
-        }
-    }
+    // const showAds = () => {
+    //     let ads = document.getElementsByClassName("advert");
+    //     for (let i = 0; i < ads.length; i++){
+    //         ads[i].classList.remove("hide")
+    //     }
+    // }
 
     const goSearch = () => {
       if (searchPopup) {
         if (searchPopup.classList.contains("is-visible")) {
           searchPopup.classList.remove("is-visible");
-          showAds();
+          // showAds();
           searchPopup.removeEventListener("click", closeSearch);
           searchPopupExit.removeEventListener("click", goSearch);
           allowScroll();
@@ -823,7 +825,7 @@ wp_head();
           searchPopup.addEventListener("click", closeSearch);
           // goSearch используется для обхода проверки на нажатие child элементов внутри closeSearch
           searchPopupExit.addEventListener("click", goSearch);
-          hideAds();
+          // hideAds();
           preventScroll();
         }
       }
@@ -836,7 +838,7 @@ wp_head();
       }
       if (searchPopup) {
         searchPopup.classList.remove("is-visible");
-        showAds();
+        // showAds();
         searchPopup.removeEventListener("click", closeSearch);
         allowScroll();
       }
@@ -846,7 +848,7 @@ wp_head();
       if (categoryPopup) {
         if (categoryPopup.classList.contains("is-visible")) {
           categoryPopup.classList.remove("is-visible");
-          showAds();
+          // showAds();
           categoryPopup.removeEventListener("click", closeCategory);
           categoryPopupExit.removeEventListener("click", goCategory);
           allowScroll();
@@ -857,7 +859,7 @@ wp_head();
           categoryPopup.addEventListener("click", closeCategory);
           // goCategory используется для обхода проверки на нажатие child элементов внутри closeSearch
           categoryPopupExit.addEventListener("click", goCategory);
-          hideAds();
+          // hideAds();
           preventScroll();
         }
       }
@@ -867,7 +869,7 @@ wp_head();
       if (e.target !== e.currentTarget) return;
       if (categoryPopup) {
         categoryPopup.classList.remove("is-visible");
-        showAds();
+        // showAds();
         categoryPopup.removeEventListener("click", closeCategory);
         allowScroll();
       }
@@ -877,7 +879,7 @@ wp_head();
       if (settingsPopup) {
         if (settingsPopup.classList.contains("is-visible")) {
           settingsPopup.classList.remove("is-visible");
-          showAds();
+          // showAds();
           settingsPopup.removeEventListener("click", closeSettings);
           settingsPopupExit.removeEventListener("click", goSettings);
           allowScroll();
@@ -888,7 +890,7 @@ wp_head();
           settingsPopup.addEventListener("click", closeSettings);
           // goSettings используется для обхода проверки на нажатие child элементов внутри closeSearch
           settingsPopupExit.addEventListener("click", goSettings);
-          hideAds();
+          // hideAds();
           preventScroll();
         }
       }
@@ -898,7 +900,7 @@ wp_head();
       if (e.target !== e.currentTarget) return;
       if (settingsPopup) {
         settingsPopup.classList.remove("is-visible");
-        showAds();
+        // showAds();
         settingsPopup.removeEventListener("click", closeSettings);
         allowScroll();
       }
