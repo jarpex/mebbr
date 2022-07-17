@@ -417,6 +417,7 @@ template {
 #progress {
   position: fixed;
   top: 0;
+  z-index: 15 !important;
   background-color: var(--bg);
 }
 
@@ -640,12 +641,12 @@ template {
 
 #navigation {
   position: fixed;
-  left: 0;
+  left: 0px;
   background-color: var(--bg);
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  z-index: 10 !important;
+  z-index: 15 !important;
 }
 
 @media (max-width: 1199px) {
@@ -735,7 +736,7 @@ template {
     right: 1em;
   }
   #navigation {
-    bottom: 0;
+    bottom: 0px;
     height: 50px;
     width: 100%;
     padding: 0 15px;
@@ -840,7 +841,7 @@ template {
     display: none;
   }
   #navigation {
-    top: 0;
+    top: 0px;
     height: 100%;
     width: 3vw;
     border-right: 1px solid var(--border);
@@ -868,7 +869,7 @@ template {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  opacity: 0;
+  opacity: 0%;
   cursor: pointer;
   user-select: none;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;

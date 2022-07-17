@@ -825,6 +825,13 @@ wp_head();
           searchPopup.addEventListener("click", closeSearch);
           // goSearch используется для обхода проверки на нажатие child элементов внутри closeSearch
           searchPopupExit.addEventListener("click", goSearch);
+          document.addEventListener('keydown', function(e) {
+              const key = e.key;
+              if (key === "Escape") {
+                  goSearch();
+                  this.removeEventListener('keydown', arguments.callee);
+              }
+          });
           // hideAds();
           preventScroll();
         }
@@ -859,6 +866,13 @@ wp_head();
           categoryPopup.addEventListener("click", closeCategory);
           // goCategory используется для обхода проверки на нажатие child элементов внутри closeSearch
           categoryPopupExit.addEventListener("click", goCategory);
+          document.addEventListener('keydown', function(e) {
+              const key = e.key;
+              if (key === "Escape") {
+                  goCategory();
+                  this.removeEventListener('keydown', arguments.callee);
+              }
+          });
           // hideAds();
           preventScroll();
         }
@@ -890,6 +904,13 @@ wp_head();
           settingsPopup.addEventListener("click", closeSettings);
           // goSettings используется для обхода проверки на нажатие child элементов внутри closeSearch
           settingsPopupExit.addEventListener("click", goSettings);
+          document.addEventListener('keydown', function(e) {
+              const key = e.key;
+              if (key === "Escape") {
+                  goSettings();
+                  this.removeEventListener('keydown', arguments.callee);
+              }
+          });
           // hideAds();
           preventScroll();
         }

@@ -6,6 +6,7 @@ $opacity: 0.1s;
 #progress {
   position: fixed;
   top: 0;
+  z-index: 15 !important;
   background-color: var(--bg);
 }
 
@@ -257,7 +258,7 @@ $opacity: 0.1s;
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  z-index: 10 !important;
+  z-index: 15 !important;
 }
 
 // Маленькие экраны
