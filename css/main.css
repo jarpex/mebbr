@@ -596,7 +596,7 @@ template {
   left: 0;
   top: 0;
   height: 100%;
-  width: 100%;
+  width: 100vw;
   z-index: 11 !important;
   position: fixed;
   background-color: var(--popupbg);

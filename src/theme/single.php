@@ -780,9 +780,11 @@ wp_head();
     const preventScroll = () => {
       let stylePosition = document.body.style.position;
       if (stylePosition != "fixed") {
-        let position = window.scrollY;   
+        let position = window.scrollY;
+        let scrollBarWidth = parseFloat(window.innerWidth - document.documentElement.clientWidth) / 2;   
         document.body.style.position = "fixed";
         document.body.style.top = `-${position}px`;
+        document.body.style.left = `-${scrollBarWidth}px`;
       }
     };
 
@@ -790,6 +792,7 @@ wp_head();
       const scrollY = document.body.style.top;
       document.body.style.position = "";
       document.body.style.top = "";
+      document.body.style.left = "";
       window.scrollTo(0, parseInt(scrollY || "0") * -1);
         // window.scrollTo(0, beforeHide);
     };
@@ -819,6 +822,7 @@ wp_head();
           searchPopupExit.removeEventListener("click", goSearch);
           allowScroll();
         } else {
+          preventScroll();
           settingsPopup.classList.remove("is-visible");
           categoryPopup.classList.remove("is-visible");
           searchPopup.classList.add("is-visible");
@@ -828,21 +832,23 @@ wp_head();
           document.addEventListener('keydown', function(e) {
               const key = e.key;
               if (key === "Escape") {
-                  goSearch();
+                  closeSearch();
                   this.removeEventListener('keydown', arguments.callee);
               }
           });
           // hideAds();
-          preventScroll();
         }
       }
       document.getElementById("searchBox__input").focus();
     };
 
     const closeSearch = (e) => {
-      if (e.target !== searchPopup) {
-        return;
+      if(e){
+        if (e.target !== searchPopup) {
+          return;
+        }
       }
+      
       if (searchPopup) {
         searchPopup.classList.remove("is-visible");
         // showAds();
@@ -860,6 +866,7 @@ wp_head();
           categoryPopupExit.removeEventListener("click", goCategory);
           allowScroll();
         } else {
+          preventScroll();
           settingsPopup.classList.remove("is-visible");
           searchPopup.classList.remove("is-visible");
           categoryPopup.classList.add("is-visible");
@@ -869,18 +876,21 @@ wp_head();
           document.addEventListener('keydown', function(e) {
               const key = e.key;
               if (key === "Escape") {
-                  goCategory();
+                  closeCategory();
                   this.removeEventListener('keydown', arguments.callee);
               }
           });
           // hideAds();
-          preventScroll();
         }
       }
     };
 
     const closeCategory = (e) => {
-      if (e.target !== e.currentTarget) return;
+      if(e){
+        if (e.target !== e.currentTarget){
+          return;
+        } 
+      }
       if (categoryPopup) {
         categoryPopup.classList.remove("is-visible");
         // showAds();
@@ -898,6 +908,7 @@ wp_head();
           settingsPopupExit.removeEventListener("click", goSettings);
           allowScroll();
         } else {
+          preventScroll();
           categoryPopup.classList.remove("is-visible");
           searchPopup.classList.remove("is-visible");
           settingsPopup.classList.add("is-visible");
@@ -907,18 +918,21 @@ wp_head();
           document.addEventListener('keydown', function(e) {
               const key = e.key;
               if (key === "Escape") {
-                  goSettings();
+                  closeSettings();
                   this.removeEventListener('keydown', arguments.callee);
               }
           });
           // hideAds();
-          preventScroll();
         }
       }
     };
 
     const closeSettings = (e) => {
-      if (e.target !== e.currentTarget) return;
+      if(e){
+        if (e.target !== e.currentTarget){
+          return;
+        } 
+      }
       if (settingsPopup) {
         settingsPopup.classList.remove("is-visible");
         // showAds();
