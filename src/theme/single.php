@@ -734,6 +734,7 @@ wp_head();
 <script>
     let lastKnownScrollPosition = 0;
     let ticking = false;
+    let progressAllowed = true;
     let progressBar = document.getElementById("progress-bar");
     let main = document.getElementById("main");
     let searchPopup = document.getElementById("search-popup");
@@ -746,17 +747,24 @@ wp_head();
     let settingsPopupExit =
       settingsPopup.getElementsByClassName("cd-popup-mobile")[0];
 
+    const vw = (v) => {
+      let w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+      return (v * w) / 100;
+    }
+
     const doSomething = (scrollPos) => {
-      let percent =
+      if (progressAllowed){
+        let percent =
         ((scrollPos + window.innerHeight - main.offsetTop) /
           main.clientHeight) *
-        100;
-      if (percent <= 0.5) {
-        progressBar.style.width = "0%";
-      } else if (percent >= 100) {
-        progressBar.style.width = "100%";
-      } else {
-        progressBar.style.width = percent + "%";
+          100;
+        if (percent <= 0.5) {
+          progressBar.style.width = "0%";
+        } else if (percent >= 100) {
+          progressBar.style.width = "100%";
+        } else {
+          progressBar.style.width = percent + "%";
+        }
       }
     };
 
@@ -779,6 +787,10 @@ wp_head();
 
     const preventScroll = () => {
       let stylePosition = document.body.style.position;
+      progressAllowed = false;
+      if (window.matchMedia("(min-width: 1200px) and (orientation: landscape)").matches){
+        document.getElementById("progress").style.maxWidth = `${document.documentElement.clientWidth - vw(3)}px`;
+      }
       if (stylePosition != "fixed") {
         let position = window.scrollY;
         let scrollBarWidth = parseFloat(window.innerWidth - document.documentElement.clientWidth) / 2;   
@@ -793,7 +805,9 @@ wp_head();
       document.body.style.position = "";
       document.body.style.top = "";
       document.body.style.left = "";
+      document.getElementById("progress").style.maxWidth = "";
       window.scrollTo(0, parseInt(scrollY || "0") * -1);
+      progressAllowed = true;
         // window.scrollTo(0, beforeHide);
     };
 
