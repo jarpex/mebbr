@@ -1,0 +1,184 @@
+@media (min-width: 1200px) and (orientation: landscape) {
+  #main {
+    #autor_card {
+      margin: 1.175em 0 0;
+
+      .post_meta {
+        margin: 0 0 0 0.647rem;
+
+        #autor_url {
+          font-size: 15px;
+        }
+
+        .post_date,
+        & .reading_time {
+          font-size: 13px;
+        }
+
+        .reading_time::before {
+          padding: 0 0.412rem;
+        }
+      }
+    }
+
+    h1,
+    & h2,
+    & h3,
+    & h4,
+    & h5,
+    & h6 {
+      font-weight: 700;
+      margin: 2.35rem 0 0;
+      line-height: 1.2em;
+    }
+
+    h1 {
+      margin-top: 2.647rem;
+      font-size: 2.235rem;
+    }
+
+    h2 {
+      font-size: 1.294rem;
+      margin: 4.06rem 0 -1.47rem;
+    }
+
+    h3 {
+      font-size: 1.176rem;
+      margin: 2.79rem 0 -1.47rem;
+    }
+
+    h4 {
+      font-size: 1.625rem;
+    }
+
+    h5 {
+      font-size: 1.4rem;
+    }
+
+    h6 {
+      font-size: 1.25rem;
+    }
+
+    p {
+      font-size: 17px;
+      line-height: 1.6em;
+      margin: 2.35rem 0 0;
+    }
+
+    .advert {
+      margin-top: 2em;
+    }
+
+    ul,
+    & ol {
+      margin: 2.35rem 0 0;
+    }
+
+    li {
+      margin: 1.34rem 0 -0.54rem 1.764rem;
+    }
+
+    pre {
+      margin: 2rem 0 0;
+      line-height: 28px;
+
+      code {
+        font-size: 1em;
+        line-height: 1.5em;
+        padding: 0.5em 1em;
+      }
+    }
+
+    .wp-block-quote {
+      margin: 2.35rem 0 0 -1.2rem;
+
+      p {
+        padding-left: calc(1.2rem - 3px);
+      }
+
+      .wp-block-embed {
+        margin: 2em 0 0;
+      }
+    }
+
+    .wp-block-video {
+      margin: 2rem 0 0;
+    }
+
+    .mebbr-image {
+      margin: 30px 0;
+    }
+
+    figcaption {
+      font-size: 17px;
+      margin-top: 10px;
+    }
+
+    hr {
+      margin: 2.35rem 0 0;
+    }
+
+    .wp-block-table {
+      margin: 2.35rem 0 0;
+      font-size: 14px;
+
+      td {
+        padding: 8px;
+      }
+
+      th {
+        padding: 12px 8px;
+        font-weight: 400;
+      }
+    }
+
+    #article_tags {
+      margin: 2.35rem 0 0;
+
+      a {
+        padding: 0.1rem 0.8rem;
+        margin: 0.5rem 0.4rem 0 0;
+      }
+    }
+  }
+  #related {
+    padding: 0px 2vw;
+    margin: 2.35rem auto 0;
+
+    #related-header {
+      font-size: 1em;
+
+      h2 {
+        margin-top: 1em;
+      }
+    }
+
+    #related-container {
+      margin-bottom: 2.5em;
+
+      .rel-title {
+        font-size: 0.75em;
+        margin: 1.4em 0;
+      }
+    }
+  }
+  footer {
+    #footer {
+      width: 88vw;
+      padding: 20px;
+      margin: 2em auto 0;
+
+      .social_icons {
+        margin: 1.5em 0 2em;
+      }
+
+      #footer_combo a {
+        margin-right: 1em;
+      }
+    }
+  }
+
+  .hljs {
+    padding: 0.5em 1em;
+  }
+}

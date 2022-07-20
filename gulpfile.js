@@ -5,7 +5,7 @@ const cleanCSS = require("gulp-clean-css");
 
 gulp.task("styles", () => {
   return gulp
-    .src("src/sass/main.scss")
+    .src("src/sass/page.scss")
     .pipe(sass().on("error", sass.logError))
     .pipe(gulp.dest("./css/"))
     .pipe(
@@ -19,7 +19,7 @@ gulp.task("styles", () => {
 });
 
 gulp.task("clean", () => {
-  return del(["css/main.css"]);
+  return del(["css/page.css"]);
 });
 
 gulp.task("default", gulp.series(["clean", "styles"]));

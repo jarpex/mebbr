@@ -1,0 +1,145 @@
+@media (min-width: 1200px) and (orientation: landscape) {
+  // Прогресс бар на ПК
+  #progress {
+    width: calc(97vw - (100vw - 100%));
+    left: 3vw;
+  }
+
+  // Форма поиска на ПК
+  #search-popup {
+    #searchBox {
+      border-radius: 0.65vw;
+
+      #searchBox__label {
+        padding: 0 20px;
+
+        input {
+          width: 100%;
+          height: 2vw;
+          margin: 0;
+          padding: 0;
+        }
+
+        #searchsubmit {
+          max-height: 35px;
+          max-width: 35px;
+        }
+      }
+    }
+  }
+
+  // Форма списка категорий на ПК
+  #category-popup {
+    .nav_flex {
+      margin-bottom: 5vw;
+      font-size: 1.1vw;
+    }
+    .nav_href {
+      margin: 1.7em 0 -0.2em;
+    }
+  }
+
+  // Форма настроек на ПК
+  #settings-popup {
+    .segmented-control {
+      width: 24vw;
+      height: 3vw;
+      border-radius: 1rem;
+
+      &__1,
+      &__2,
+      &__3 {
+        height: 3vw;
+        font-size: 0.8vw;
+      }
+      &__color {
+        height: 3vw;
+        width: 8vw;
+        margin-left: 0.025vw;
+        border-radius: 0.8rem;
+      }
+    }
+    #loginform {
+      width: 80%;
+      margin: 1vw auto 5vw;
+      padding: 2vw;
+      border-radius: 0.65vw;
+      #loginform__actions {
+        border-left: solid 3px var(--border);
+        width: 50%;
+        input {
+          padding: 0.5em 1em;
+        }
+      }
+      figure {
+        svg {
+          width: 50px;
+          height: 50px;
+        }
+      }
+    }
+  }
+
+  // Логотип и описание на формах категории и настроек на ПК
+  #category-popup__bg .logo,
+  #settings-popup .logo {
+    font-size: 5.75em;
+    line-height: 1em;
+    margin: 5vw 0 0 0;
+  }
+
+  #category-popup__bg .header_desc,
+  #settings-popup .header_desc {
+    font-size: 1.02em;
+    margin: 1.12em 0 2.35em 0;
+  }
+
+  // Всплывающие окошки на ПК
+  .cd-popup-container {
+    width: 90%;
+    max-width: 720px;
+    border-radius: 0.65vw;
+    padding: 0.75vw;
+    border: 1px solid var(--border);
+    -webkit-transform: translateY(80px);
+    -moz-transform: translateY(80px);
+    -ms-transform: translateY(80px);
+    -o-transform: translateY(80px);
+    transform: translateY(80px);
+    /* Force Hardware Acceleration in WebKit */
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+  }
+  .cd-popup-mobile.icon {
+    display: none;
+  }
+
+  // Панель навигации на ПК
+  #navigation {
+    top: 0px;
+    height: 100%;
+    width: 3vw;
+    border-right: 1px solid var(--border);
+    flex-direction: column;
+    justify-content: flex-end;
+    font-size: 1vw;
+
+    #navigation__gotop-mobile {
+      display: none;
+    }
+
+    #navigation__menu {
+      margin: calc(50vh - 6.775em) 0 1em;
+    }
+  }
+
+  #navigation__gotop-desktop {
+    position: fixed;
+    right: 1em;
+    bottom: 1em;
+  }
+}

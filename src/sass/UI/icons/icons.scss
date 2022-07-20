@@ -8,7 +8,6 @@ $tooltip: 0.3s;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  opacity: 0%;
   cursor: pointer;
   user-select: none;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
@@ -44,36 +43,5 @@ $tooltip: 0.3s;
     sans-serif;
 }
 
-@media (max-width: 1199px) {
-  .icon {
-    margin: 0;
-    opacity: 30%;
-    height: 46px;
-    width: 46px;
-    svg {
-      height: 21px;
-      width: 21px;
-    }
-  }
-  .tooltip {
-    display: none;
-  }
-}
-
-@media (min-width: 1200px) and (orientation: landscape) {
-  .icon {
-    font-size: 1vw;
-    margin: 0.5em 0;
-    opacity: 50%;
-    height: 2.4em;
-    width: 2.4em;
-    svg {
-      height: 1.25em;
-      width: 1.25em;
-    }
-    &:hover {
-      background-color: var(--hover);
-      opacity: 70%;
-    }
-  }
-}
+@import "icons_mobile.scss";
+@import "icons_desktop.scss";

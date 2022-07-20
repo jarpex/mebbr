@@ -17,11 +17,8 @@ wp_head();
     {article:preload}
     {article:dns-prefetch}
     <style>
-        html {
-            font: 17px Mont-Regular, 'Open Sans', 'Lato', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-        }
         body {
-            --text: rgba(18, 18, 18, 0.999);
+            --text: rgba(41, 41, 41, 0.999);
             --bg: rgba(255, 255, 255, 0.999);
             --hover: rgba(0, 0, 0, 0.3);
             --button: rgba(0, 0, 0);
@@ -31,16 +28,11 @@ wp_head();
             --primary: #6d5dfc;
             --greyLight-1: #e4ebf5;
             --greyLight-2: #c8d0e7;
+            --grey400: #939393;
             --greyDark: #9baacf;
             --selection: rgba(254, 235, 239, 0.99);
             --box: #edeef0;
             --codeselection: rgba(53, 59, 72, 0.99);
-            width: 100%;
-            color: var(--text);
-            background-color: var(--bg);
-            text-rendering: optimizeLegibility;
-            margin: 0;
-            text-align: left;
         }
 
         @media (prefers-color-scheme: dark) {
@@ -56,6 +48,7 @@ wp_head();
                 --primary: #e0e0e0;
                 --greyLight-1: #1f2227;
                 --greyLight-2: #090913;
+                --grey400: #939393;
                 --greyDark: #b7b7b7;
                 --box: rgb(33, 36, 37);
                 --codeselection: rgba(254, 235, 239, 0.99);
@@ -64,7 +57,7 @@ wp_head();
 
         @media screen and (prefers-color-scheme: light) {
             body {
-                --text: rgba(18, 18, 18, 0.999);
+                --text: rgba(41, 41, 41, 0.999);
                 --bg: rgba(255, 255, 255, 0.999);
                 --hover: rgba(0, 0, 0, 0.3);
                 --selection: rgba(254, 235, 239, 0.99);
@@ -75,288 +68,11 @@ wp_head();
                 --primary: #6d5dfc;
                 --greyLight-1: #e4ebf5;
                 --greyLight-2: #c8d0e7;
+                --grey400: #939393;
                 --greyDark: #9baacf;
                 --box: #edeef0;
                 --codeselection: rgba(53, 59, 72, 0.99);
             }
-        }
-        img.emoji {
-            display: inline !important;
-            border: none !important;
-            box-shadow: none !important;
-            height: 1em !important;
-            width: 1em !important;
-            margin: 0 0.07em !important;
-            vertical-align: -0.1em !important;
-            background: none !important;
-            padding: 0 !important;
-        }
-        #menu_combo,
-        header {
-            align-items: center;
-            background: var(--box);
-        }
-
-        #menu_combo,
-        #footer,
-        header {
-            flex-direction: column;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        #logo {
-            margin: 1em 0 .5em;
-            text-decoration: none;
-            color: var(--text);
-            font-size: 48px;
-            line-height: 48px;
-        }
-
-        #menu_combo {
-            font-size: 20px;
-        }
-
-        .menu a {
-            text-decoration: none;
-            color: var(--text);
-            white-space: nowrap;
-        }
-        #searchform {
-            padding-top: 20px;
-        }
-
-        .search {
-            position: relative;
-        }
-        .searchbox {
-            min-width: 60vw;
-            background-color: var(--bg);
-            border-radius: 8px;
-            margin: 0;
-            border: 0;
-            color: var(--text);
-            display: block;
-            font-size: 14px;
-            line-height: 1.5;
-            min-height: 40px;
-            outline: 0;
-            padding: 0 29px 0 14px;
-        }
-        .search_icon {
-            font-family: "mebbr";
-            color: var(--text);
-            opacity: .7;
-            font-size: 15px;
-            right: 7px;
-            line-height: 40px;
-            position: absolute;
-            top: 0;
-            border-style: none;
-            background-color: transparent;
-        }
-
-        #main, #related {
-            width: 90%;
-            max-width: 650px;
-            margin: 0 auto;
-        }
-
-        #main #autor_card {
-            margin: 1.175em 0 0;
-            display: flex;
-            align-items: center;
-        }
-
-        #main .post_meta {
-            margin: 0 0 0 0.647rem;
-            font-size: 0;
-        }
-
-        #main .avatar {
-            border-radius: 50%;
-            display: inline-block;
-        }
-
-        #main #autor_url {
-            display: block;
-            text-decoration: none;
-            font-size: 15px;
-            margin: 0;
-        }
-
-        #autor_card .post_date, #autor_card .reading_time {
-            color: var(--gray_400);
-            font-size: 13px;
-        }
-
-        #autor_card .reading_time::before{
-            content: '\2022';
-            padding: 0 0.412rem;
-        }
-
-        #main h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: 'PT Serif', serif;
-            font-weight: 700;
-            text-align: left;
-            margin: 2.35rem 0 0;
-            line-height: 1.2em;
-            word-break: break-word;
-        }
-
-        #main h1 {
-            margin-top: 2.647rem;
-            font-size: 2.235rem;
-        }
-        #main h2 {
-            font-size: 1.294rem;
-            margin: 4.06rem 0 -1.47rem;
-        }
-
-        #main h3 {
-            font-size: 1.176rem;
-            margin: 2.79rem 0 -1.47rem;
-        }
-        #main h4 {
-            font-size: 1.625rem;
-        }
-        #main h5 {
-            font-size: 1.4rem;
-        }
-        #main h6 {
-            font-size: 1.25rem;
-        }
-
-        /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-        /* .hide {
-            display: none;
-        } */
-        #main ul, #main ol{
-            margin: 2.35rem 0 0;
-            padding: 0;
-        }
-
-        #main li {
-            margin: 1.34rem 0 -0.54rem 1.764rem;
-        }
-        
-        #article_tags {
-            margin: 2.35rem 0 0;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            align-content: center;
-            justify-content: flex-start;
-            align-items: center;
-        }
-
-        #article_tags a {
-            color: var(--bg) !important; 
-            /* Убрать импортант доработав #main a:not(.spotlight) в #main a:not(.spotlight):not(#article_tags) */
-            background-color: var(--text);
-            text-decoration: none;
-            padding: 0.1rem 0.8rem;
-            margin: 0.5rem 0.4rem 0 0;
-        }
-
-        /* Объединить с .hljs */
-        #main pre code {
-            display: block;
-            overflow-x: auto;
-            padding: 0.5em 1em;
-            background: #282a36;
-            color: #f8f8f2;
-            border-radius: 0.75em;
-            font-family: PTMonoWebRegular,monospace!important;
-        }
-        #main .wp-block-quote {
-            margin: 2.35rem 0 0 -1.2rem !important;
-        }
-
-        #main .wp-block-quote p {
-            border-left: solid var(--text) 3px !important;
-            padding-left: calc(1.2rem - 3px) !important;
-            box-sizing: border-box;
-        }
-
-        #related {
-            border-top: solid var(--text) 5px;
-            padding: 0px 5vw;
-            box-sizing: border-box;
-            margin-top: 2.35rem;
-        }
-
-        #related-header {
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            font-size: 1em;
-        }
-
-        #related-header h2 {
-            margin-top: 1em;
-        }
-
-        .rel-title {
-            font-size: .75em;
-            margin: 1.4em 0;
-            color: var(--text);
-            display: block;
-        }
-
-        footer{
-            background: var(--border);
-        }
-        /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
-        @media (min-width: 1200px) and (orientation: landscape){
-            header, #menu_combo {
-                flex-direction: row;
-                align-items: center;
-            }
-            #searchform{
-                padding: 0;
-                margin: 0;
-            }
-            .searchbox{
-                max-width: 50vw;
-                min-width: 30vw;
-                margin: 1vw;
-            }
-            .search_icon {
-                right: 30px;
-            }
-            #logo{
-                margin: 1vw;
-            }
-            #menu_combo{
-                font-size: 21px;
-            }
-            #menu_combo .menu{
-                margin: 0;
-            }
-            .menu a{
-                margin-right: 10px;
-            }
-            
-            #main p {
-                font-size: 17px;
-                line-height: 1.6em;
-                margin: 2.35rem 0 0;
-            }
-            /* !!!!!!!!!!!!!!!!!!!!!!!!!*/
-            #related {
-                padding: 0px 2vw;
-            }
-            
-            #related-container {
-                margin-bottom: 2.5em;
-            }
-            /* !!!!!!!!!!!!!!!!!!!!!!!!!!!*/
         }
     </style>
 </head>
@@ -378,10 +94,11 @@ wp_head();
         style.setProperty("--greyLight-1", "#1f2227 ");
         style.setProperty("--greyLight-2", "#090913");
         style.setProperty("--greyDark", "#b7b7b7");
+        style.setProperty("--box", "rgb(33, 36, 37)");
       };
 
       const setLight = () => {
-        style.setProperty("--text", "rgba(18, 18, 18, 0.999)");
+        style.setProperty("--text", "rgba(41, 41, 41, 0.999)");
         style.setProperty("--bg", "rgba(255, 255, 255, 0.999)");
         style.setProperty("--hover", "rgba(0, 0, 0, 0.3)");
         style.setProperty("--selection", "rgba(254, 235, 239, 0.99)");
@@ -393,6 +110,7 @@ wp_head();
         style.setProperty("--greyLight-1", "#e4ebf5");
         style.setProperty("--greyLight-2", "#c8d0e7");
         style.setProperty("--greyDark", "#9baacf");
+        style.setProperty("--box", "#edeef0");
       };
       var theme = localStorage.getItem("theme");
       if (theme) {
@@ -597,13 +315,13 @@ wp_head();
     </div>
     <nav id="navigation">
       <div class="tooltip-box">
-        <figure id="navigation__home" class="icon" onclick="goHome()">
+        <a href="//mebbr.ru" id="navigation__home" class="icon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path
               d="m23.121 9.069-7.585-7.586a5.008 5.008 0 0 0-7.072 0L.879 9.069A2.978 2.978 0 0 0 0 11.19v9.817a3 3 0 0 0 3 3h18a3 3 0 0 0 3-3V11.19a2.978 2.978 0 0 0-.879-2.121ZM15 22.007H9v-3.934a3 3 0 0 1 6 0Zm7-1a1 1 0 0 1-1 1h-4v-3.934a5 5 0 0 0-10 0v3.934H3a1 1 0 0 1-1-1V11.19a1.008 1.008 0 0 1 .293-.707L9.878 2.9a3.008 3.008 0 0 1 4.244 0l7.585 7.586a1.008 1.008 0 0 1 .293.704Z"
             />
           </svg>
-        </figure>
+        </a>
         <span class="tooltip">🏡 Главная страница</span>
       </div>
       <div class="tooltip-box">
@@ -781,9 +499,9 @@ wp_head();
       }
     });
 
-    const goHome = () => {
-      window.location.href = "//mebbr.ru";
-    };
+    // const goHome = () => {
+    //   window.location.href = "//mebbr.ru";
+    // };
 
     const preventScroll = () => {
       let stylePosition = document.body.style.position;

@@ -1,0 +1,136 @@
+@media (max-width: 1199px) {
+  #main {
+    padding: 0 24px;
+
+    #autor_card {
+      margin: 32px 0 24px;
+
+      .avatar {
+        height: 48px;
+        width: 48px;
+      }
+
+      .post_meta {
+        margin: 0 0 0 1rem;
+
+        #autor_url {
+          font-size: 16px;
+          line-height: 24px;
+        }
+
+        .post_date,
+        & .reading_time {
+          font-size: 14px;
+        }
+
+        .reading_time::before {
+          padding: 0 0.5rem;
+        }
+      }
+    }
+
+    h1 {
+      font-size: 32px;
+      line-height: 40px;
+      letter-spacing: -0.512px;
+      margin: 0.64em 0 -0.27em;
+    }
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 2em 0 -0.3em;
+      font-size: 24px;
+      line-height: 32px;
+    }
+
+    p,
+    & .advert,
+    & figure,
+    & #article_tags,
+    & pre,
+    & hr {
+      margin: 28px 0 -8px;
+      line-height: 25px;
+      letter-spacing: -0.5px;
+    }
+
+    ul,
+    & ol {
+      margin: 28px 0 -8px;
+    }
+
+    li {
+      margin: 18px 0 -8px 30px;
+    }
+
+    li ul,
+    li ol {
+      margin: -6px 0 18px;
+    }
+
+    pre {
+      line-height: 28px;
+
+      code {
+        font-size: 14px;
+        line-height: 1.5em;
+        padding: 0.5em 1em;
+      }
+    }
+
+    figcaption {
+      text-align: center;
+      font-size: 12px;
+      margin: 8px 0 0;
+      opacity: 0.75;
+    }
+
+    blockquote {
+      margin: 28px 0 -8px -12px;
+
+      p {
+        padding: 0 0 0 24px;
+      }
+    }
+
+    table {
+      margin: 28px 0 0;
+
+      td,
+      & th {
+        padding: 3px 10px;
+      }
+    }
+
+    #article_tags {
+      a {
+        padding: 0.1rem 0.8rem;
+        margin: 0.5rem 0.4rem 0 0;
+      }
+    }
+  }
+  #related {
+    padding: 0 24px;
+    margin: 28px auto -8px;
+
+    #related-header {
+      font-size: 14px;
+
+      h2 {
+        margin-top: 1em;
+      }
+    }
+
+    #related-container {
+      margin-bottom: 50px;
+
+      .rel-title {
+        font-size: 0.75em;
+        margin: 10px 0;
+      }
+    }
+  }
+}

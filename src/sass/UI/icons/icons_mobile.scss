@@ -1,0 +1,15 @@
+@media (max-width: 1199px) {
+  .icon {
+    margin: 0;
+    opacity: 30%;
+    height: 46px;
+    width: 46px;
+    svg {
+      height: 21px;
+      width: 21px;
+    }
+  }
+  .tooltip {
+    display: none;
+  }
+}

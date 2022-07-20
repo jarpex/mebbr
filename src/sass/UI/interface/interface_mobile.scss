@@ -1,0 +1,125 @@
+@media (max-width: 1199px) {
+  // Прогресс бар на телефонах
+  #progress {
+    width: 100%;
+    left: 0;
+  }
+
+  // Форма поиска на телефонах
+  #search-popup {
+    #searchBox {
+      border-radius: 9px;
+
+      #searchBox__label {
+        padding: 0 10px;
+
+        input {
+          width: 100%;
+          height: 2.5em;
+          margin: 0 0 0 10px;
+          padding: 0;
+        }
+
+        #searchsubmit {
+          max-height: 1.75em;
+          max-width: 1.75em;
+        }
+      }
+    }
+  }
+
+  // Форма списка категорий на телефоне
+  #category-popup {
+    .nav_flex {
+      margin-top: 2em;
+      font-size: 1.25em;
+    }
+    .nav_href {
+      margin: 1em 0 -0.2em;
+    }
+  }
+
+  // Форма настроек на телефоне
+  #settings-popup {
+    .segmented-control {
+      width: 100%;
+      height: 3em;
+      border-radius: 12px;
+
+      &__1,
+      &__2,
+      &__3 {
+        height: 3em;
+        font-size: 0.7em;
+      }
+      &__color {
+        height: 3em;
+        width: 33%;
+        margin-left: 0.5px;
+        border-radius: 9px;
+      }
+    }
+
+    #loginform {
+      flex-direction: column;
+      margin: 1em auto;
+      padding: 2em;
+      border-radius: 9px;
+      #loginform__inputs {
+        justify-content: space-between;
+        height: 5em;
+      }
+      #loginform__actions {
+        margin-top: 2em;
+        input {
+          padding: 0.4em 0.8em;
+        }
+      }
+      figure {
+        display: none;
+      }
+    }
+  }
+
+  // Логотип и описание на формах категории и настроек на телефонах
+  #category-popup__bg .logo,
+  #settings-popup .logo {
+    font-size: 4em;
+    line-height: 1em;
+    margin: 0;
+  }
+
+  #category-popup__bg .header_desc,
+  #settings-popup .header_desc {
+    font-size: 0.75em;
+    margin: 1em 0 2em;
+  }
+
+  // Всплывающие окошки на телефонах
+  .cd-popup-container {
+    width: 100%;
+    height: calc(100vh - 50px);
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    padding: 5em 2em;
+  }
+  .cd-popup-mobile.icon {
+    position: fixed;
+    top: 1em;
+    right: 1em;
+  }
+
+  #navigation {
+    bottom: 0px;
+    height: 50px;
+    width: 100%;
+    padding: 0 15px;
+    justify-content: space-between;
+    border-top: 1px solid var(--border);
+  }
+
+  #navigation__gotop-desktop {
+    display: none;
+  }
+}

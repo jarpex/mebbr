@@ -1,0 +1,17 @@
+@media (min-width: 1200px) and (orientation: landscape) {
+  .icon {
+    font-size: 1vw;
+    margin: 0.5em 0;
+    opacity: 50%;
+    height: 2.4em;
+    width: 2.4em;
+    svg {
+      height: 1.25em;
+      width: 1.25em;
+    }
+    &:hover {
+      background-color: var(--hover);
+      opacity: 70%;
+    }
+  }
+}
