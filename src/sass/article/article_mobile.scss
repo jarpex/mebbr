@@ -104,32 +104,58 @@
         padding: 3px 10px;
       }
     }
-
-    #article_tags {
-      a {
-        padding: 0.1rem 0.8rem;
-        margin: 0.5rem 0.4rem 0 0;
-      }
-    }
   }
-  #related {
-    padding: 0 24px;
-    margin: 28px auto -8px;
 
+  #related {
+    padding: 24px;
+    margin: 60px auto -8px;
+
+    &::before {
+      top: -28px;
+      border-radius: 0;
+    }
     #related-header {
       font-size: 14px;
 
       h2 {
-        margin-top: 1em;
+        margin: 0;
+        font-weight: 700;
+        line-height: 1.2em;
+        font-family: "PT Serif", serif;
+        text-align: left;
+        word-break: break-word;
+      }
+
+      .emoji {
+        height: 1.5em !important;
+        width: 1.5em !important;
       }
     }
 
     #related-container {
-      margin-bottom: 50px;
+      margin-bottom: 0;
 
       .rel-title {
-        font-size: 0.75em;
-        margin: 10px 0;
+        font-size: 1em;
+        margin: 0.5em 0;
+        text-decoration: none;
+        line-height: 24px;
+        border-bottom: solid 3px transparent;
+
+        &:hover {
+          border-color: #aa8dd8;
+        }
+      }
+    }
+
+    #article_tags {
+      a {
+        margin: 0.5em 1em 0 0;
+        border-bottom: solid 3px transparent;
+
+        &:hover {
+          border-color: #aa8dd8;
+        }
       }
     }
   }

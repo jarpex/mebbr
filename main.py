@@ -165,6 +165,7 @@ def main(ver_upd, cfg_file):
     #################################################
     updating_ver(config)
     print(f"{bcolors.GREEN}THEME {sanitaze_key('{Theme_Name}', config)} WAS BUILT SUCESS{bcolors.ENDC}")
+    print('\a')
 
 if __name__ == "__main__":
     argsize = len (argv)

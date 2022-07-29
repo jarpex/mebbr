@@ -31,7 +31,7 @@ wp_head();
             --grey400: #939393;
             --greyDark: #9baacf;
             --selection: rgba(254, 235, 239, 0.99);
-            --box: #edeef0;
+            --box: #f9f9f9;
             --codeselection: rgba(53, 59, 72, 0.99);
         }
 
@@ -70,7 +70,7 @@ wp_head();
                 --greyLight-2: #c8d0e7;
                 --grey400: #939393;
                 --greyDark: #9baacf;
-                --box: #edeef0;
+                --box: #f9f9f9;
                 --codeselection: rgba(53, 59, 72, 0.99);
             }
         }
@@ -110,7 +110,7 @@ wp_head();
         style.setProperty("--greyLight-1", "#e4ebf5");
         style.setProperty("--greyLight-2", "#c8d0e7");
         style.setProperty("--greyDark", "#9baacf");
-        style.setProperty("--box", "#edeef0");
+        style.setProperty("--box", "#f9f9f9");
       };
       var theme = localStorage.getItem("theme");
       if (theme) {
@@ -121,18 +121,6 @@ wp_head();
         }
       }
     </script>
-	<!-- <header>
-        <div id="menu_combo">
-            <a id="logo" href="{site:url}">{site:name}</a>
-            {article:menu}
-        </div>
-        <form class="search_form" role="search" method="get" id="searchform" action="{site:url}" autocomplete="off">
-            <div class="search">
-                <input name="s" class="searchbox" placeholder="Поиск" type="text" maxlength="100" required/>
-                <input type="submit" id="searchsubmit" class="search_icon" value="🔍">
-            </div>
-        </form>
-    </header> -->
     <div id="progress">
       <div id="progress-bar"></div>
     </div>
@@ -396,20 +384,6 @@ wp_head();
             <?php endwhile; else : ?>
             <h2>Мы не смогли ничего найти по твоему запросу :с</h2>
         <?php endif; ?>
-        <?php if( has_tag() ) :  ?>
-            <div id="article_tags">
-                <?php 
-                    $posttags = get_the_tags();
-                    $html = "";
-                    if( $posttags ){
-                        foreach( $posttags as $tag ){
-                            $html .= '<a href="' . esc_attr( get_tag_link( $tag->term_id ) ) . '">' . "#" . $tag->name . '</a>';
-                        }
-                        echo $html;
-                    }
-                ?>
-            </div>
-        <?php  endif;  ?>
     </article>
     
         <?php
@@ -421,25 +395,42 @@ wp_head();
                 $args=array(
                     'category__in' => $category_ids,
                     'post__not_in' => array($post->ID),
-                    'showposts'=>4,
+                    'showposts'=>5,
                     'orderby'=>rand(),
                     'caller_get_posts'=>1);
                 $my_query = new wp_query($args);
                 if( $my_query->have_posts() ) {
-                    echo '<div id="related-header"><h2>Читайте также</h2><img draggable="false" role="img" class="emoji" alt="🧐" src="//static.mebbr.ru/fonts/mebbr/1f9d0.svg"></div><div id="related-container">';
+                    echo '<div id="related-header"><h2>Материалы по теме</h2><img draggable="false" role="img" class="emoji" alt="🔮" src="//static.mebbr.ru/fonts/mebbr/1f52e.svg"></div><div id="related-container"><ul>';
                     while ($my_query->have_posts()) {
                         $my_query->the_post();
                         ?>
-                            <a class="rel-title" href="<?php the_permalink(); ?>">
+                          <?php if( ! empty( $post->post_title ) ) : ?>
+                            <li><a class="rel-title" href="<?php the_permalink(); ?>">
                                 <?php the_title(); ?>
-                            </a>
+                            </a></li>
+                          <?php endif; ?>
                         <?php
                     }
                 }
                 wp_reset_query();
-                echo '</div></div>';
+                echo '</ul></div><hr>';
             }
         ?>
+        <?php if( has_tag() ) :  ?>
+            <div id="article_tags">
+                <?php 
+                    $posttags = get_the_tags();
+                    $html = "";
+                    if( $posttags ){
+                        foreach( $posttags as $tag ){
+                            $html .= '<a href="' . esc_attr( get_tag_link( $tag->term_id ) ) . '">' . $tag->name . '</a>';
+                        }
+                        echo $html;
+                    }
+                ?>
+            </div>
+        <?php  endif;  ?>
+        <?php  echo '</div>'; ?>
     <footer>
         <div id="footer">
             {article:footer_combo}
@@ -499,10 +490,6 @@ wp_head();
       }
     });
 
-    // const goHome = () => {
-    //   window.location.href = "//mebbr.ru";
-    // };
-
     const preventScroll = () => {
       let stylePosition = document.body.style.position;
       progressAllowed = false;
@@ -526,30 +513,12 @@ wp_head();
       document.getElementById("progress").style.maxWidth = "";
       window.scrollTo(0, parseInt(scrollY || "0") * -1);
       progressAllowed = true;
-        // window.scrollTo(0, beforeHide);
     };
-
-    // var beforeHide = 0;
-    // const hideAds = () => {
-    //     beforeHide = window.scrollY;
-    //     let ads = document.getElementsByClassName("advert");
-    //     for (let i = 0; i < ads.length; i++){
-    //         ads[i].classList.add("hide")
-    //     }
-    // }
-
-    // const showAds = () => {
-    //     let ads = document.getElementsByClassName("advert");
-    //     for (let i = 0; i < ads.length; i++){
-    //         ads[i].classList.remove("hide")
-    //     }
-    // }
 
     const goSearch = () => {
       if (searchPopup) {
         if (searchPopup.classList.contains("is-visible")) {
           searchPopup.classList.remove("is-visible");
-          // showAds();
           searchPopup.removeEventListener("click", closeSearch);
           searchPopupExit.removeEventListener("click", goSearch);
           allowScroll();
@@ -568,7 +537,6 @@ wp_head();
                   this.removeEventListener('keydown', arguments.callee);
               }
           });
-          // hideAds();
         }
       }
       document.getElementById("searchBox__input").focus();
@@ -583,7 +551,6 @@ wp_head();
       
       if (searchPopup) {
         searchPopup.classList.remove("is-visible");
-        // showAds();
         searchPopup.removeEventListener("click", closeSearch);
         allowScroll();
       }
@@ -593,7 +560,6 @@ wp_head();
       if (categoryPopup) {
         if (categoryPopup.classList.contains("is-visible")) {
           categoryPopup.classList.remove("is-visible");
-          // showAds();
           categoryPopup.removeEventListener("click", closeCategory);
           categoryPopupExit.removeEventListener("click", goCategory);
           allowScroll();
@@ -612,7 +578,6 @@ wp_head();
                   this.removeEventListener('keydown', arguments.callee);
               }
           });
-          // hideAds();
         }
       }
     };
@@ -625,7 +590,6 @@ wp_head();
       }
       if (categoryPopup) {
         categoryPopup.classList.remove("is-visible");
-        // showAds();
         categoryPopup.removeEventListener("click", closeCategory);
         allowScroll();
       }
@@ -635,7 +599,6 @@ wp_head();
       if (settingsPopup) {
         if (settingsPopup.classList.contains("is-visible")) {
           settingsPopup.classList.remove("is-visible");
-          // showAds();
           settingsPopup.removeEventListener("click", closeSettings);
           settingsPopupExit.removeEventListener("click", goSettings);
           allowScroll();
@@ -654,7 +617,6 @@ wp_head();
                   this.removeEventListener('keydown', arguments.callee);
               }
           });
-          // hideAds();
         }
       }
     };
@@ -667,7 +629,6 @@ wp_head();
       }
       if (settingsPopup) {
         settingsPopup.classList.remove("is-visible");
-        // showAds();
         settingsPopup.removeEventListener("click", closeSettings);
         allowScroll();
       }
@@ -702,13 +663,6 @@ wp_head();
         e.currentTarget.parentElement.getElementsByClassName("tooltip")[0];
       tooltip.style.opacity = "0%";
     };
-
-    // const showTooltip = (e) => {
-    //   var x = e.clientX;
-    //   var y = e.clientY;
-    //   document.getElementByClassName("tooltip")[0].style.left = x ++ "px";
-    //   document.getElementByClassName("tooltip")[0].style.top = y + "px";
-    // };
 
     let tooltips = document.getElementsByClassName("tooltip");
     if (tooltips) {
