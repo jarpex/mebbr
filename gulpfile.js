@@ -2,6 +2,7 @@ const gulp = require("gulp");
 const sass = require("gulp-sass")(require("sass"));
 const del = require("del");
 const cleanCSS = require("gulp-clean-css");
+const csso = require("gulp-csso");
 
 gulp.task("styles", () => {
   return gulp
@@ -15,6 +16,7 @@ gulp.task("styles", () => {
         console.log(`Compressed size: ${details.stats.minifiedSize} Bytes`);
       })
     )
+    .pipe(csso())
     .pipe(gulp.dest("./css/min/"));
 });
 
