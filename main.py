@@ -160,6 +160,7 @@ def main(ver_upd, cfg_file):
     copy_file("{Theme_Comments}","/build/theme/comments.php", config)
     copy_file("{Theme_Content_None}","/build/theme/content-none.php", config)
     build_file("/src/theme/index.php", "/build/theme/", "/build/theme/index.php", config)
+    build_file("/src/theme/home-tamplate.php", "/build/theme/", "/build/theme/home-tamplate.php", config)
     build_file("/src/theme/single.php", "/build/theme/", "/build/theme/single.php", config)
     build_file("/src/theme/single.php", "/build/theme/", "/build/theme/page.php", config)
     #################################################

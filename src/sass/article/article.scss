@@ -278,6 +278,36 @@ body {
   }
 }
 
+//Форма комментариев
+#comments-box {
+  width: 100%;
+  max-width: 650px;
+  margin: 2.35rem auto 0;
+  position: relative;
+  box-sizing: border-box;
+  background-color: var(--box);
+  border-radius: 0.75em;
+
+  #comments {
+    ol {
+      list-style-type: none;
+    }
+    .comment-body {
+      overflow-wrap: break-word;
+    }
+    .vcard img {
+      border-radius: 50%;
+      display: inline-block;
+    }
+  }
+  a {
+    text-decoration: none;
+    color: var(--text);
+  }
+  #respond {
+  }
+}
+
 footer {
   border-top: solid 1px var(--border);
   background: var(--box);

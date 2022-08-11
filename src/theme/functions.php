@@ -77,6 +77,16 @@ if ( ! function_exists( 'gp_read_time' ) ) {
     }
 ?>
 <?php
+add_filter( 'preprocess_comment', 'wpb_preprocess_comment' );
+  
+function wpb_preprocess_comment($comment) {
+    if ( strlen( $comment['comment_content'] ) > 5000 ) {
+        wp_die('Ого сколько ты написал! Попробуй-ка уложиться в 5000 символов с:');
+    }
+    return $comment;
+}
+?>
+<?php
 remove_filter( 'the_title', 'wptexturize' );
 remove_filter( 'the_content', 'wptexturize' );
 remove_filter( 'the_excerpt', 'wptexturize' );

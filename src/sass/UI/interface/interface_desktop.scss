@@ -5,6 +5,147 @@
     left: 3vw;
   }
 
+  @-webkit-keyframes slide-in-right {
+    0% {
+      -webkit-transform: translateX(1000px);
+      transform: translateX(1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slide-in-right {
+    0% {
+      -webkit-transform: translateX(1000px);
+      transform: translateX(1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @-webkit-keyframes slide-out-bck-center {
+    0% {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: translateZ(-1100px);
+      transform: translateZ(-1100px);
+      opacity: 0;
+    }
+  }
+  @keyframes slide-out-bck-center {
+    0% {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: translateZ(-1100px);
+      transform: translateZ(-1100px);
+      opacity: 0;
+    }
+  }
+
+  #notification-area {
+    user-select: none;
+    top: 0;
+    right: 0;
+    width: 20vw;
+    padding: 1.75vw;
+    display: block;
+    position: fixed;
+
+    .notification {
+      padding: 0.75vw;
+      margin-bottom: 1.75em;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--bg);
+      border: solid 1px var(--border);
+      border-radius: 0.65vw;
+
+      box-shadow: rgb(0 0 0 / 4%) 0px 3px 5px;
+
+      &.slide-in-right {
+        -webkit-animation: slide-in-right 0.5s
+          cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        animation: slide-in-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+      }
+
+      &.slide-out-bck-center {
+        -webkit-animation: slide-out-bck-center 0.5s
+          cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+        animation: slide-out-bck-center 0.5s
+          cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+      }
+
+      .notification-header--box {
+        height: 1em;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-between;
+
+        figure {
+          height: 1.5em;
+          width: 1.5em;
+
+          svg {
+            height: 0.65em;
+            width: 0.65em;
+          }
+        }
+      }
+
+      .notification-header {
+        font-family: "PT Serif", serif;
+        font-weight: 700;
+        font-size: 0.75vw;
+      }
+
+      &.notification-text {
+        .notification-content {
+          margin-bottom: 0;
+          font-size: 0.6vw;
+        }
+      }
+
+      &.notification-video {
+        .notification-link {
+          img {
+            margin-top: 0.6vw;
+            width: 18.5vw;
+            max-height: 10.4vw;
+
+            border-radius: 0.45vw;
+
+            object-fit: cover;
+          }
+        }
+      }
+
+      &.notification-audio {
+        audio {
+          margin-top: 0.6vw;
+          width: 100%;
+
+          &::-webkit-media-controls-panel {
+            background-color: var(--box);
+          }
+        }
+      }
+    }
+  }
+
   // Форма поиска на ПК
   #search-popup {
     #searchBox {

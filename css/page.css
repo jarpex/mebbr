@@ -644,6 +644,9 @@ template {
     width: 100%;
     left: 0;
   }
+  #notification-area {
+    display: none;
+  }
   #search-popup #searchBox {
     border-radius: 9px;
   }
@@ -741,6 +744,120 @@ template {
   #progress {
     width: calc(97vw - (100vw - 100%));
     left: 3vw;
+  }
+  @-webkit-keyframes slide-in-right {
+    0% {
+      -webkit-transform: translateX(1000px);
+      transform: translateX(1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slide-in-right {
+    0% {
+      -webkit-transform: translateX(1000px);
+      transform: translateX(1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @-webkit-keyframes slide-out-bck-center {
+    0% {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: translateZ(-1100px);
+      transform: translateZ(-1100px);
+      opacity: 0;
+    }
+  }
+  @keyframes slide-out-bck-center {
+    0% {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: translateZ(-1100px);
+      transform: translateZ(-1100px);
+      opacity: 0;
+    }
+  }
+  #notification-area {
+    user-select: none;
+    top: 0;
+    right: 0;
+    width: 20vw;
+    padding: 1.75vw;
+    display: block;
+    position: fixed;
+  }
+  #notification-area .notification {
+    padding: 0.75vw;
+    margin-bottom: 1.75em;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg);
+    border: solid 1px var(--border);
+    border-radius: 0.65vw;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+  }
+  #notification-area .notification.slide-in-right {
+    -webkit-animation: slide-in-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: slide-in-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+  #notification-area .notification.slide-out-bck-center {
+    -webkit-animation: slide-out-bck-center 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+    animation: slide-out-bck-center 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+  }
+  #notification-area .notification .notification-header--box {
+    height: 1em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  #notification-area .notification .notification-header--box figure {
+    height: 1.5em;
+    width: 1.5em;
+  }
+  #notification-area .notification .notification-header--box figure svg {
+    height: 0.65em;
+    width: 0.65em;
+  }
+  #notification-area .notification .notification-header {
+    font-family: "PT Serif", serif;
+    font-weight: 700;
+    font-size: 0.75vw;
+  }
+  #notification-area .notification.notification-text .notification-content {
+    margin-bottom: 0;
+    font-size: 0.6vw;
+  }
+  #notification-area .notification.notification-video .notification-link img {
+    margin-top: 0.6vw;
+    width: 18.5vw;
+    max-height: 10.4vw;
+    border-radius: 0.45vw;
+    object-fit: cover;
+  }
+  #notification-area .notification.notification-audio audio {
+    margin-top: 0.6vw;
+    width: 100%;
+  }
+  #notification-area .notification.notification-audio audio::-webkit-media-controls-panel {
+    background-color: var(--box);
   }
   #search-popup #searchBox {
     border-radius: 0.65vw;
@@ -1120,6 +1237,29 @@ body ::selection {
   content: "#";
 }
 
+#comments-box {
+  width: 100%;
+  max-width: 650px;
+  margin: 2.35rem auto 0;
+  position: relative;
+  box-sizing: border-box;
+  background-color: var(--box);
+  border-radius: 0.75em;
+}
+#comments-box #comments ol {
+  list-style-type: none;
+}
+#comments-box #comments .comment-body {
+  overflow-wrap: break-word;
+}
+#comments-box #comments .vcard img {
+  border-radius: 50%;
+  display: inline-block;
+}
+#comments-box a {
+  text-decoration: none;
+  color: var(--text);
+}
 footer {
   border-top: solid 1px var(--border);
   background: var(--box);

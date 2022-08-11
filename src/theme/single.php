@@ -120,9 +120,106 @@ wp_head();
           setLight();
         }
       }
+
+      const notify = ({type,title,content,link,src}) => {
+      let notificationArea = document.getElementById("notification-area");
+      if (type === "text"){
+        if (title && content) {
+          let html = `<div class="notification notification-text slide-in-right">
+                        <div class="notification-header--box">
+                          <span data-nosnippet class="notification-header">${title}</span>
+                          <figure class="icon" onclick="remove(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                              <path d="M23.707.293a1 1 0 0 0-1.414 0L12 10.586 1.707.293a1 1 0 0 0-1.414 0 1 1 0 0 0 0 1.414L10.586 12 .293 22.293a1 1 0 0 0 0 1.414 1 1 0 0 0 1.414 0L12 13.414l10.293 10.293a1 1 0 0 0 1.414 0 1 1 0 0 0 0-1.414L13.414 12 23.707 1.707a1 1 0 0 0 0-1.414Z"></path>
+                            </svg>
+                          </figure>
+                        </div>
+                        <p data-nosnippet class="notification-content">${content}</p>
+                    </div>`
+          notificationArea.insertAdjacentHTML( 'afterbegin', html);
+        } else {
+          throw "Произошла ошибка при вызове уведомления 😣";
+        }
+      } else if (type === "video"){
+        if (link && src) {
+          let html = `<div class="notification notification-video slide-in-right">
+                        <div class="notification-header--box">
+                          <span data-nosnippet class="notification-header">📺 По этой статье я сняла видео!</span>
+                          <figure class="icon" onclick="remove(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                              <path d="M23.707.293a1 1 0 0 0-1.414 0L12 10.586 1.707.293a1 1 0 0 0-1.414 0 1 1 0 0 0 0 1.414L10.586 12 .293 22.293a1 1 0 0 0 0 1.414 1 1 0 0 0 1.414 0L12 13.414l10.293 10.293a1 1 0 0 0 1.414 0 1 1 0 0 0 0-1.414L13.414 12 23.707 1.707a1 1 0 0 0 0-1.414Z"></path>
+                            </svg>
+                          </figure>
+                        </div>
+                        <a href="${link}" class="notification-link" target="_blank"><img src="${src}" /></a>
+                    </div>`
+          notificationArea.insertAdjacentHTML( 'afterbegin', html);
+        } else {
+          throw "Произошла ошибка при вызове уведомления 😣";
+        }
+      } else if (type === "audio") {
+        if (src) {
+          let html = `<div class="notification notification-audio slide-in-right">
+                        <div class="notification-header--box">
+                          <span data-nosnippet class="notification-header">🎵 Эту статью можно прослушать!</span>
+                          <figure class="icon" onclick="remove(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                              <path d="M23.707.293a1 1 0 0 0-1.414 0L12 10.586 1.707.293a1 1 0 0 0-1.414 0 1 1 0 0 0 0 1.414L10.586 12 .293 22.293a1 1 0 0 0 0 1.414 1 1 0 0 0 1.414 0L12 13.414l10.293 10.293a1 1 0 0 0 1.414 0 1 1 0 0 0 0-1.414L13.414 12 23.707 1.707a1 1 0 0 0 0-1.414Z"></path>
+                            </svg>
+                          </figure>
+                        </div>
+                        <audio controls controlsList="nodownload noplaybackrate" src="${src}">
+            Ваш браузер устарел 😣
+        </audio>
+                    </div>`
+          notificationArea.insertAdjacentHTML( 'afterbegin', html);
+        } else {
+          throw "Произошла ошибка при вызове уведомления 😣";
+        }
+      }else {
+        throw "Произошла ошибка при вызове уведомления 😣";
+      }
+    }
     </script>
     <div id="progress">
       <div id="progress-bar"></div>
+    </div>
+    <div id="notification-area">
+      <!-- <div class="notification notification-text">
+        <div class="notification-header--box">
+          <span data-nosnippet class="notification-header">Тестовое сообщение</span>
+          <figure class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M23.707.293a1 1 0 0 0-1.414 0L12 10.586 1.707.293a1 1 0 0 0-1.414 0 1 1 0 0 0 0 1.414L10.586 12 .293 22.293a1 1 0 0 0 0 1.414 1 1 0 0 0 1.414 0L12 13.414l10.293 10.293a1 1 0 0 0 1.414 0 1 1 0 0 0 0-1.414L13.414 12 23.707 1.707a1 1 0 0 0 0-1.414Z"></path>
+            </svg>
+          </figure>
+        </div>
+        <p data-nosnippet class="notification-content">Всем пиривет :3 Сегодня мы с вами протестируем работу системы оповещаний на прекрасном сайтике https://mebbr.ru</p>
+      </div>
+      <div class="notification notification-video">
+        <div class="notification-header--box">
+          <span span data-nosnippet class="notification-header">📺 По этой статье я сняла видео!</span>
+          <figure class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M23.707.293a1 1 0 0 0-1.414 0L12 10.586 1.707.293a1 1 0 0 0-1.414 0 1 1 0 0 0 0 1.414L10.586 12 .293 22.293a1 1 0 0 0 0 1.414 1 1 0 0 0 1.414 0L12 13.414l10.293 10.293a1 1 0 0 0 1.414 0 1 1 0 0 0 0-1.414L13.414 12 23.707 1.707a1 1 0 0 0 0-1.414Z"></path>
+            </svg>
+          </figure>
+        </div>
+        <a href="//youtube.com/DefaultJarpex" class="notification-link"><img src="https://cdn.mebbr.ru/wp-content/uploads/2020/07/Обзор-монитора-Samsung-S32R750QEI.webp" /></a>
+      </div>
+      <div class="notification notification-audio">
+        <div class="notification-header--box">
+          <span data-nosnippet class="notification-header">🎵 Эту статью можно прослушать!</span>
+          <figure class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M23.707.293a1 1 0 0 0-1.414 0L12 10.586 1.707.293a1 1 0 0 0-1.414 0 1 1 0 0 0 0 1.414L10.586 12 .293 22.293a1 1 0 0 0 0 1.414 1 1 0 0 0 1.414 0L12 13.414l10.293 10.293a1 1 0 0 0 1.414 0 1 1 0 0 0 0-1.414L13.414 12 23.707 1.707a1 1 0 0 0 0-1.414Z"></path>
+            </svg>
+          </figure>
+        </div>
+        <audio controls controlsList="nodownload noplaybackrate" src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3">
+            Ваш браузер устарел 😣
+        </audio>
+      </div> -->
     </div>
     <div id="search-popup" class="cd-popup" role="alert">
       <div id="search-popup__bg" class="cd-popup-container">
@@ -139,7 +236,7 @@ wp_head();
           role="search"
           method="get"
           id="searchform"
-          action="//mebbr.ru"
+          action="{site:url}"
           autocomplete="off"
         >
           <label id="searchBox__label" class="inputBox__label">
@@ -173,54 +270,11 @@ wp_head();
             />
           </svg>
         </figure>
-        <a href="//mebbr.ru" class="logo"> MEBBR </a>
-        <p class="header_desc">Всё самое интересное из мира IT, и не только.</p>
+        <a href="{site:url}" class="logo"> {site:name} </a>
+        <p class="header_desc">{site_description}</p>
         <div class="nav_flex">
           <nav class="nav" role="navigation">
-            <a class="nav_href" href="//mebbr.ru/software/"
-              ><img
-                draggable="false"
-                role="img"
-                class="emoji"
-                alt="💾"
-                width="32"
-                height="32"
-                src="//static.mebbr.ru/fonts/mebbr/1f4be.svg"
-              /><span class="nav_span">Программы</span></a
-            >
-            <a class="nav_href" href="//mebbr.ru/hardware/"
-              ><img
-                draggable="false"
-                role="img"
-                class="emoji"
-                alt="🔩"
-                width="32"
-                height="32"
-                src="//static.mebbr.ru/fonts/mebbr/1f529.svg"
-              /><span class="nav_span">Железо</span></a
-            >
-            <a class="nav_href" href="//mebbr.ru/internet/"
-              ><img
-                draggable="false"
-                role="img"
-                class="emoji"
-                alt="🌍"
-                width="32"
-                height="32"
-                src="//static.mebbr.ru/fonts/mebbr/1f30d.svg"
-              /><span class="nav_span">Интернет</span></a
-            >
-            <a class="nav_href" href="//mebbr.ru/lifehacks/"
-              ><img
-                draggable="false"
-                role="img"
-                class="emoji"
-                alt="💡"
-                width="32"
-                height="32"
-                src="//static.mebbr.ru/fonts/mebbr/1f4a1.svg"
-              /><span class="nav_span">Лайфхаки</span></a
-            >
+            <ul style="list-style:none;padding:0;"><?php wp_list_categories('include=2,6&title_li='); ?></ul>
           </nav>
         </div>
       </div>
@@ -234,8 +288,8 @@ wp_head();
             />
           </svg>
         </figure>
-        <a href="//mebbr.ru" class="logo"> MEBBR </a>
-        <p class="header_desc">Всё самое интересное из мира IT, и не только.</p>
+        <a href="{site:url}" class="logo"> {site:name} </a>
+        <p class="header_desc">{site_description}</p>
         <p class="settings-popup__bg-heading">🌙 Выбор темы:</p>
         <form name="theme" class="segmented-control" id="theme-switcher">
           <input
@@ -265,7 +319,7 @@ wp_head();
         <form
           name="loginform"
           id="loginform"
-          action="https://mebbr.ru/wp-login.php"
+          action="https://{site:domain}/wp-login.php"
           method="post"
         >
           <div id="loginform__inputs">
@@ -294,7 +348,7 @@ wp_head();
             <input
               type="hidden"
               name="redirect_to"
-              value="https://mebbr.ru/wp-admin/"
+              value="https://{site:domain}/wp-admin/"
             />
             <input type="hidden" name="testcookie" value="1" />
           </div>
@@ -303,7 +357,7 @@ wp_head();
     </div>
     <nav id="navigation">
       <div class="tooltip-box">
-        <a href="//mebbr.ru" id="navigation__home" class="icon">
+        <a href="{site:url}" id="navigation__home" class="icon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path
               d="m23.121 9.069-7.585-7.586a5.008 5.008 0 0 0-7.072 0L.879 9.069A2.978 2.978 0 0 0 0 11.19v9.817a3 3 0 0 0 3 3h18a3 3 0 0 0 3-3V11.19a2.978 2.978 0 0 0-.879-2.121ZM15 22.007H9v-3.934a3 3 0 0 1 6 0Zm7-1a1 1 0 0 1-1 1h-4v-3.934a5 5 0 0 0-10 0v3.934H3a1 1 0 0 1-1-1V11.19a1.008 1.008 0 0 1 .293-.707L9.878 2.9a3.008 3.008 0 0 1 4.244 0l7.585 7.586a1.008 1.008 0 0 1 .293.704Z"
@@ -431,6 +485,31 @@ wp_head();
             </div>
         <?php  endif;  ?>
         <?php  echo '</div>'; ?>
+        <div id="comments-box">
+          <?php
+            $comments = get_comments();
+            if( get_comments_number() ){ ?>
+              <div id="comments">
+                <ol>
+                  <?php
+                    wp_list_comments(
+                      array(
+                        'style' => 'ol', // формировать список элементов для тега <ol>
+                        'per_page' => 0, // количество комментариев на странице
+                        'page' => 1,
+                        'avatar_size' => 50, // размер аватара пользователя
+                        )
+                    );
+                  ?>
+                </ol>
+                </div>
+              <?php }?> 
+              <?php  if( get_comments_number() > 10){ the_comments_pagination(); }?> 
+          <?php comment_form(); ?>
+        </div>
+        
+
+        
     <footer>
         <div id="footer">
             {article:footer_combo}
@@ -461,7 +540,7 @@ wp_head();
       return (v * w) / 100;
     }
 
-    const doSomething = (scrollPos) => {
+    const progressBarUpdate = (scrollPos) => {
       if (progressAllowed){
         let percent =
         ((scrollPos + window.innerHeight - main.offsetTop) /
@@ -482,7 +561,7 @@ wp_head();
 
       if (!ticking) {
         window.requestAnimationFrame(function () {
-          doSomething(lastKnownScrollPosition);
+          progressBarUpdate(lastKnownScrollPosition);
           ticking = false;
         });
 
@@ -514,6 +593,13 @@ wp_head();
       window.scrollTo(0, parseInt(scrollY || "0") * -1);
       progressAllowed = true;
     };
+
+    const remove = (el) => {
+      el.parentNode.parentNode.classList.add("slide-out-bck-center");
+      setTimeout(function(){
+        el.parentNode.parentNode.remove();
+      }, 500);
+    }
 
     const goSearch = () => {
       if (searchPopup) {
@@ -708,6 +794,13 @@ wp_head();
         document.getElementById("tab-2").checked = true;
       }
     }
+
+    // let everyNotification = notificationArea.getElementsByClassName("notification");
+    // for (let i = 0; i < everyNotification.length; i++) {
+    //   everyNotification[i].getElementsByClassName("icon")[0].onClick = function () {
+    //     this.parentNode.parentNode
+    //   }
+    // }
   </script>
 <script type="text/javascript">
     window.onload = function(){
