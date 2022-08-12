@@ -74,6 +74,10 @@ wp_head();
                 --codeselection: rgba(53, 59, 72, 0.99);
             }
         }
+
+        .cd-popup {
+          visibility: hidden;
+        }
     </style>
 </head>
 <body>

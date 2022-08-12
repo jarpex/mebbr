@@ -80,7 +80,7 @@ wp_head();
                 --text: rgba(18, 18, 18, 0.999);
                 --button: rgba(0, 0, 0);
                 --border: #e9e9e9;
-                --bg: #edeef0;
+                --bg: rgba(255, 255, 255, 0.999);
                 --selection: rgba(254, 235, 239, 0.99);
                 --primary: #6d5dfc;
             }

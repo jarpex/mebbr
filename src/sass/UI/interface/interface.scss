@@ -60,7 +60,8 @@ $opacity: 0.1s;
     align-items: center;
   }
 
-  .nav_href {
+  .nav_href,
+  .nav_flex a {
     display: flex;
     align-items: center;
     color: var(--text);
