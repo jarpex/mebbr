@@ -287,7 +287,7 @@ wp_head();
       </button>
     </label>
   </form>
-  <ul id="category"><?php wp_list_categories('include=2,6&title_li='); ?></ul>
+  <ul id="category"><?php wp_list_categories('title_li='); ?></ul>
 </body>
 <script>
   document.getElementById('searchBox__input').addEventListener('focus', function(){

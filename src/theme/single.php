@@ -278,7 +278,7 @@ wp_head();
         <p class="header_desc">{site_description}</p>
         <div class="nav_flex">
           <nav class="nav" role="navigation">
-            <ul style="list-style:none;padding:0;"><?php wp_list_categories('include=2,6&title_li='); ?></ul>
+            <ul style="list-style:none;padding:0;"><?php wp_list_categories('title_li='); ?></ul>
           </nav>
         </div>
       </div>

@@ -294,6 +294,7 @@ wp_head();
                 width: 100vw;
                 height: auto;
                 padding: 0 5vw;
+                display: grid;
             }
 
             .logo {
