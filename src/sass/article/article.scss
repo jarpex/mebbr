@@ -288,6 +288,7 @@ body {
 #comments-box {
   width: 100%;
   max-width: 650px;
+  padding: 1.4em;
   margin: 2.35rem auto 0;
   position: relative;
   box-sizing: border-box;
@@ -296,14 +297,44 @@ body {
 
   #comments {
     ol {
+      padding: 0;
       list-style-type: none;
     }
     .comment-body {
       overflow-wrap: break-word;
     }
-    .vcard img {
-      border-radius: 50%;
-      display: inline-block;
+    .vcard {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      & .fn {
+        position: relative;
+        top: -40px;
+      }
+
+      & .says {
+        position: relative;
+        top: -40px;
+        right: -3px
+      }
+      
+      img {
+        margin: 0 0.5em 0.5em 0;
+        border-radius: 50%;
+        display: inline-block;
+      }
+    }
+
+    .commentmetadata {
+      position: relative;
+      top: -35px;
+      right: -65px;
+
+      a{
+        color: var(--grey400);
+        font-size: 13px;
+      }
     }
   }
   a {
