@@ -78,6 +78,10 @@ wp_head();
         .cd-popup {
           visibility: hidden;
         }
+        
+        .tooltip {
+          opacity: 0;
+        }
     </style>
 </head>
 <body>
