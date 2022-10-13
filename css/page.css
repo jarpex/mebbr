@@ -1278,12 +1278,13 @@ body ::selection {
 }
 #comments-box #comments .vcard .fn {
   position: relative;
-  top: -40px;
+  top: -1.1rem;
+  right: -0.5rem;
 }
 #comments-box #comments .vcard .says {
   position: relative;
-  top: -40px;
-  right: -3px;
+  top: -1.1rem;
+  right: -0.65rem;
 }
 #comments-box #comments .vcard img {
   margin: 0 0.5em 0.5em 0;
@@ -1521,6 +1522,7 @@ img.emoji {
     font-size: 12px;
     margin: 8px 0 0;
     opacity: 0.75;
+    line-height: 1.3em;
   }
   #main blockquote {
     margin: 28px 0 -8px -12px;
@@ -1664,6 +1666,7 @@ img.emoji {
   #main figcaption {
     font-size: 17px;
     margin-top: 10px;
+    line-height: 1.1em;
   }
   #main hr {
     margin: 2.35rem 0 0;
