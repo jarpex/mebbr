@@ -6,7 +6,7 @@ const csso = require("gulp-csso");
 
 gulp.task("styles", () => {
   return gulp
-    .src("src/sass/page.scss")
+    .src("sass/page.scss")
     .pipe(sass().on("error", sass.logError))
     .pipe(gulp.dest("./css/"))
     .pipe(
