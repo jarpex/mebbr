@@ -160,12 +160,12 @@ def main(ver_upd, cfg_file):
     copy_file("{Theme_Comments}","/build/theme/comments.php", config)
     copy_file("{Theme_Content_None}","/build/theme/content-none.php", config)
     build_file("/src/theme/index.php", "/build/theme/", "/build/theme/index.php", config)
-    build_file("/src/theme/home-tamplate.php", "/build/theme/", "/build/theme/home-tamplate.php", config)
+    build_file("/src/theme/home-template.php", "/build/theme/", "/build/theme/home-template.php", config)
     build_file("/src/theme/single.php", "/build/theme/", "/build/theme/single.php", config)
     build_file("/src/theme/single.php", "/build/theme/", "/build/theme/page.php", config)
     #################################################
     updating_ver(config)
-    print(f"{bcolors.GREEN}THEME {sanitaze_key('{Theme_Name}', config)} WAS BUILT SUCESS{bcolors.ENDC}")
+    print(f"{bcolors.GREEN}THEME {sanitaze_key('{Theme_Name}', config)} FOR SITE {sanitaze_key('{site:domain}', config)} WAS BUILT SUCESS{bcolors.ENDC}")
     print('\a')
 
 if __name__ == "__main__":

@@ -52,6 +52,7 @@ wp_head();
             text-rendering: optimizeLegibility;
             margin: 0;
             display: flex;
+            overflow-x: hidden;
         }
 
         @media (prefers-color-scheme: dark) {

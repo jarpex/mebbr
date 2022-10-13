@@ -90,10 +90,8 @@ body {
   }
 
   .wp-block-quote {
-    p {
-      border-left: solid var(--text) 3px;
-      box-sizing: border-box;
-    }
+    border-left: solid var(--text) 3px;
+    box-sizing: border-box;
   }
 
   .wp-block-video {
@@ -316,9 +314,9 @@ body {
       & .says {
         position: relative;
         top: -40px;
-        right: -3px
+        right: -3px;
       }
-      
+
       img {
         margin: 0 0.5em 0.5em 0;
         border-radius: 50%;
@@ -331,7 +329,7 @@ body {
       top: -35px;
       right: -65px;
 
-      a{
+      a {
         color: var(--grey400);
         font-size: 13px;
       }
@@ -366,6 +364,8 @@ footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      -webkit-user-select: none; /* Safari */
+      -ms-user-select: none; /* IE 10+ */
       user-select: none;
 
       a {
@@ -374,6 +374,8 @@ footer {
     }
 
     #footer_combo a {
+      -webkit-user-select: none; /* Safari */
+      -ms-user-select: none; /* IE 10+ */
       user-select: none;
     }
   }
@@ -389,6 +391,8 @@ img.emoji {
   border: none !important;
   box-shadow: none !important;
   background: none !important;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10+ */
   user-select: none;
 }
 

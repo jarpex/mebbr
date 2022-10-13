@@ -23,7 +23,9 @@
 	bottom: 3vw;
 	right: 3vw;
 	z-index: -1;
-	user-select: none;
+	-webkit-user-select: none; /* Safari */
+ 	-ms-user-select: none; /* IE 10+ */
+  	user-select: none;
 }
 @media (max-width: 1199px) and (orientation: portrait) {
 	.message{

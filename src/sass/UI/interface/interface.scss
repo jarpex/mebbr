@@ -52,6 +52,8 @@ $opacity: 0.1s;
 
 // Форма списка категорий
 #category-popup {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10+ */
   user-select: none;
 
   .nav_flex {
@@ -84,6 +86,8 @@ $opacity: 0.1s;
     padding: 0 2vw;
     text-align: left;
   }
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10+ */
   user-select: none;
   .segmented-control {
     margin: 1em auto;

@@ -55,6 +55,8 @@
   }
 
   #notification-area {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10+ */
     user-select: none;
     top: 0;
     right: 0;

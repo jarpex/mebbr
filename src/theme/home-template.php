@@ -61,6 +61,8 @@ wp_head();
             justify-content: center;
             align-items: center;
             height: 100%;
+            -webkit-user-select: none; /* Safari */
+            -ms-user-select: none; /* IE 10+ */
             user-select: none;
         }
 
