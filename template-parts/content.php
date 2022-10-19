@@ -9,6 +9,11 @@
 
 ?>
 
+<?php if( is_singular( $post_types ) ){
+	get_template_part( 'navigation' );
+}
+?>
+
 <article id="main" class="hyphenate">
 	<header class="entry-header">
 		<?php
