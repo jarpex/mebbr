@@ -9,43 +9,55 @@
 
 ?>
 
-<section class="no-results not-found">
-	<header class="page-header">
-		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'mebbr' ); ?></h1>
-	</header><!-- .page-header -->
-
-	<div class="page-content">
-		<?php
-		if ( is_home() && current_user_can( 'publish_posts' ) ) :
-
-			printf(
-				'<p>' . wp_kses(
-					/* translators: 1: link to WP admin new post page. */
-					__( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'mebbr' ),
-					array(
-						'a' => array(
-							'href' => array(),
-						),
-					)
-				) . '</p>',
-				esc_url( admin_url( 'post-new.php' ) )
-			);
-
-		elseif ( is_search() ) :
-			?>
-
-			<p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'mebbr' ); ?></p>
-			<?php
-			get_search_form();
-
-		else :
-			?>
-
-			<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'mebbr' ); ?></p>
-			<?php
-			get_search_form();
-
-		endif;
-		?>
-	</div><!-- .page-content -->
-</section><!-- .no-results -->
+<style>
+.message {
+	position: absolute;
+	top: 30%;
+	margin: -3em 5vw 0 0;
+}
+.message_title {
+    text-align: center;
+    font-size: 3em;
+	margin: 0 0 5vw;
+}
+.message_content {
+	font-size: 1.5em;
+	width: 80%;
+    margin: 0 auto;
+}
+.message_img {
+	width: 15vw;
+	position: fixed;
+	bottom: 3vw;
+	right: 3vw;
+	z-index: -1;
+	-webkit-user-select: none; /* Safari */
+ 	-ms-user-select: none; /* IE 10+ */
+  	user-select: none;
+}
+@media (max-width: 1199px) and (orientation: portrait) {
+	.message{
+		position: relative;
+		margin: 2em 0 0 0;
+	}
+	.message_title {
+		font-size: 12em;
+	}
+	.message_img {
+		position: relative;
+		width: 50%;
+		margin: 0 auto;
+		display: block;
+	}
+	.message_content {
+		font-size: 7em;
+	}
+}
+</style>
+<section class="message">
+	<h1 class="message_title">Ничего не&nbsp;найдено :с</h1>
+	<img class="message_img" src="//static.mebbr.ru/img/crying.webp">
+	<div class="message_content">
+		<p>Я&nbsp;очень хотела тебе помочь, но&nbsp;похоже у&nbsp;меня нету такой страницы &gt;_&lt;. Ты&nbsp;же не&nbsp;плохой человек и&nbsp;не&nbsp;пытался заставить меня искать&nbsp;то, чего не&nbsp;существует, правда?</p>
+	</div>
+</section>

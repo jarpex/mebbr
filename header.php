@@ -18,8 +18,6 @@
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	<link rel="preconnect" href="//static.mebbr.ru">
 	<link rel="preconnect" href="//cdn.suckless.ru">
-    <link rel="preload" href="https://suckless.ru/wp-content/themes/mebbr-b/page.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-	<noscript><link rel="stylesheet" href="https://suckless.ru/wp-content/themes/mebbr-b/page.css"></noscript>
     <link rel="preload" href="//static.mebbr.ru/fonts/mebbr/PTSerif.woff2" as="font" type="font/woff2" crossorigin>
 	<link rel="preload" href="//static.mebbr.ru/fonts/mebbr/Mont.woff2" as="font"type="font/woff2" crossorigin>
 	<link rel="preload" href="//static.mebbr.ru/fonts/mebbr/PT-Mono_Regular.woff2" as="font"type="font/woff2" crossorigin>

@@ -10,6 +10,9 @@
 get_header();
 ?>
 
+<link rel="preload" href="https://suckless.ru/wp-content/themes/mebbr-b/css/min/page.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript><link rel="stylesheet" href="https://suckless.ru/wp-content/themes/mebbr-b/css/min/page.css"></noscript>
+
 	<main id="primary" class="site-main">
 
 		<?php
