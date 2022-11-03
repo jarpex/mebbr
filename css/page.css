@@ -1085,6 +1085,9 @@ body ::selection {
   display: flex;
   align-items: center;
 }
+#main #autor_card #avatar_card--link {
+  display: contents;
+}
 #main #autor_card .avatar {
   border-radius: 50%;
   display: inline-block;

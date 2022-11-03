@@ -21,7 +21,7 @@
 		if ( 'post' === get_post_type() ) :
 			?>
 			<div id="autor_card">
-				<a href="<?php echo get_the_author_meta('url'); ?>" target="_blank"><?php echo get_avatar( get_the_author_meta('user_email'), 50 ); ?></a>
+				<a id="avatar_card--link" href="<?php echo get_the_author_meta('url'); ?>" target="_blank"><?php echo get_avatar( get_the_author_meta('user_email'), 50 ); ?></a>
 				<div class="post_meta">
 					<a id="autor_url" href="<?php echo get_the_author_meta('url'); ?>" target="_blank"><?php the_author(); ?></a>
 					<span class="post_date"><?php

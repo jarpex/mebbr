@@ -64,6 +64,10 @@ get_header();
             font-size: .85vw;
         }
 
+        #page {
+            position: absolute;
+        }
+
         a {
             color: var(--text);
             text-decoration: none;

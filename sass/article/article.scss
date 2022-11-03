@@ -36,6 +36,10 @@ body {
     display: flex;
     align-items: center;
 
+    #avatar_card--link {
+      display: contents;
+    }
+
     .avatar {
       border-radius: 50%;
       display: inline-block;
