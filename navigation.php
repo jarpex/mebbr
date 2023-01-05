@@ -8,7 +8,7 @@
 				<figure class="cd-popup-mobile icon">
 					<img src="//static.mebbr.ru/img/exit.svg" width="30" height="30" />
 				</figure>
-				<form id="searchBox" class="inputBox" role="search" method="get" id="searchform" action="//suckless.ru"
+				<form id="searchBox" class="inputBox" role="search" method="get" id="searchform" action="<?php echo home_url(); ?>"
 					autocomplete="off">
 					<label id="searchBox__label" class="inputBox__label">
 						<input name="s" type="text" placeholder="Поиск по сайту" minlength="1" maxlength="150" required
@@ -25,7 +25,7 @@
 				<figure class="cd-popup-mobile icon">
 					<img src="//static.mebbr.ru/img/exit.svg" width="30" height="30" />
 				</figure>
-				<a href="//suckless.ru" class="logo"> suckless </a>
+				<a href="<?php echo home_url(); ?>" class="logo"> suckless </a>
 				<p class="header_desc">База знаний в сфере IT.</p>
 				<div class="nav_flex">
 					<nav class="nav" role="navigation">
@@ -39,7 +39,7 @@
 				<figure class="cd-popup-mobile icon">
 					<img src="//static.mebbr.ru/img/exit.svg" width="30" height="30" />
 				</figure>
-				<a href="//suckless.ru" class="logo"> suckless </a>
+				<a href="<?php echo home_url(); ?>" class="logo"> suckless </a>
 				<p class="header_desc">База знаний в сфере IT.</p>
 				<p class="settings-popup__bg-heading">🌙 Выбор темы:</p>
 				<form name="theme" class="segmented-control" id="theme-switcher">
@@ -61,7 +61,7 @@
 					<div class="segmented-control__color"></div>
 				</form>
 				<p class="settings-popup__bg-heading">🪪 Авторизация:</p>
-				<form name="loginform" id="loginform" action="https://suckless.ru/wp-login.php" method="post">
+				<form name="loginform" id="loginform" action="<?php echo home_url("/wp-login.php"); ?>" method="post">
 					<div id="loginform__inputs">
 						<input type="text" name="log" id="user_login" placeholder="Логин" />
 						<input type="password" name="pwd" id="user_pass" placeholder="Пароль" />
@@ -79,7 +79,7 @@
 		</div>
 		<nav id="navigation">
 			<div class="tooltip-box">
-				<a href="//suckless.ru" id="navigation__home" class="icon">
+				<a href="<?php echo home_url(); ?>" id="navigation__home" class="icon">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30">
 						<path
 							d="m23.121 9.069-7.585-7.586a5.008 5.008 0 0 0-7.072 0L.879 9.069A2.978 2.978 0 0 0 0 11.19v9.817a3 3 0 0 0 3 3h18a3 3 0 0 0 3-3V11.19a2.978 2.978 0 0 0-.879-2.121ZM15 22.007H9v-3.934a3 3 0 0 1 6 0Zm7-1a1 1 0 0 1-1 1h-4v-3.934a5 5 0 0 0-10 0v3.934H3a1 1 0 0 1-1-1V11.19a1.008 1.008 0 0 1 .293-.707L9.878 2.9a3.008 3.008 0 0 1 4.244 0l7.585 7.586a1.008 1.008 0 0 1 .293.704Z" />

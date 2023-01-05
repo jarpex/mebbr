@@ -10,6 +10,8 @@
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package MEBBR
+ * 
+ * Template Name: Главная страница
  */
 
 get_header();
@@ -227,11 +229,11 @@ get_header();
         }
       }
   </script>
-  <h1 href="//suckless.ru" class="logo">
-    suckless
+  <h1 class="logo">
+    <?php echo get_bloginfo('name'); ?> 
   </h1>
   <p class="header_desc">
-    База знаний в сфере IT.
+  <?php echo get_bloginfo('description'); ?> 
   </p>
   <form
     id="searchBox"
@@ -239,7 +241,7 @@ get_header();
     role="search"
     method="get"
     id="searchform"
-    action="//suckless.ru"
+    action="<?php echo home_url(); ?>"
     autocomplete="off"
   >
     <label id="searchBox__label" class="inputBox__label">

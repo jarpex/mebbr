@@ -9,7 +9,9 @@
 
 ?>
 
-<?php if( is_singular( $post_types ) ){
+<?php 
+$post_types = get_post_types();
+if( is_singular( $post_types ) ){
 	get_template_part( 'navigation' );
 }
 ?>
