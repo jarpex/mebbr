@@ -25,8 +25,12 @@
 				<figure class="cd-popup-mobile icon">
 					<img src="//static.mebbr.ru/img/exit.svg" width="30" height="30" />
 				</figure>
-				<a href="<?php echo home_url(); ?>" class="logo"> suckless </a>
-				<p class="header_desc">База знаний в сфере IT.</p>
+				<a href="<?php echo home_url(); ?>" class="logo">
+					<?php echo get_bloginfo('name'); ?>
+				</a>
+				<p class="header_desc">
+					<?php echo get_bloginfo('description'); ?>
+				</p>
 				<div class="nav_flex">
 					<nav class="nav" role="navigation">
 						<ul style="list-style:none;padding:0;"><?php wp_list_categories('title_li='); ?></ul>
@@ -39,8 +43,12 @@
 				<figure class="cd-popup-mobile icon">
 					<img src="//static.mebbr.ru/img/exit.svg" width="30" height="30" />
 				</figure>
-				<a href="<?php echo home_url(); ?>" class="logo"> suckless </a>
-				<p class="header_desc">База знаний в сфере IT.</p>
+				<a href="<?php echo home_url(); ?>" class="logo">
+					<?php echo get_bloginfo('name'); ?>
+				</a>
+				<p class="header_desc">
+					<?php echo get_bloginfo('description'); ?>
+				</p>
 				<p class="settings-popup__bg-heading">🌙 Выбор темы:</p>
 				<form name="theme" class="segmented-control" id="theme-switcher">
 					<input type="radio" name="radio2" value="system" id="tab-1" checked="" />
@@ -71,7 +79,7 @@
 							<img src="//static.mebbr.ru/img/account.svg" width="30" height="30" />
 						</figure>
 						<input type="submit" name="wp-submit" id="wp-submit" value="Войти" />
-						<input type="hidden" name="redirect_to" value="https://suckless.ru/wp-admin/" />
+						<input type="hidden" name="redirect_to" value="<?php echo home_url("/wp-admin/"); ?>" />
 						<input type="hidden" name="testcookie" value="1" />
 					</div>
 				</form>

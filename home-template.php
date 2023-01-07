@@ -233,7 +233,7 @@ get_header();
     <?php echo get_bloginfo('name'); ?> 
   </h1>
   <p class="header_desc">
-  <?php echo get_bloginfo('description'); ?> 
+    <?php echo get_bloginfo('description'); ?> 
   </p>
   <form
     id="searchBox"

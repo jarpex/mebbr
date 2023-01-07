@@ -14,8 +14,8 @@
 	<footer id="colophon" class="site-footer">
 		<div id="footer">
             <div id="footer_combo">
-				<a href="//suckless.ru/terms">Terms of use</a>
-				<a href="//suckless.ru/privacy">Privacy</a>
+				<a href="<?php echo home_url('/terms'); ?>">Terms of use</a>
+				<a href="<?php echo home_url('/privacy'); ?>">Privacy</a>
 			</div>
         </div>
 	</footer><!-- #colophon -->

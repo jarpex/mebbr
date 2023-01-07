@@ -458,14 +458,14 @@ get_header();
   </script>
 	
 	<aside class="header" role="complementary">
-        <a href="//suckless.ru" class="logo">
-            suckless
+        <a href="<?php echo home_url(); ?>" class="logo">
+            <?php echo get_bloginfo('name'); ?> 
         </a>
         <p class="header_desc">
-            База знаний в сфере IT.
+            <?php echo get_bloginfo('description'); ?> 
         </p>
         <div class="header_flex">
-            <form class="search_form" role="search" method="get" id="searchform" action="//suckless.ru" autocomplete="off">
+            <form class="search_form" role="search" method="get" id="searchform" action="<?php echo home_url(); ?>" autocomplete="off">
                 <div class="search">
                     <input name="s" class="searchbox" placeholder="Поиск" type="text" maxlength="100" required />
                     <input type="image" id="searchsubmit" class="search_icon" src="//mebbr.ru/img/search.svg">
