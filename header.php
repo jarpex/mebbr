@@ -17,9 +17,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	<link rel="preconnect" href="//static.mebbr.ru">
-  <link rel="preload" href="//static.mebbr.ru/fonts/mebbr/PTSerif.woff2" as="font" type="font/woff2" crossorigin>
-	<link rel="preload" href="//static.mebbr.ru/fonts/mebbr/Mont.woff2" as="font"type="font/woff2" crossorigin>
-	<link rel="preload" href="//static.mebbr.ru/fonts/mebbr/PT-Mono_Regular.woff2" as="font"type="font/woff2" crossorigin>
   <link rel="dns-prefetch" href="//mc.yandex.ru">
 	<style>
         body {

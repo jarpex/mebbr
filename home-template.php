@@ -16,7 +16,8 @@
 
 get_header();
 ?>
-
+<link rel="preload" href="<?php echo home_url('/wp-content/themes/mebbr-b/css/min/home.css'); ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="<?php echo home_url('/wp-content/themes/mebbr-b/css/min/home.css'); ?>"></noscript>  
 <style>
         body {
             --text: rgba(232, 230, 227, 0.999);
@@ -28,7 +29,6 @@ get_header();
             color: var(--text);
             background-color: var(--bg);
             font-family: Mont-Regular, 'Open Sans', 'Lato', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-            text-rendering: optimizeLegibility;
             margin: 0;
             display: flex;
             flex-direction: column;
@@ -37,9 +37,6 @@ get_header();
             justify-content: center;
             align-items: center;
             height: 100%;
-            -webkit-user-select: none; /* Safari */
-            -ms-user-select: none; /* IE 10+ */
-            user-select: none;
         }
 
         @media (prefers-color-scheme: dark) {
@@ -84,8 +81,6 @@ get_header();
           background-color: var(--border);
           display: flex;
           box-sizing: border-box;
-          transition: background-color 0.1s linear, border-color 0.1s linear,
-            box-shadow 0.1s linear, -webkit-box-shadow 0.1s linear;
         }
 
         #searchBox__label {
@@ -109,10 +104,6 @@ get_header();
           box-sizing: border-box;
         }
 
-        .focused {
-          outline: solid .1vw var(--primary)
-        }
-
         #searchsubmit {
           background-color: transparent;
           border: none;
@@ -121,9 +112,6 @@ get_header();
           opacity: 40%;
         }
 
-        #searchsubmit:hover {
-          opacity: 100%;
-        }
 
         #searchsubmit svg {
           width: 1vw;
@@ -153,10 +141,6 @@ get_header();
           font-size: 1.5vw;
           color: var(--text);
           text-decoration: none;
-        }
-
-        #category a:hover {
-          text-decoration: underline;
         }
       
         @media (max-width: 1199px) and (orientation: portrait) {
@@ -196,39 +180,8 @@ get_header();
           }
         }
     </style>
-  
 </head>
 <main id="primary" class="site-main">
-  <script>
-      var style = document.documentElement.style;
-      var style = document.getElementsByTagName("body")[0].style;
-
-      const setDark = () => {
-        style.setProperty("--text", "rgba(232, 230, 227, 0.999)");
-        style.setProperty("--bg", "rgba(14, 15, 15, 0.999)");
-        style.setProperty("--selection", "rgba(53, 59, 72, 0.99)");
-        style.setProperty("--button", "rgba(255, 255, 255, 0.999)");
-        style.setProperty("--border", "rgba(255, 255, 255, 0.1)");
-        style.setProperty("--primary", "#6d5dfc");
-      };
-
-      const setLight = () => {
-        style.setProperty("--text", "rgba(41, 41, 41, 0.999)");
-        style.setProperty("--bg", "rgba(255, 255, 255, 0.999)");
-        style.setProperty("--selection", "rgba(254, 235, 239, 0.99)");
-        style.setProperty("--button", "rgba(0, 0, 0)");
-        style.setProperty("--border", "rgba(0, 0, 0, 0.1)");
-        style.setProperty("--primary", "#6d5dfc");
-      };
-      var theme = localStorage.getItem("theme");
-      if (theme) {
-        if (theme == "dark") {
-          setDark();
-        } else if (theme == "light") {
-          setLight();
-        }
-      }
-  </script>
   <h1 class="logo">
     <?php echo get_bloginfo('name'); ?> 
   </h1>

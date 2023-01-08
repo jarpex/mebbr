@@ -6,7 +6,7 @@ const csso = require("gulp-csso");
 
 gulp.task("styles", () => {
   return gulp
-    .src("sass/page.scss")
+    .src(["sass/page.scss", "sass/home.scss"])
     .pipe(sass().on("error", sass.logError))
     .pipe(gulp.dest("./css/"))
     .pipe(
@@ -21,7 +21,7 @@ gulp.task("styles", () => {
 });
 
 gulp.task("clean", () => {
-  return del(["css/page.css"]);
+  return del(["css/page.css", "css/home.css"]);
 });
 
 gulp.task("default", gulp.series(["clean", "styles"]));

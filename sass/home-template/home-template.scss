@@ -1,0 +1,26 @@
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none;
+}
+
+#searchBox {
+  transition: background-color 0.1s linear, border-color 0.1s linear,
+    box-shadow 0.1s linear, -webkit-box-shadow 0.1s linear;
+
+  .focused {
+    outline: solid 0.1vw var(--primary);
+  }
+
+  #searchsubmit:hover {
+    opacity: 100%;
+  }
+
+  #category a:hover {
+    text-decoration: underline;
+  }
+}
+
+@import "home-template_mobile.scss";
+@import "home-template_desktop.scss";
