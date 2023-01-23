@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@wordpress/scripts": "^25.2.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.2.5",
     "babel-preset-env": "^1.7.0",
@@ -14,7 +15,17 @@
     "webpack-stream": "^7.0.0"
   },
   "dependencies": {
+    "dir-archiver": "^2.1.0",
     "normalize-scss": "^7.0.1",
-    "sass": "^1.53.0"
+    "sass": "^1.53.0",
+    "wp-scripts": "^0.0.1-security"
+  },
+  "scripts": {
+    "watch": "node-sass sass/ -o ./ --source-map true --output-style expanded --indent-type tab --indent-width 1 -w",
+    "compile:css": "node-sass sass/ -o ./ && stylelint '*.css' --fix || true && stylelint '*.css' --fix",
+    "compile:rtl": "rtlcss style.css style-rtl.css",
+    "lint:scss": "wp-scripts lint-style",
+    "lint:js": "wp-scripts lint-js",
+    "bundle": "dir-archiver --src . --dest ../_s.zip --exclude .DS_Store .stylelintrc.json .eslintrc .git .gitattributes .github .gitignore README.md composer.json composer.lock node_modules vendor package-lock.json package.json .travis.yml phpcs.xml.dist sass style.css.map yarn.lock"
   }
 }

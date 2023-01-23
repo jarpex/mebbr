@@ -207,8 +207,10 @@ get_header();
         required
         class="inputBox__input"
         id="searchBox__input"
+        onkeyup="suggestions()"
         autofocus
       />
+      <div id="datafetch">Search results will appear here</div>
       <button type="submit" id="searchsubmit" class="icon">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path

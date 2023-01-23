@@ -71,34 +71,34 @@ function mebbr_setup() {
 	);
 
 	// Set up the WordPress core custom background feature.
-	add_theme_support(
-		'custom-background',
-		apply_filters(
-			'mebbr_custom_background_args',
-			array(
-				'default-color' => 'ffffff',
-				'default-image' => '',
-			)
-		)
-	);
+	// add_theme_support(
+	// 	'custom-background',
+	// 	apply_filters(
+	// 		'mebbr_custom_background_args',
+	// 		array(
+	// 			'default-color' => 'ffffff',
+	// 			'default-image' => '',
+	// 		)
+	// 	)
+	// );
 
-	// Add theme support for selective refresh for widgets.
-	add_theme_support( 'customize-selective-refresh-widgets' );
+	// // Add theme support for selective refresh for widgets.
+	// add_theme_support( 'customize-selective-refresh-widgets' );
 
 	/**
 	 * Add support for core custom logo.
 	 *
 	 * @link https://codex.wordpress.org/Theme_Logo
 	 */
-	add_theme_support(
-		'custom-logo',
-		array(
-			'height'      => 250,
-			'width'       => 250,
-			'flex-width'  => true,
-			'flex-height' => true,
-		)
-	);
+	// add_theme_support(
+	// 	'custom-logo',
+	// 	array(
+	// 		'height'      => 250,
+	// 		'width'       => 250,
+	// 		'flex-width'  => true,
+	// 		'flex-height' => true,
+	// 	)
+	// );
 }
 add_action( 'after_setup_theme', 'mebbr_setup' );
 
@@ -110,7 +110,7 @@ add_action( 'after_setup_theme', 'mebbr_setup' );
  * @global int $content_width
  */
 function mebbr_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'mebbr_content_width', 640 );
+	$GLOBALS['content_width'] = apply_filters( 'mebbr_content_width', 720 );
 }
 add_action( 'after_setup_theme', 'mebbr_content_width', 0 );
 
@@ -119,20 +119,20 @@ add_action( 'after_setup_theme', 'mebbr_content_width', 0 );
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function mebbr_widgets_init() {
-	register_sidebar(
-		array(
-			'name'          => esc_html__( 'Sidebar', 'mebbr' ),
-			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'mebbr' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		)
-	);
-}
-add_action( 'widgets_init', 'mebbr_widgets_init' );
+// function mebbr_widgets_init() {
+// 	register_sidebar(
+// 		array(
+// 			'name'          => esc_html__( 'Sidebar', 'mebbr' ),
+// 			'id'            => 'sidebar-1',
+// 			'description'   => esc_html__( 'Add widgets here.', 'mebbr' ),
+// 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+// 			'after_widget'  => '</section>',
+// 			'before_title'  => '<h2 class="widget-title">',
+// 			'after_title'   => '</h2>',
+// 		)
+// 	);
+// }
+// add_action( 'widgets_init', 'mebbr_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
@@ -150,17 +150,103 @@ function mebbr_scripts() {
 
 if ( ! function_exists( 'gp_read_time' ) ) {
     function gp_read_time() {
-    $text = get_the_content( '' );
-    $words = str_word_count( strip_tags( $text ), 0, 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' );
-    if ( !empty( $words ) ) {
-    $time_in_minutes = ceil( $words / 200 );
-    return $time_in_minutes;
-    }
-    return false;
+		$text = get_the_content( '' );
+		$words = str_word_count( strip_tags( $text ), 0, 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ' );
+		if ( !empty( $words ) ) {
+			$time_in_minutes = ceil( $words / 200 );
+			return $time_in_minutes;
+		}
+		return false;
     }
 }
 
 add_action( 'wp_enqueue_scripts', 'mebbr_scripts' );
+?>
+
+<?php
+
+// add the ajax fetch js
+add_action( 'wp_footer', 'ajax_fetch' );
+function ajax_fetch() {
+?>
+<script type="text/javascript">
+	var timeoutFetch
+	function suggestions(){
+		let searchtext = document.getElementById('searchBox__input');
+		if (searchtext.value.length > 2) {
+			if(timeoutFetch) clearTimeout(timeoutFetch)
+
+			timeoutFetch = setTimeout(()=>{
+				
+				fetch(`<?php echo admin_url('admin-ajax.php'); ?>?action=data_fetch2&keyword=${searchtext.value}`,
+				{
+					method: 'POST'
+				})
+				.then((response) => 
+				{
+					return response.text()
+				})
+				.then((data) => 
+				{	
+					if (searchtext.value.length > 2) {
+						document.getElementById('datafetch').innerHTML = data
+					} else {
+						document.getElementById('datafetch').innerHTML = "Search results will appear here";
+					}
+
+				});
+			}, 500)
+		} else {
+			document.getElementById('datafetch').innerHTML = "Search results will appear here";
+		}
+	}
+</script>
+
+<?php
+}
+
+
+// the ajax function
+add_action('wp_ajax_data_fetch2' , 'data_fetch2');
+add_action('wp_ajax_nopriv_data_fetch2','data_fetch2');
+function data_fetch2(){
+
+    $the_query = new WP_Query( 
+		array( 
+		  'posts_per_page' => 10, 
+		  's' => esc_attr( $_GET['keyword'] ), 
+		  'post_type' => 'post' 
+		) 
+	  );
+	
+	  if( $the_query->have_posts() ) :
+		  while( $the_query->have_posts() ): $the_query->the_post(); ?>
+  
+			  <h2><a href="<?php echo esc_url( post_permalink() ); ?>"><?php the_title();?></a></h2>
+  
+		  <?php endwhile;
+		  wp_reset_postdata();  
+	  endif;
+	//die()
+    wp_die();
+}
+
+/**
+ * Disable the emoji's
+ */
+function disable_emojis() {
+	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+	remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+	remove_action( 'wp_print_styles', 'print_emoji_styles' );
+	remove_action( 'admin_print_styles', 'print_emoji_styles' );	
+	remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+	remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );	
+	remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+	
+	// Remove from TinyMCE
+	add_filter( 'tiny_mce_plugins', 'disable_emojis_tinymce' );
+}
+add_action( 'init', 'disable_emojis' );
 
 /**
  * Implement the Custom Header feature.
