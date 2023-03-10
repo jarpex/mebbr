@@ -182,6 +182,24 @@ get_header();
     </style>
 </head>
 <main id="primary" class="site-main">
+  <div class="top-right-box">
+    <?php 
+    if ( is_user_logged_in() ) {
+      echo '
+        <button onclick="location.href=\''.wp_login_url().'\'" type="button">
+          Выход
+        </button>
+      ';  
+    }
+    else {
+      echo '
+        <button onclick="location.href=\''.wp_logout_url().'\'" type="button">
+          Войти
+        </button>
+      ';
+    }
+    ?>
+  </div>
   <h1 class="logo">
     <?php echo get_bloginfo('name'); ?> 
   </h1>
