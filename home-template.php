@@ -182,30 +182,58 @@ get_header();
     </style>
 </head>
 <main id="primary" class="site-main">
-  <div class="top-right-box">
-    <?php 
-    if ( is_user_logged_in() ) {
-      echo '
-        <button onclick="location.href=\''.wp_login_url().'\'" type="button">
-          Выход
-        </button>
-      ';  
-    }
-    else {
-      echo '
-        <button onclick="location.href=\''.wp_logout_url().'\'" type="button">
-          Войти
-        </button>
-      ';
-    }
-    ?>
-  </div>
-  <h1 class="logo">
-    <?php echo get_bloginfo('name'); ?> 
-  </h1>
-  <p class="header_desc">
-    <?php echo get_bloginfo('description'); ?> 
-  </p>
+  <header>
+    <div class="header__left-box">
+      <div class="logo">
+        <img src="<?php echo get_site_icon_url(); ?>">
+      </div>
+      <h1 class="site-name">
+        <?php echo get_bloginfo('name'); ?> 
+      </h1>
+      <h2 class="site-description">
+        <?php echo get_bloginfo('description'); ?> 
+      </h2>
+    </div>
+    <div class="header__right-box">
+      <?php 
+      if ( is_user_logged_in() ) {
+        if ( current_user_can( 'edit_posts' ) ){
+          if( current_user_can( 'manage_options' ) ){ 
+            echo '
+              <button onclick="location.href=\''.site_url()."/wp-admin/post-new.php".'\'" type="button">
+                Новый пост
+              </button>
+              <button onclick="location.href=\''.site_url()."/wp-admin/".'\'" type="button">
+                Админка
+              </button>
+              <button onclick="location.href=\''.wp_logout_url().'\'" type="button">
+                Выход
+              </button>
+            '; 
+          } else {
+            echo '<p>не админ</p>';
+          }
+        } else {
+          echo '
+            <p>не может писать</p>
+            <button onclick="location.href=\''.wp_logout_url().'\'" type="button">
+              Выход
+            </button>
+          ';  
+        }
+      }
+      else {
+        echo '
+          <button onclick="location.href=\''.wp_login_url().'\'" type="button">
+            Войти
+          </button>
+        ';
+      }
+      ?>
+    </div>
+  </header>
+  
+  
   <form
     id="searchBox"
     class="inputBox"
