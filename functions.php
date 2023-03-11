@@ -248,6 +248,20 @@ function disable_emojis() {
 }
 add_action( 'init', 'disable_emojis' );
 
+
+// Custom logo
+function logo_size_change(){
+	remove_theme_support( 'custom-logo' );
+	add_theme_support( 'custom-logo', array(
+	    'height'      => 128,
+	    'width'       => 128,
+	    'flex-height' => true,
+	    'flex-width'  => true,
+	) );
+}
+add_action( 'after_setup_theme', 'logo_size_change', 11 );
+// add_action( 'after_setup_theme', 'site_icon_size_change', 11 );
+
 /**
  * Implement the Custom Header feature.
  */

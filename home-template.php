@@ -185,7 +185,7 @@ get_header();
   <header>
     <div class="header__left-box">
       <div class="logo">
-        <img src="<?php echo get_site_icon_url(); ?>">
+        <?php echo get_custom_logo(); ?>
       </div>
       <h1 class="site-name">
         <?php echo get_bloginfo('name'); ?> 
