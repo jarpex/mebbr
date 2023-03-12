@@ -28,15 +28,6 @@ get_header();
             --primary: #6d5dfc;
             color: var(--text);
             background-color: var(--bg);
-            font-family: Mont-Regular, 'Open Sans', 'Lato', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            flex-wrap: nowrap;
-            align-content: center;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
         }
 
         @media (prefers-color-scheme: dark) {
@@ -60,154 +51,37 @@ get_header();
                 --primary: #6d5dfc;
             }
         }
-
-        h1 {
-          display: block;
-          font-size: 10vw;
-          width: 100%;
-          text-align: center;
-          margin: 0;
-        }
-
-        p {
-          font-size: 1.5vw;
-          margin: -1.5vw 0 0 0;
-        }
-
-        #searchBox {
-          margin: 5vw 0 0 0;
-          border-radius: 0.65vw;
-          border-color: transparent;
-          background-color: var(--border);
-          display: flex;
-          box-sizing: border-box;
-        }
-
-        #searchBox__label {
-          width: 100%;
-          position: relative;
-          display: flex;
-          align-items: center;
-        }
-
-        #searchBox__input {
-          width: 25vw;
-          padding: 0.5vw 0 0.5vw 1vw;
-          border: 0;
-          line-height: 1;
-          color: var(--text);
-          font: inherit;
-          background-color: transparent;
-          outline: none;
-          appearance: none;
-          box-shadow: none;
-          box-sizing: border-box;
-        }
-
-        #searchsubmit {
-          background-color: transparent;
-          border: none;
-          cursor: pointer;
-          padding: 0.5vw 1vw;
-          opacity: 40%;
-        }
-
-
-        #searchsubmit svg {
-          width: 1vw;
-        }
-
-        #searchsubmit svg path {
-          fill: var(--button);
-        }
-
-        #category {
-          margin-top: 2.5vw;
-          padding: 0;
-          display: flex;
-          list-style: none;
-          flex-direction: row;
-          flex-wrap: wrap;
-          align-content: center;
-          justify-content: center;
-          align-items: center;
-        }
-
-        #category li {
-          margin: 1vw;
-        }
-
-        #category a{
-          font-size: 1.5vw;
-          color: var(--text);
-          text-decoration: none;
-        }
-      
-        @media (max-width: 1199px) and (orientation: portrait) {
-          body {
-            margin-top: -15vh;
-          }
-          h1 {
-            font-size: 20vw;
-          }
-          p {
-            font-size: 4.5vw;
-          }
-          #searchBox {
-            margin: 15vw 0 0 0;
-            border-radius: 3vw;
-          }
-
-          #searchBox__input {
-            width: 70vw;
-            padding: 1.5vw 0 1.5vw 2vw;
-          }
-
-          #searchsubmit {
-            padding: 3.5vw 4vw;
-          }
-
-          #searchsubmit svg {
-            width: 4vw;
-          }
-
-          #category {
-            margin-top: 20vw;
-          }
-
-          #category a {
-            font-size: 5vw;
-          }
-        }
     </style>
 </head>
 <main id="primary" class="site-main">
-  <header>
-    <div class="header__left-box">
-      <div class="logo">
+  <header id="header">
+    <div id="header__left-box" aria-hidden="true">
+      <div id="logo">
         <?php echo get_custom_logo(); ?>
       </div>
-      <h1 class="site-name">
-        <?php echo get_bloginfo('name'); ?> 
-      </h1>
-      <h2 class="site-description">
-        <?php echo get_bloginfo('description'); ?> 
-      </h2>
+      <div id="header__naming">
+        <h1 id="site-name">
+          <?php echo get_bloginfo('name'); ?> 
+        </h1>
+        <h2 id="site-description">
+          <?php echo get_bloginfo('description'); ?> 
+        </h2>
+      </div>
     </div>
-    <div class="header__right-box">
+    <div id="header__right-box">
       <?php 
       if ( is_user_logged_in() ) {
         if ( current_user_can( 'edit_posts' ) ){
           if( current_user_can( 'manage_options' ) ){ 
             echo '
-              <button onclick="location.href=\''.site_url()."/wp-admin/post-new.php".'\'" type="button">
-                Новый пост
+              <button class="header__button icon" aria-label="Создать пост" onclick="location.href=\''.site_url()."/wp-admin/post-new.php".'\'" type="button">
+                <img src="'.get_template_directory_uri().'/svg/square-rounded-plus.svg" alt="">
               </button>
-              <button onclick="location.href=\''.site_url()."/wp-admin/".'\'" type="button">
-                Админка
+              <button class="header__button icon" aria-label="Управление сайтом" onclick="location.href=\''.site_url()."/wp-admin/".'\'" type="button">
+                <img src="'.get_template_directory_uri().'/svg/braces.svg" alt="">
               </button>
-              <button onclick="location.href=\''.wp_logout_url().'\'" type="button">
-                Выход
+              <button class="header__button text" onclick="location.href=\''.wp_logout_url().'\'" type="button">
+                Выйти
               </button>
             '; 
           } else {
@@ -257,12 +131,8 @@ get_header();
         autofocus
       />
       <div id="datafetch">Search results will appear here</div>
-      <button type="submit" id="searchsubmit" class="icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path
-            d="m23.707 22.293-5.969-5.969a10.016 10.016 0 1 0-1.414 1.414l5.969 5.969a1 1 0 0 0 1.414-1.414ZM10 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8Z"
-          />
-        </svg>
+      <button type="submit" id="searchsubmit" class="icon" aria-label="Найти">
+        <img src="<?php echo get_template_directory_uri().'/svg/search.svg'; ?>" alt="">
       </button>
     </label>
   </form>
