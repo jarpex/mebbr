@@ -1,3 +1,30 @@
+@font-face {
+	font-family: 'GolosUIWebRegular';
+	src: 
+    url('https://static.mebbr.ru/fonts/golos-ui/golos-ui_regular.woff2') format('woff2'),
+    url('https://static.mebbr.ru/fonts/golos-ui/golos-ui_regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'GolosUIWebMedium';
+	src: 
+		url('https://static.mebbr.ru/fonts/golos-ui/golos-ui_medium.woff2') format('woff2'),
+		url('https://static.mebbr.ru/fonts/golos-ui/golos-ui_medium.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'GolosUIWebBold';
+	src: 
+		url('https://static.mebbr.ru/fonts/golos-ui/golos-ui_bold.woff2') format('woff2'),
+		url('https://static.mebbr.ru/fonts/golos-ui/golos-ui_bold.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
 body {
   text-rendering: optimizeLegibility;
   -webkit-user-select: none; /* Safari */
@@ -10,15 +37,45 @@ body {
   flex-direction: row;
   justify-content: space-between;
 
-  margin: 0 16px;
+  padding: 38px;
+  margin-bottom: 200px;
 
   #header__left-box {
     display: flex;
     flex-direction: row;
+    align-items: center;
+
+    #logo {
+      margin: 0 16px 0 0;
+      height: 52px;
+
+      & .custom-logo-link, & .custom-logo {
+        display: block;
+        height: 52px;
+      }
+    }
 
     #header__naming {
       display: flex;
       flex-direction: column;
+
+      #site-name {
+        margin: 0;
+
+        font-size: 28px;
+        line-height: 28px;
+
+        font-family: 'GolosUIWebBold';
+      }
+
+      #site-description {
+        margin: 0;
+
+        font-size: 18px;
+        line-height: 20px;
+
+        font-family: 'GolosUIWebRegular';
+      }
     }
   }
 
@@ -40,7 +97,16 @@ body {
 
       background-color: var(--accent);
 
+      transition: background-color ease-out .15s;
+      will-change: background-color;
+
+      font-family: 'GolosUIWebMedium';
+
       cursor: pointer;
+
+      &:hover {
+        background-color: var(--accent-hover);
+      }
 
       &.icon {
         min-width: 44px;

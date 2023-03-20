@@ -414,6 +414,24 @@ template {
   display: none;
 }
 
+@font-face {
+  font-family: "GolosUIWebRegular";
+  src: url("https://static.mebbr.ru/fonts/golos-ui/golos-ui_regular.woff2") format("woff2"), url("https://static.mebbr.ru/fonts/golos-ui/golos-ui_regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GolosUIWebMedium";
+  src: url("https://static.mebbr.ru/fonts/golos-ui/golos-ui_medium.woff2") format("woff2"), url("https://static.mebbr.ru/fonts/golos-ui/golos-ui_medium.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GolosUIWebBold";
+  src: url("https://static.mebbr.ru/fonts/golos-ui/golos-ui_bold.woff2") format("woff2"), url("https://static.mebbr.ru/fonts/golos-ui/golos-ui_bold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 body {
   text-rendering: optimizeLegibility;
   -webkit-user-select: none; /* Safari */
@@ -425,15 +443,37 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 0 16px;
+  padding: 38px;
+  margin-bottom: 200px;
 }
 #header #header__left-box {
   display: flex;
   flex-direction: row;
+  align-items: center;
+}
+#header #header__left-box #logo {
+  margin: 0 16px 0 0;
+  height: 52px;
+}
+#header #header__left-box #logo .custom-logo-link, #header #header__left-box #logo .custom-logo {
+  display: block;
+  height: 52px;
 }
 #header #header__left-box #header__naming {
   display: flex;
   flex-direction: column;
+}
+#header #header__left-box #header__naming #site-name {
+  margin: 0;
+  font-size: 28px;
+  line-height: 28px;
+  font-family: "GolosUIWebBold";
+}
+#header #header__left-box #header__naming #site-description {
+  margin: 0;
+  font-size: 18px;
+  line-height: 20px;
+  font-family: "GolosUIWebRegular";
 }
 #header #header__right-box {
   display: flex;
@@ -449,7 +489,13 @@ body {
   border-radius: 16px;
   border: none;
   background-color: var(--accent);
+  transition: background-color ease-out 0.15s;
+  will-change: background-color;
+  font-family: "GolosUIWebMedium";
   cursor: pointer;
+}
+#header #header__right-box .header__button:hover {
+  background-color: var(--accent-hover);
 }
 #header #header__right-box .header__button.icon {
   min-width: 44px;

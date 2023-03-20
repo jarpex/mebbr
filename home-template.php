@@ -30,6 +30,13 @@ get_header();
             background-color: var(--bg);
         }
 
+        .preload * {
+          -webkit-transition: none !important;
+          -moz-transition: none !important;
+          -ms-transition: none !important;
+          -o-transition: none !important;
+        }
+
         @media (prefers-color-scheme: dark) {
             body {
                 --text: rgba(232, 230, 227, 0.999);
@@ -53,7 +60,7 @@ get_header();
         }
     </style>
 </head>
-<main id="primary" class="site-main">
+<main id="primary" class="site-main preload">
   <header id="header">
     <div id="header__left-box" aria-hidden="true">
       <div id="logo">
@@ -145,6 +152,11 @@ get_header();
   document.getElementById('searchBox__input').addEventListener('focusout', function(){
     document.getElementById('searchBox').classList.remove("focused");
   });
+</script>
+<script>
+  window.onload = (event) => {
+    document.getElementsById(primary).classList.remove("preload");
+  };
 </script>
 
 <?php wp_footer(); ?>

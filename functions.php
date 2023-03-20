@@ -263,15 +263,26 @@ add_action( 'after_setup_theme', 'logo_size_change', 11 );
 
 // Custom colors
 function theme_customize_register( $wp_customize ) {
-	$wp_customize->add_setting( 'accent_color', array(
+	$wp_customize->add_setting( 'accent_color_light', array(
 		'default'   => '',
 		'transport' => 'refresh',
 		'sanitize_callback' => 'sanitize_hex_color',
 	  ) );
 
-	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'accent_color', array(
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'accent_color_light', array(
 		'section' => 'colors',
-		'label'   => esc_html__( 'Accent color', 'theme' ),
+		'label'   => esc_html__( 'Accent color light', 'theme' ),
+	) ) );
+
+	$wp_customize->add_setting( 'accent_color_light_hover', array(
+		'default'   => '',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_hex_color',
+	  ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'accent_color_light_hover', array(
+		'section' => 'colors',
+		'label'   => esc_html__( 'Accent color light hover', 'theme' ),
 	) ) );
  }
  
@@ -281,14 +292,36 @@ function theme_customize_register( $wp_customize ) {
  function theme_get_customizer_css() {
     ob_start();
     
-    $accent_color = get_theme_mod( 'accent_color', '' );
-    if ( ! empty( $accent_color ) ) {
+    $accent_color_light = get_theme_mod( 'accent_color_light', '' );
+    if ( ! empty( $accent_color_light ) ) {
       ?>
 
 		body {
-			--accent: <?php echo $accent_color; ?>;
+			--accent: <?php echo $accent_color_light; ?>;
 		}
-			
+
+		@media (prefers-color-scheme: light) {
+            body {
+			--accent: <?php echo $accent_color_light; ?>;
+		}
+
+      <?php
+    }
+
+	$accent_color_light_hover = get_theme_mod( 'accent_color_light_hover', '' );
+    if ( ! empty( $accent_color_light_hover ) ) {
+      ?>
+
+		body {
+			--accent-hover: <?php echo $accent_color_light_hover; ?>;
+		}
+
+		
+		@media (prefers-color-scheme: light) {
+            body {
+			--accent-hover: <?php echo $accent_color_light_hover; ?>;
+		}
+
       <?php
     }
 
