@@ -284,6 +284,17 @@ function theme_customize_register( $wp_customize ) {
 		'section' => 'colors',
 		'label'   => esc_html__( 'Accent color light hover', 'theme' ),
 	) ) );
+
+	$wp_customize->add_setting( 'input_color_light', array(
+		'default'   => '',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_hex_color',
+	  ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'input_color_light', array(
+		'section' => 'colors',
+		'label'   => esc_html__( 'Input color light', 'theme' ),
+	) ) );
  }
  
  add_action( 'customize_register', 'theme_customize_register' );
@@ -320,6 +331,22 @@ function theme_customize_register( $wp_customize ) {
 		@media (prefers-color-scheme: light) {
             body {
 			--accent-hover: <?php echo $accent_color_light_hover; ?>;
+		}
+
+      <?php
+    }
+
+	$input_color_light = get_theme_mod( 'input_color_light', '' );
+    if ( ! empty( $input_color_light ) ) {
+      ?>
+
+		body {
+			--input: <?php echo $input_color_light; ?>;
+		}
+
+		@media (prefers-color-scheme: light) {
+            body {
+			--input: <?php echo $input_color_light; ?>;
 		}
 
       <?php

@@ -1,28 +1,31 @@
 @font-face {
-	font-family: 'GolosUIWebRegular';
-	src: 
-    url('https://static.mebbr.ru/fonts/golos-ui/golos-ui_regular.woff2') format('woff2'),
-    url('https://static.mebbr.ru/fonts/golos-ui/golos-ui_regular.woff') format('woff');
-	font-weight: normal;
-	font-style: normal;
+  font-family: 'GolosUIWebRegular';
+  src: url('https://static.mebbr.ru/fonts/golos-ui/golos-ui_regular.woff2')
+      format('woff2'),
+    url('https://static.mebbr.ru/fonts/golos-ui/golos-ui_regular.woff')
+      format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-	font-family: 'GolosUIWebMedium';
-	src: 
-		url('https://static.mebbr.ru/fonts/golos-ui/golos-ui_medium.woff2') format('woff2'),
-		url('https://static.mebbr.ru/fonts/golos-ui/golos-ui_medium.woff') format('woff');
-	font-weight: normal;
-	font-style: normal;
+  font-family: 'GolosUIWebMedium';
+  src: url('https://static.mebbr.ru/fonts/golos-ui/golos-ui_medium.woff2')
+      format('woff2'),
+    url('https://static.mebbr.ru/fonts/golos-ui/golos-ui_medium.woff')
+      format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-	font-family: 'GolosUIWebBold';
-	src: 
-		url('https://static.mebbr.ru/fonts/golos-ui/golos-ui_bold.woff2') format('woff2'),
-		url('https://static.mebbr.ru/fonts/golos-ui/golos-ui_bold.woff') format('woff');
-	font-weight: normal;
-	font-style: normal;
+  font-family: 'GolosUIWebBold';
+  src: url('https://static.mebbr.ru/fonts/golos-ui/golos-ui_bold.woff2')
+      format('woff2'),
+    url('https://static.mebbr.ru/fonts/golos-ui/golos-ui_bold.woff')
+      format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 body {
@@ -49,7 +52,8 @@ body {
       margin: 0 16px 0 0;
       height: 52px;
 
-      & .custom-logo-link, & .custom-logo {
+      & .custom-logo-link,
+      & .custom-logo {
         display: block;
         height: 52px;
       }
@@ -88,7 +92,7 @@ body {
       display: flex;
       align-items: center;
       justify-content: center;
-      
+
       height: 44px;
       margin: 4px;
 
@@ -97,7 +101,7 @@ body {
 
       background-color: var(--accent);
 
-      transition: background-color ease-out .15s;
+      transition: background-color ease-out 0.15s;
       will-change: background-color;
 
       font-family: 'GolosUIWebMedium';
@@ -120,5 +124,49 @@ body {
   }
 }
 
-@import "home-template/home-template_mobile.scss";
-@import "home-template/home-template_desktop.scss";
+#searchBox {
+  width: 55vw;
+  min-width: 32rem;
+  max-width: 54rem;
+  margin: 0 auto;
+
+  #searchBox__label {
+    display: block;
+
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      background: transparent;
+      border: none;
+      outline: none;
+      padding: 16px 76px 16px 16px;
+      font-size: 18px;
+      line-height: 24px;
+      font-family: GolosUIWebRegular;
+
+      border-radius: 16px;
+      background-color: var(--input);
+    }
+
+    #searchsubmit {
+      position: absolute;
+      margin-left: -76px;
+      height: 56px;
+      background: 0 0;
+      border: 0;
+      border-radius: 0 16px 16px 0;
+      outline: 0;
+      padding: 0 16px 0 32px;
+      cursor: pointer;
+
+      opacity: 30%;
+
+      img {
+        margin-top: 5px;
+      }
+    }
+  }
+}
+
+@import 'home-template/home-template_mobile.scss';
+@import 'home-template/home-template_desktop.scss';

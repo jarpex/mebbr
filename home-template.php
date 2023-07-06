@@ -137,10 +137,10 @@ get_header();
         onkeyup="suggestions()"
         autofocus
       />
-      <div id="datafetch">Search results will appear here</div>
       <button type="submit" id="searchsubmit" class="icon" aria-label="Найти">
         <img src="<?php echo get_template_directory_uri().'/svg/search.svg'; ?>" alt="">
       </button>
+      <div id="datafetch">Search results will appear here</div>
     </label>
   </form>
   <ul id="category"><?php wp_list_categories('title_li='); ?></ul>

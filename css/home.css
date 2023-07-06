@@ -505,6 +505,44 @@ body {
   min-width: 44px;
 }
 
+#searchBox {
+  width: 55vw;
+  min-width: 32rem;
+  max-width: 54rem;
+  margin: 0 auto;
+}
+#searchBox #searchBox__label {
+  display: block;
+}
+#searchBox #searchBox__label input {
+  width: 100%;
+  box-sizing: border-box;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 16px 76px 16px 16px;
+  font-size: 18px;
+  line-height: 24px;
+  font-family: GolosUIWebRegular;
+  border-radius: 16px;
+  background-color: var(--input);
+}
+#searchBox #searchBox__label #searchsubmit {
+  position: absolute;
+  margin-left: -76px;
+  height: 56px;
+  background: 0 0;
+  border: 0;
+  border-radius: 0 16px 16px 0;
+  outline: 0;
+  padding: 0 16px 0 32px;
+  cursor: pointer;
+  opacity: 30%;
+}
+#searchBox #searchBox__label #searchsubmit img {
+  margin-top: 5px;
+}
+
 @media (max-width: 1199px) {
   #header #header__left-box #header__naming {
     display: none;
