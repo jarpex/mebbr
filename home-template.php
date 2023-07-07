@@ -114,7 +114,7 @@ get_header();
     </div>
   </header>
   
-  
+  <div id="wrapper"></div>
   <form
     id="searchBox"
     class="inputBox"
@@ -134,7 +134,7 @@ get_header();
         required
         class="inputBox__input"
         id="searchBox__input"
-        onkeyup="suggestions()"
+        onkeyup="searchResolver()"
         autofocus
       />
       <button type="submit" id="searchsubmit" class="icon" aria-label="Найти">
@@ -146,16 +146,50 @@ get_header();
   <ul id="category"><?php wp_list_categories('title_li='); ?></ul>
     </main>
 <script>
-  document.getElementById('searchBox__input').addEventListener('focus', function(){
-    document.getElementById('searchBox').classList.add("focused");
-  });
-  document.getElementById('searchBox__input').addEventListener('focusout', function(){
+  var searchWrapper = false; 
+
+  const searchHide = () => {
+    searchWrapper = false; 
+    document.getElementById('wrapper').classList.remove("focused");
     document.getElementById('searchBox').classList.remove("focused");
-  });
+    if (document.getElementById('searchBox__input').value !="") {
+        document.getElementById('searchBox__input').value = "";
+    }
+    suggestions();
+  }
+
+  // TODO: Remove Event Listeners
+    document.getElementById('searchBox__input').addEventListener('click', function(){
+      searchWrapper = true;
+      document.getElementById('wrapper').classList.add("focused");
+      document.getElementById('searchBox').classList.add("focused");
+    });
+
+    document.getElementById('searchBox__input').addEventListener('keydown', evt => {
+        if (evt.key === 'Escape') {
+            document.getElementById('searchBox__input').blur();
+            searchHide();
+        }
+    });
+
+    document.getElementById('wrapper').addEventListener('click', function(){
+      searchHide();
+    });
+
+
+    const searchResolver = () => {
+      suggestions();
+
+      if (!searchWrapper) {
+        searchWrapper = true;
+        document.getElementById('wrapper').classList.add("focused");
+        document.getElementById('searchBox').classList.add("focused");
+      }
+    }
 </script>
 <script>
   window.onload = (event) => {
-    document.getElementsById(primary).classList.remove("preload");
+    document.getElementById('primary').classList.remove("preload");
   };
 </script>
 

@@ -124,11 +124,35 @@ body {
   }
 }
 
+#wrapper {
+  width: 100vw;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 11;
+  background: rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s ease-in-out;
+  backdrop-filter: blur(15px);
+
+  &.focused {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
 #searchBox {
   width: 55vw;
   min-width: 32rem;
   max-width: 54rem;
   margin: 0 auto;
+
+  z-index: 20;
+  position: relative;
+
+  transition: margin 0.5s ease-in-out;
 
   #searchBox__label {
     display: block;
@@ -163,6 +187,24 @@ body {
 
       img {
         margin-top: 5px;
+      }
+    }
+
+    #datafetch {
+      visibility: hidden;
+    }
+  }
+
+  &.focused {
+    margin-top: -200px;
+
+    #searchBox__label {
+      #datafetch {
+        visibility: visible;
+        background-color: beige;
+        padding: 32px 16px 16px;
+        border-radius: 0 0 16px 16px;
+        margin-top: -20px;
       }
     }
   }
