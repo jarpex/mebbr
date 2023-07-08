@@ -173,11 +173,14 @@ function ajax_fetch() {
 	var timeoutFetch
 	function suggestions(){
 		let searchtext = document.getElementById('searchBox__input');
-		if (searchtext.value.length > 0) {
+		if (searchtext.value.trimStart().length > 0) {
 			if(timeoutFetch) clearTimeout(timeoutFetch)
 
 			timeoutFetch = setTimeout(()=>{
-				
+				if (document.getElementById('datafetch').classList.contains('clear')){
+					document.getElementById('datafetch').classList.add('datafetch-Transparent');
+					document.getElementById('datafetch').innerHTML = '<div id="loading-icon"><div class="loader"></div></div>';
+				}
 				fetch(`<?php echo admin_url('admin-ajax.php'); ?>?action=data_fetch2&keyword=${searchtext.value}`,
 				{
 					method: 'POST'
@@ -188,16 +191,19 @@ function ajax_fetch() {
 				})
 				.then((data) => 
 				{	
-					if (searchtext.value.length > 0) {
+					document.getElementById('datafetch').classList.remove('datafetch-Transparent');
+					if (data.length > 1) {
 						document.getElementById('datafetch').innerHTML = data
+						document.getElementById('datafetch').classList.remove('clear');
 					} else {
-						document.getElementById('datafetch').innerHTML = "Search results will appear here";
+						document.getElementById('datafetch').innerHTML = '<span aria-disabled="true">Ничего не найдено</span>';
 					}
 
 				});
 			}, 0)
 		} else {
-			document.getElementById('datafetch').innerHTML = "Search results will appear here";
+			document.getElementById('datafetch').innerHTML = '<span aria-disabled="true">Здесь будут результаты поиска</span>';
+			document.getElementById('datafetch').classList.add('clear');
 		}
 	}
 </script>

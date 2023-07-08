@@ -33,6 +33,7 @@ body {
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10+ */
   user-select: none;
+  width: 100vw;
 }
 
 #header {
@@ -127,19 +128,53 @@ body {
 #wrapper {
   width: 100vw;
   height: 100%;
+  box-sizing: border-box;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 11;
+  padding: 38px;
   background: rgba(0, 0, 0, 0.5);
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s, opacity 0.5s ease-in-out;
   backdrop-filter: blur(15px);
 
+  display: flex;
+  flex-direction: row-reverse;
+
   &.focused {
     visibility: visible;
     opacity: 1;
+  }
+
+  .wrapper__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 44px;
+    margin: 4px;
+
+    border-radius: 16px;
+    border: none;
+
+    background-color: var(--accent);
+
+    transition: background-color ease-out 0.15s;
+    will-change: background-color;
+
+    font-family: 'GolosUIWebMedium';
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--accent-hover);
+    }
+
+    &.icon {
+      min-width: 44px;
+    }
   }
 }
 
@@ -157,6 +192,17 @@ body {
   #searchBox__label {
     display: block;
 
+    &:not(.focused) {
+      #datafetch {
+        height: 0;
+      }
+    }
+
+    &:hover:not(.focused) > input {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.03);
+    }
+
     input {
       width: 100%;
       box-sizing: border-box;
@@ -170,6 +216,9 @@ body {
 
       border-radius: 16px;
       background-color: var(--input);
+
+      border: solid 1px;
+      border-color: var(--input);
     }
 
     #searchsubmit {
@@ -183,10 +232,15 @@ body {
       padding: 0 16px 0 32px;
       cursor: pointer;
 
+      transition: opacity ease-out 0.15s;
       opacity: 30%;
 
       img {
         margin-top: 5px;
+      }
+
+      &:hover {
+        opacity: 100%;
       }
     }
 
@@ -201,11 +255,71 @@ body {
     #searchBox__label {
       #datafetch {
         visibility: visible;
-        background-color: beige;
+        background-color: #dbdbdb;
         padding: 32px 16px 16px;
         border-radius: 0 0 16px 16px;
         margin-top: -20px;
+        max-height: 60vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        span {
+          text-align: center;
+          display: block;
+          padding: 12px;
+          font-family: 'GolosUIWebRegular';
+          opacity: 60%;
+        }
+
+        h2 {
+          background-color: var(--bg);
+          font-family: GolosUIWebRegular;
+          font-size: 20px;
+          font-weight: 400;
+          padding: 16px;
+          margin: 12px 0;
+          border-radius: 16px;
+
+          a {
+            color: var(--text);
+            text-decoration: none;
+          }
+        }
+
+        &.datafetch-Transparent {
+          background-color: transparent;
+        }
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
       }
+    }
+  }
+}
+
+#loading-icon {
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+
+  .loader {
+    border: transparent;
+    border-top: 2px solid var(--accent);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 0.5s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
     }
   }
 }

@@ -63,7 +63,7 @@ get_header();
 <main id="primary" class="site-main preload">
   <header id="header">
     <div id="header__left-box" aria-hidden="true">
-      <div id="logo">
+      <div id="logo" title="На главную">
         <?php echo get_custom_logo(); ?>
       </div>
       <div id="header__naming">
@@ -81,10 +81,10 @@ get_header();
         if ( current_user_can( 'edit_posts' ) ){
           if( current_user_can( 'manage_options' ) ){ 
             echo '
-              <button class="header__button icon" aria-label="Создать пост" onclick="location.href=\''.site_url()."/wp-admin/post-new.php".'\'" type="button">
+              <button class="header__button icon" title="Создать пост" aria-label="Создать пост" onclick="location.href=\''.site_url()."/wp-admin/post-new.php".'\'" type="button">
                 <img src="'.get_template_directory_uri().'/svg/square-rounded-plus.svg" alt="">
               </button>
-              <button class="header__button icon" aria-label="Управление сайтом" onclick="location.href=\''.site_url()."/wp-admin/".'\'" type="button">
+              <button class="header__button icon" title="Управление сайтом" aria-label="Управление сайтом" onclick="location.href=\''.site_url()."/wp-admin/".'\'" type="button">
                 <img src="'.get_template_directory_uri().'/svg/braces.svg" alt="">
               </button>
               <button class="header__button text" onclick="location.href=\''.wp_logout_url().'\'" type="button">
@@ -97,15 +97,15 @@ get_header();
         } else {
           echo '
             <p>не может писать</p>
-            <button onclick="location.href=\''.wp_logout_url().'\'" type="button">
-              Выход
+            <button class="header__button text" onclick="location.href=\''.wp_logout_url().'\'" type="button">
+              Выйти
             </button>
           ';  
         }
       }
       else {
         echo '
-          <button onclick="location.href=\''.wp_login_url().'\'" type="button">
+          <button class="header__button text" onclick="location.href=\''.wp_login_url().'\'" type="button">
             Войти
           </button>
         ';
@@ -114,7 +114,11 @@ get_header();
     </div>
   </header>
   
-  <div id="wrapper"></div>
+  <div id="wrapper">
+    <button class="wrapper__button icon" onclick="searchHide();" type="button">
+      <?php echo '<img src="'.get_template_directory_uri().'/svg/x.svg" title="Закрыть" aria-label="Закрыть">'; ?>
+    </button>
+  </div>
   <form
     id="searchBox"
     class="inputBox"
@@ -124,23 +128,26 @@ get_header();
     action="<?php echo home_url(); ?>"
     autocomplete="off"
   >
-    <label id="searchBox__label" class="inputBox__label">
+    <label id="searchBox__label" class="inputBox__label" title="Поиск по сайту" aria-label="Поиск по сайту">
       <input
         name="s"
-        type="text"
-        placeholder="Поиск по сайту"
+        type="search"
         minlength="1"
         maxlength="150"
         required
         class="inputBox__input"
         id="searchBox__input"
         onkeyup="searchResolver()"
+        pattern="^(?!^\s+$).*"
         autofocus
+        aria-hidden
       />
-      <button type="submit" id="searchsubmit" class="icon" aria-label="Найти">
-        <img src="<?php echo get_template_directory_uri().'/svg/search.svg'; ?>" alt="">
+      <button type="submit" id="searchsubmit" class="icon" title="Найти" aria-label="Найти">
+        <img src="<?php echo get_template_directory_uri().'/svg/search.svg'; ?>" alt="Иконка поиска">
       </button>
-      <div id="datafetch">Search results will appear here</div>
+      <div id="datafetch">
+        <span aria-disabled="true">Здесь будут результаты поиска</span>
+      </div>
     </label>
   </form>
   <ul id="category"><?php wp_list_categories('title_li='); ?></ul>
@@ -149,20 +156,49 @@ get_header();
   var searchWrapper = false; 
 
   const searchHide = () => {
+    allowScroll();
     searchWrapper = false; 
     document.getElementById('wrapper').classList.remove("focused");
     document.getElementById('searchBox').classList.remove("focused");
+    document.getElementById('searchBox__label').classList.remove("focused");
     if (document.getElementById('searchBox__input').value !="") {
         document.getElementById('searchBox__input').value = "";
     }
     suggestions();
   }
 
+  const searchOpen = () => {
+    preventScroll();
+    searchWrapper = true;
+    document.getElementById('wrapper').classList.add("focused");
+    document.getElementById('searchBox').classList.add("focused");
+    document.getElementById('searchBox__label').classList.add("focused");
+  }
+
+  const preventScroll = () => {
+      let stylePosition = document.body.style.position;
+      progressAllowed = false;
+      if (stylePosition != "fixed") {
+        let position = window.scrollY;
+        let scrollBarWidth = parseFloat(window.innerWidth - document.documentElement.clientWidth) / 2;   
+        document.body.style.position = "fixed";
+        document.body.style.top = `-${position}px`;
+        document.body.style.left = `-${scrollBarWidth}px`;
+      }
+    };
+
+    const allowScroll = () => {
+      const scrollY = document.body.style.top;
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      window.scrollTo(0, parseInt(scrollY || "0") * -1);
+      progressAllowed = true;
+    };
+
   // TODO: Remove Event Listeners
     document.getElementById('searchBox__input').addEventListener('click', function(){
-      searchWrapper = true;
-      document.getElementById('wrapper').classList.add("focused");
-      document.getElementById('searchBox').classList.add("focused");
+      searchOpen();
     });
 
     document.getElementById('searchBox__input').addEventListener('keydown', evt => {
@@ -181,9 +217,7 @@ get_header();
       suggestions();
 
       if (!searchWrapper) {
-        searchWrapper = true;
-        document.getElementById('wrapper').classList.add("focused");
-        document.getElementById('searchBox').classList.add("focused");
+        searchOpen();
       }
     }
 </script>
