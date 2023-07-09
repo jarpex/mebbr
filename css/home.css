@@ -490,6 +490,7 @@ body {
   border-radius: 16px;
   border: none;
   background-color: var(--accent);
+  color: var(--accent-inner-text);
   transition: background-color ease-out 0.15s;
   will-change: background-color;
   font-family: "GolosUIWebMedium";
@@ -536,6 +537,7 @@ body {
   border-radius: 16px;
   border: none;
   background-color: var(--accent);
+  color: var(--accent-inner-text);
   transition: background-color ease-out 0.15s;
   will-change: background-color;
   font-family: "GolosUIWebMedium";
@@ -565,7 +567,7 @@ body {
 }
 #searchBox #searchBox__label:hover:not(.focused) > input {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 0 0 3px var(--input-shadow-hover);
 }
 #searchBox #searchBox__label input {
   width: 100%;
@@ -581,6 +583,8 @@ body {
   background-color: var(--input);
   border: solid 1px;
   border-color: var(--input);
+  z-index: 20;
+  position: relative;
 }
 #searchBox #searchBox__label #searchsubmit {
   position: absolute;
@@ -592,10 +596,12 @@ body {
   outline: 0;
   padding: 0 16px 0 32px;
   cursor: pointer;
+  color: var(--search-icon);
   transition: opacity ease-out 0.15s;
   opacity: 30%;
+  z-index: 25;
 }
-#searchBox #searchBox__label #searchsubmit img {
+#searchBox #searchBox__label #searchsubmit svg {
   margin-top: 5px;
 }
 #searchBox #searchBox__label #searchsubmit:hover {
@@ -609,35 +615,41 @@ body {
 }
 #searchBox.focused #searchBox__label #datafetch {
   visibility: visible;
-  background-color: #dbdbdb;
-  padding: 32px 16px 16px;
+  background-color: var(--search-bg);
+  padding: 24px 8px 8px;
   border-radius: 0 0 16px 16px;
-  margin-top: -20px;
+  margin-top: -16px;
   max-height: 60vh;
   overflow-y: scroll;
   overflow-x: hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  z-index: 15;
+  position: relative;
 }
 #searchBox.focused #searchBox__label #datafetch span {
   text-align: center;
   display: block;
   padding: 12px;
   font-family: "GolosUIWebRegular";
-  opacity: 60%;
+  color: var(--search-status-text);
 }
-#searchBox.focused #searchBox__label #datafetch h2 {
-  background-color: var(--bg);
+#searchBox.focused #searchBox__label #datafetch a {
+  color: var(--search-result-text);
+  text-decoration: none;
+}
+#searchBox.focused #searchBox__label #datafetch a:hover {
+  background-color: var(--search-result-text-hover);
+  text-decoration: underline;
+  display: block;
+  border-radius: 9px;
+}
+#searchBox.focused #searchBox__label #datafetch a h2 {
   font-family: GolosUIWebRegular;
   font-size: 20px;
   font-weight: 400;
-  padding: 16px;
-  margin: 12px 0;
-  border-radius: 16px;
-}
-#searchBox.focused #searchBox__label #datafetch h2 a {
-  color: var(--text);
-  text-decoration: none;
+  padding: 12px;
+  margin: 0;
 }
 #searchBox.focused #searchBox__label #datafetch.datafetch-Transparent {
   background-color: transparent;

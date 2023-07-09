@@ -20,12 +20,12 @@ get_header();
 <noscript><link rel="stylesheet" href="<?php echo home_url('/wp-content/themes/mebbr-b/css/min/home.css'); ?>"></noscript>  
 <style>
         body {
-            --text: rgba(232, 230, 227, 0.999);
+            /* --text: rgba(232, 230, 227, 0.999);
             --bg: rgba(14, 15, 15, 0.999);
             --button: rgba(255, 255, 255, 0.999);
             --border: #353535;
             --selection: rgba(53, 59, 72, 0.99);
-            --primary: #6d5dfc;
+            --primary: #6d5dfc; */
             color: var(--text);
             background-color: var(--bg);
         }
@@ -39,23 +39,23 @@ get_header();
 
         @media (prefers-color-scheme: dark) {
             body {
-                --text: rgba(232, 230, 227, 0.999);
+                /* --text: rgba(232, 230, 227, 0.999);
                 --bg: rgba(14, 15, 15, 0.999);
                 --button: rgba(255, 255, 255, 0.999);
                 --border: #353535;
                 --selection: rgba(53, 59, 72, 0.99);
-                --primary: #6d5dfc;
+                --primary: #6d5dfc; */
             }
         }
 
         @media (prefers-color-scheme: light) {
             body {
-                --text: rgba(18, 18, 18, 0.999);
+                /* --text: rgba(18, 18, 18, 0.999);
                 --button: rgba(0, 0, 0);
                 --border: #e9e9e9;
                 --bg: rgba(255, 255, 255, 0.999);
                 --selection: rgba(254, 235, 239, 0.99);
-                --primary: #6d5dfc;
+                --primary: #6d5dfc; */
             }
         }
     </style>
@@ -82,10 +82,10 @@ get_header();
           if( current_user_can( 'manage_options' ) ){ 
             echo '
               <button class="header__button icon" title="Создать пост" aria-label="Создать пост" onclick="location.href=\''.site_url()."/wp-admin/post-new.php".'\'" type="button">
-                <img src="'.get_template_directory_uri().'/svg/square-rounded-plus.svg" alt="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke="none" d="M0 0h24v24H0z"/><path d="M9 12h6M12 9v6M12 3c7.2 0 9 1.8 9 9s-1.8 9-9 9-9-1.8-9-9 1.8-9 9-9z"/></svg>
               </button>
               <button class="header__button icon" title="Управление сайтом" aria-label="Управление сайтом" onclick="location.href=\''.site_url()."/wp-admin/".'\'" type="button">
-                <img src="'.get_template_directory_uri().'/svg/braces.svg" alt="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke="none" d="M0 0h24v24H0z"/><path d="M7 4a2 2 0 0 0-2 2v3a2 3 0 0 1-2 3 2 3 0 0 1 2 3v3a2 2 0 0 0 2 2M17 4a2 2 0 0 1 2 2v3a2 3 0 0 0 2 3 2 3 0 0 0-2 3v3a2 2 0 0 1-2 2"/></svg>
               </button>
               <button class="header__button text" onclick="location.href=\''.wp_logout_url().'\'" type="button">
                 Выйти
@@ -115,8 +115,8 @@ get_header();
   </header>
   
   <div id="wrapper">
-    <button class="wrapper__button icon" onclick="searchHide();" type="button">
-      <?php echo '<img src="'.get_template_directory_uri().'/svg/x.svg" title="Закрыть" aria-label="Закрыть">'; ?>
+    <button class="wrapper__button icon" onclick="searchHide();" type="button" title="Закрыть" aria-label="Закрыть">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke="none" d="M0 0h24v24H0z"/><path d="M18 6 6 18M6 6l12 12"/></svg>
     </button>
   </div>
   <form
@@ -128,7 +128,7 @@ get_header();
     action="<?php echo home_url(); ?>"
     autocomplete="off"
   >
-    <label id="searchBox__label" class="inputBox__label" title="Поиск по сайту" aria-label="Поиск по сайту">
+    <label id="searchBox__label" class="inputBox__label">
       <input
         name="s"
         type="search"
@@ -139,11 +139,12 @@ get_header();
         id="searchBox__input"
         onkeyup="searchResolver()"
         pattern="^(?!^\s+$).*"
+        title="Поиск по сайту"
+        aria-label="Поиск по сайту"
         autofocus
-        aria-hidden
       />
       <button type="submit" id="searchsubmit" class="icon" title="Найти" aria-label="Найти">
-        <img src="<?php echo get_template_directory_uri().'/svg/search.svg'; ?>" alt="Иконка поиска">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke="none" d="M0 0h24v24H0z"/><path d="M3 10a7 7 0 1 0 14 0 7 7 0 1 0-14 0M21 21l-6-6"/></svg>
       </button>
       <div id="datafetch">
         <span aria-disabled="true">Здесь будут результаты поиска</span>

@@ -180,6 +180,7 @@ function ajax_fetch() {
 				if (document.getElementById('datafetch').classList.contains('clear')){
 					document.getElementById('datafetch').classList.add('datafetch-Transparent');
 					document.getElementById('datafetch').innerHTML = '<div id="loading-icon"><div class="loader"></div></div>';
+					document.getElementById('datafetch').classList.remove('clear');
 				}
 				fetch(`<?php echo admin_url('admin-ajax.php'); ?>?action=data_fetch2&keyword=${searchtext.value}`,
 				{
@@ -228,7 +229,7 @@ function data_fetch2(){
 	  if( $the_query->have_posts() ) :
 		  while( $the_query->have_posts() ): $the_query->the_post(); ?>
   
-			  <h2><a href="<?php echo esc_url( post_permalink() ); ?>"><?php the_title();?></a></h2>
+  		  <a href="<?php echo esc_url( post_permalink() ); ?>"><h2><?php the_title();?></h2></a>
   
 		  <?php endwhile;
 		  wp_reset_postdata();  
@@ -269,6 +270,33 @@ add_action( 'after_setup_theme', 'logo_size_change', 11 );
 
 // Custom colors
 function theme_customize_register( $wp_customize ) {
+	
+	// 
+	// Light color scheme
+	// 
+
+	$wp_customize->add_setting( 'text_color_light', array(
+		'default'   => '',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_hex_color',
+	  ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'text_color_light', array(
+		'section' => 'colors',
+		'label'   => esc_html__( 'Text color light', 'theme' ),
+	) ) );
+
+	$wp_customize->add_setting( 'bg_color_light', array(
+		'default'   => '',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_hex_color',
+	  ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bg_color_light', array(
+		'section' => 'colors',
+		'label'   => esc_html__( 'Background color light', 'theme' ),
+	) ) );
+
 	$wp_customize->add_setting( 'accent_color_light', array(
 		'default'   => '',
 		'transport' => 'refresh',
@@ -278,6 +306,17 @@ function theme_customize_register( $wp_customize ) {
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'accent_color_light', array(
 		'section' => 'colors',
 		'label'   => esc_html__( 'Accent color light', 'theme' ),
+	) ) );
+
+	$wp_customize->add_setting( 'accent_inner_text_light', array(
+		'default'   => '',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_hex_color',
+	  ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'accent_inner_text_light', array(
+		'section' => 'colors',
+		'label'   => esc_html__( 'Accent elements inner text color light', 'theme' ),
 	) ) );
 
 	$wp_customize->add_setting( 'accent_color_light_hover', array(
@@ -301,6 +340,73 @@ function theme_customize_register( $wp_customize ) {
 		'section' => 'colors',
 		'label'   => esc_html__( 'Input color light', 'theme' ),
 	) ) );
+
+	$wp_customize->add_setting( 'input_color_light_shadow_hover', array(
+		'default'   => '',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_hex_color',
+	  ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'input_color_light_shadow_hover', array(
+		'section' => 'colors',
+		'label'   => esc_html__( 'Shadow color while hover on input light', 'theme' ),
+	) ) );
+
+	$wp_customize->add_setting( 'search_bg_light', array(
+		'default'   => '',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_hex_color',
+	  ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'search_bg_light', array(
+		'section' => 'colors',
+		'label'   => esc_html__( 'Search background light', 'theme' ),
+	) ) );
+
+	$wp_customize->add_setting( 'search_icon_light', array(
+		'default'   => '',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_hex_color',
+	  ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'search_icon_light', array(
+		'section' => 'colors',
+		'label'   => esc_html__( 'Search icon color light', 'theme' ),
+	) ) );
+
+	$wp_customize->add_setting( 'search_status_text_light', array(
+		'default'   => '',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_hex_color',
+	  ) );
+
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'search_status_text_light', array(
+		'section' => 'colors',
+		'label'   => esc_html__( 'Search status text light', 'theme' ),
+	) ) );
+
+	$wp_customize->add_setting( 'search_result_text_light', array(
+		'default'   => '',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_hex_color',
+	  ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'search_result_text_light', array(
+		'section' => 'colors',
+		'label'   => esc_html__( 'Search result text light', 'theme' ),
+	) ) );
+
+	$wp_customize->add_setting( 'search_result_text_hover_light', array(
+		'default'   => '',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_hex_color',
+	  ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'search_result_text_hover_light', array(
+		'section' => 'colors',
+		'label'   => esc_html__( 'Search result text hover light', 'theme' ),
+	) ) );
  }
  
  add_action( 'customize_register', 'theme_customize_register' );
@@ -308,6 +414,38 @@ function theme_customize_register( $wp_customize ) {
 
  function theme_get_customizer_css() {
     ob_start();
+
+	$text_color_light = get_theme_mod( 'text_color_light', '' );
+    if ( ! empty( $text_color_light ) ) {
+      ?>
+
+		body {
+			--text: <?php echo $text_color_light; ?>;
+		}
+
+		@media (prefers-color-scheme: light) {
+            body {
+			--text: <?php echo $text_color_light; ?>;
+		}
+
+      <?php
+    }
+
+	$bg_color_light = get_theme_mod( 'bg_color_light', '' );
+    if ( ! empty( $bg_color_light ) ) {
+      ?>
+
+		body {
+			--bg: <?php echo $bg_color_light; ?>;
+		}
+
+		@media (prefers-color-scheme: light) {
+            body {
+			--bg: <?php echo $bg_color_light; ?>;
+		}
+
+      <?php
+    }
     
     $accent_color_light = get_theme_mod( 'accent_color_light', '' );
     if ( ! empty( $accent_color_light ) ) {
@@ -320,6 +458,22 @@ function theme_customize_register( $wp_customize ) {
 		@media (prefers-color-scheme: light) {
             body {
 			--accent: <?php echo $accent_color_light; ?>;
+		}
+
+      <?php
+    }
+
+	$accent_inner_text_light = get_theme_mod( 'accent_inner_text_light', '' );
+    if ( ! empty( $accent_inner_text_light ) ) {
+      ?>
+
+		body {
+			--accent-inner-text: <?php echo $accent_inner_text_light; ?>;
+		}
+
+		@media (prefers-color-scheme: light) {
+            body {
+			--accent-inner-text: <?php echo $accent_inner_text_light; ?>;
 		}
 
       <?php
@@ -353,6 +507,102 @@ function theme_customize_register( $wp_customize ) {
 		@media (prefers-color-scheme: light) {
             body {
 			--input: <?php echo $input_color_light; ?>;
+		}
+
+      <?php
+    }
+
+	$input_color_light_shadow_hover = get_theme_mod( 'input_color_light_shadow_hover', '' );
+    if ( ! empty( $input_color_light_shadow_hover ) ) {
+      ?>
+
+		body {
+			--input-shadow-hover: <?php echo $input_color_light_shadow_hover; ?>;
+		}
+
+		@media (prefers-color-scheme: light) {
+            body {
+			--input-shadow-hover: <?php echo $input_color_light_shadow_hover; ?>;
+		}
+
+      <?php
+    }
+
+	$search_bg_light = get_theme_mod( 'search_bg_light', '' );
+    if ( ! empty( $search_bg_light ) ) {
+      ?>
+
+		body {
+			--search-bg: <?php echo $search_bg_light; ?>;
+		}
+
+		@media (prefers-color-scheme: light) {
+            body {
+			--search-bg: <?php echo $search_bg_light; ?>;
+		}
+
+      <?php
+    }
+
+	$search_status_text_light = get_theme_mod( 'search_status_text_light', '' );
+    if ( ! empty( $search_status_text_light ) ) {
+      ?>
+
+		body {
+			--search-status-text: <?php echo $search_status_text_light; ?>;
+		}
+
+		@media (prefers-color-scheme: light) {
+            body {
+			--search-status-text: <?php echo $search_status_text_light; ?>;
+		}
+
+      <?php
+    }
+
+	$search_icon_light = get_theme_mod( 'search_icon_light', '' );
+    if ( ! empty( $search_icon_light ) ) {
+      ?>
+
+		body {
+			--search-icon: <?php echo $search_icon_light; ?>;
+		}
+
+		@media (prefers-color-scheme: light) {
+            body {
+			--search-icon: <?php echo $search_icon_light; ?>;
+		}
+
+      <?php
+    }
+
+	$search_result_text_light = get_theme_mod( 'search_result_text_light', '' );
+    if ( ! empty( $search_result_text_light ) ) {
+      ?>
+
+		body {
+			--search-result-text: <?php echo $search_result_text_light; ?>;
+		}
+
+		@media (prefers-color-scheme: light) {
+            body {
+			--search-result-text: <?php echo $search_result_text_light; ?>;
+		}
+
+      <?php
+    }
+
+	$search_result_text_hover_light = get_theme_mod( 'search_result_text_hover_light', '' );
+    if ( ! empty( $search_result_text_hover_light ) ) {
+      ?>
+
+		body {
+			--search-result-text-hover: <?php echo $search_result_text_hover_light; ?>;
+		}
+
+		@media (prefers-color-scheme: light) {
+            body {
+			--search-result-text-hover: <?php echo $search_result_text_hover_light; ?>;
 		}
 
       <?php
