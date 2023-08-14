@@ -659,6 +659,7 @@ body {
 }
 
 #category {
+  width: 100%;
   padding: 0 10%;
   list-style: none;
   display: flex;
@@ -669,15 +670,16 @@ body {
   font-family: GolosUIWebRegular;
   position: fixed;
   left: 0;
-  bottom: 100px;
+  bottom: 38px;
+  margin: 0;
   font-family: "GolosUIWebRegular";
 }
 #category li {
-  margin: 0.75em 0.5vw;
+  margin: 1em 0.55vw;
 }
 #category li a {
   border-radius: 0.75em;
-  padding: 0.25em 1.25em;
+  padding: 0.4em 1.75em;
   background: var(--search-bg);
   cursor: pointer;
   font-size: 1.25em;
@@ -714,5 +716,10 @@ body {
 @media (max-width: 1199px) {
   #header #header__left-box #header__naming {
     display: none;
+  }
+  #searchBox {
+    min-width: auto;
+    max-width: inherit;
+    width: 90vw;
   }
 }

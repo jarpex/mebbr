@@ -139,11 +139,12 @@ get_header();
         id="searchBox__input"
         onkeyup="searchResolver()"
         pattern="^(?!^\s+$).*"
+        placeholder="Поиск по сайту"
         title="Поиск по сайту"
         aria-label="Поиск по сайту"
         autofocus
       />
-      <button type="submit" id="searchsubmit" class="icon" title="Найти" aria-label="Найти">
+      <button type="submit" id="searchsubmit" class="icon" title="Найти" aria-label="Найти" tabindex="-1">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke="none" d="M0 0h24v24H0z"/><path d="M3 10a7 7 0 1 0 14 0 7 7 0 1 0-14 0M21 21l-6-6"/></svg>
       </button>
       <div id="datafetch">
@@ -151,7 +152,7 @@ get_header();
       </div>
     </label>
   </form>
-  <ul id="category"><?php wp_list_categories('title_li='); ?></ul>
+  <ul id="category"><?php wp_list_categories('title_li=&depth=1'); ?></ul>
     </main>
 <script>
   var searchWrapper = false; 
