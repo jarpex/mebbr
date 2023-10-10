@@ -15,6 +15,7 @@
     "webpack-stream": "^7.0.0"
   },
   "dependencies": {
+    "collection-map": "^1.0.0",
     "dir-archiver": "^2.1.0",
     "normalize-scss": "^7.0.1",
     "sass": "^1.53.0",

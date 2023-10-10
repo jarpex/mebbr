@@ -140,6 +140,7 @@ body {
   opacity: 0;
   transition: visibility 0s, opacity 0.5s ease-in-out;
   backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 
   display: flex;
   flex-direction: row-reverse;
