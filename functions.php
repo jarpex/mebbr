@@ -407,6 +407,143 @@ function theme_customize_register( $wp_customize ) {
 		'section' => 'colors',
 		'label'   => esc_html__( 'Search result text hover light', 'theme' ),
 	) ) );
+
+	// 
+	// Dark color scheme
+	// 
+
+	$wp_customize->add_setting( 'text_color_dark', array(
+		'default'   => '',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_hex_color',
+	  ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'text_color_dark', array(
+		'section' => 'colors',
+		'label'   => esc_html__( 'Text color dark', 'theme' ),
+	) ) );
+
+	$wp_customize->add_setting( 'bg_color_dark', array(
+		'default'   => '',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_hex_color',
+	  ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bg_color_dark', array(
+		'section' => 'colors',
+		'label'   => esc_html__( 'Background color dark', 'theme' ),
+	) ) );
+
+	$wp_customize->add_setting( 'accent_color_dark', array(
+		'default'   => '',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_hex_color',
+	  ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'accent_color_dark', array(
+		'section' => 'colors',
+		'label'   => esc_html__( 'Accent color dark', 'theme' ),
+	) ) );
+
+	$wp_customize->add_setting( 'accent_inner_text_dark', array(
+		'default'   => '',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_hex_color',
+	  ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'accent_inner_text_dark', array(
+		'section' => 'colors',
+		'label'   => esc_html__( 'Accent elements inner text color dark', 'theme' ),
+	) ) );
+
+	$wp_customize->add_setting( 'accent_color_dark_hover', array(
+		'default'   => '',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_hex_color',
+	  ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'accent_color_dark_hover', array(
+		'section' => 'colors',
+		'label'   => esc_html__( 'Accent color dark hover', 'theme' ),
+	) ) );
+
+	$wp_customize->add_setting( 'input_color_dark', array(
+		'default'   => '',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_hex_color',
+	  ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'input_color_dark', array(
+		'section' => 'colors',
+		'label'   => esc_html__( 'Input color dark', 'theme' ),
+	) ) );
+
+	$wp_customize->add_setting( 'input_color_dark_shadow_hover', array(
+		'default'   => '',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_hex_color',
+	  ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'input_color_dark_shadow_hover', array(
+		'section' => 'colors',
+		'label'   => esc_html__( 'Shadow color while hover on input dark', 'theme' ),
+	) ) );
+
+	$wp_customize->add_setting( 'search_bg_dark', array(
+		'default'   => '',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_hex_color',
+	  ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'search_bg_dark', array(
+		'section' => 'colors',
+		'label'   => esc_html__( 'Search background dark', 'theme' ),
+	) ) );
+
+	$wp_customize->add_setting( 'search_icon_dark', array(
+		'default'   => '',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_hex_color',
+	  ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'search_icon_dark', array(
+		'section' => 'colors',
+		'label'   => esc_html__( 'Search icon color dark', 'theme' ),
+	) ) );
+
+	$wp_customize->add_setting( 'search_status_text_dark', array(
+		'default'   => '',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_hex_color',
+	  ) );
+
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'search_status_text_dark', array(
+		'section' => 'colors',
+		'label'   => esc_html__( 'Search status text dark', 'theme' ),
+	) ) );
+
+	$wp_customize->add_setting( 'search_result_text_dark', array(
+		'default'   => '',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_hex_color',
+	  ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'search_result_text_dark', array(
+		'section' => 'colors',
+		'label'   => esc_html__( 'Search result text dark', 'theme' ),
+	) ) );
+
+	$wp_customize->add_setting( 'search_result_text_hover_dark', array(
+		'default'   => '',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_hex_color',
+	  ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'search_result_text_hover_dark', array(
+		'section' => 'colors',
+		'label'   => esc_html__( 'Search result text hover dark', 'theme' ),
+	) ) );
  }
  
  add_action( 'customize_register', 'theme_customize_register' );
@@ -415,6 +552,7 @@ function theme_customize_register( $wp_customize ) {
  function theme_get_customizer_css() {
     ob_start();
 
+	// Light Theme
 	$text_color_light = get_theme_mod( 'text_color_light', '' );
     if ( ! empty( $text_color_light ) ) {
       ?>
@@ -425,7 +563,8 @@ function theme_customize_register( $wp_customize ) {
 
 		@media (prefers-color-scheme: light) {
             body {
-			--text: <?php echo $text_color_light; ?>;
+				--text: <?php echo $text_color_light; ?>;
+			}
 		}
 
       <?php
@@ -441,9 +580,9 @@ function theme_customize_register( $wp_customize ) {
 
 		@media (prefers-color-scheme: light) {
             body {
-			--bg: <?php echo $bg_color_light; ?>;
+				--bg: <?php echo $bg_color_light; ?>;
+			}
 		}
-
       <?php
     }
     
@@ -457,9 +596,9 @@ function theme_customize_register( $wp_customize ) {
 
 		@media (prefers-color-scheme: light) {
             body {
-			--accent: <?php echo $accent_color_light; ?>;
+				--accent: <?php echo $accent_color_light; ?>;
+			}
 		}
-
       <?php
     }
 
@@ -473,9 +612,9 @@ function theme_customize_register( $wp_customize ) {
 
 		@media (prefers-color-scheme: light) {
             body {
-			--accent-inner-text: <?php echo $accent_inner_text_light; ?>;
+				--accent-inner-text: <?php echo $accent_inner_text_light; ?>;
+			}
 		}
-
       <?php
     }
 
@@ -490,9 +629,9 @@ function theme_customize_register( $wp_customize ) {
 		
 		@media (prefers-color-scheme: light) {
             body {
-			--accent-hover: <?php echo $accent_color_light_hover; ?>;
+				--accent-hover: <?php echo $accent_color_light_hover; ?>;
+			}
 		}
-
       <?php
     }
 
@@ -506,9 +645,9 @@ function theme_customize_register( $wp_customize ) {
 
 		@media (prefers-color-scheme: light) {
             body {
-			--input: <?php echo $input_color_light; ?>;
+				--input: <?php echo $input_color_light; ?>;
+			}
 		}
-
       <?php
     }
 
@@ -522,9 +661,9 @@ function theme_customize_register( $wp_customize ) {
 
 		@media (prefers-color-scheme: light) {
             body {
-			--input-shadow-hover: <?php echo $input_color_light_shadow_hover; ?>;
+				--input-shadow-hover: <?php echo $input_color_light_shadow_hover; ?>;
+			}
 		}
-
       <?php
     }
 
@@ -538,9 +677,9 @@ function theme_customize_register( $wp_customize ) {
 
 		@media (prefers-color-scheme: light) {
             body {
-			--search-bg: <?php echo $search_bg_light; ?>;
+				--search-bg: <?php echo $search_bg_light; ?>;
+			}
 		}
-
       <?php
     }
 
@@ -554,9 +693,9 @@ function theme_customize_register( $wp_customize ) {
 
 		@media (prefers-color-scheme: light) {
             body {
-			--search-status-text: <?php echo $search_status_text_light; ?>;
+				--search-status-text: <?php echo $search_status_text_light; ?>;
+			}
 		}
-
       <?php
     }
 
@@ -570,9 +709,9 @@ function theme_customize_register( $wp_customize ) {
 
 		@media (prefers-color-scheme: light) {
             body {
-			--search-icon: <?php echo $search_icon_light; ?>;
+				--search-icon: <?php echo $search_icon_light; ?>;
+			}
 		}
-
       <?php
     }
 
@@ -586,9 +725,9 @@ function theme_customize_register( $wp_customize ) {
 
 		@media (prefers-color-scheme: light) {
             body {
-			--search-result-text: <?php echo $search_result_text_light; ?>;
+				--search-result-text: <?php echo $search_result_text_light; ?>;
+			}
 		}
-
       <?php
     }
 
@@ -602,11 +741,164 @@ function theme_customize_register( $wp_customize ) {
 
 		@media (prefers-color-scheme: light) {
             body {
-			--search-result-text-hover: <?php echo $search_result_text_hover_light; ?>;
+				--search-result-text-hover: <?php echo $search_result_text_hover_light; ?>;
+			}
 		}
-
       <?php
     }
+
+	// Dark Theme
+	$text_color_dark = get_theme_mod( 'text_color_dark', '' );
+	if ( ! empty( $text_color_dark ) ) {
+	?>
+	
+		body {
+			--text: <?php echo $text_color_light; ?>;
+		}
+
+		@media (prefers-color-scheme: dark) {
+			body {
+				--text: <?php echo $text_color_dark; ?>;
+			}
+		}
+		<?php
+	}
+
+	$bg_color_dark = get_theme_mod( 'bg_color_dark', '' );
+	if ( ! empty( $bg_color_dark ) ) {
+		?>
+
+		body {
+			--bg: <?php echo $bg_color_light; ?>;
+		}
+
+		@media (prefers-color-scheme: dark) {
+			body {
+				--bg: <?php echo $bg_color_dark; ?>;
+			}
+		}
+		<?php
+	}
+	
+	$accent_color_dark = get_theme_mod( 'accent_color_dark', '' );
+	if ( ! empty( $accent_color_dark ) ) {
+		?>
+
+		@media (prefers-color-scheme: dark) {
+			body {
+				--accent: <?php echo $accent_color_dark; ?>;
+			}
+		}
+		<?php
+	}
+
+	$accent_inner_text_dark = get_theme_mod( 'accent_inner_text_dark', '' );
+	if ( ! empty( $accent_inner_text_dark ) ) {
+		?>
+
+		@media (prefers-color-scheme: dark) {
+			body {
+				--accent-inner-text: <?php echo $accent_inner_text_dark; ?>;
+			}
+		}
+		<?php
+	}
+
+	$accent_color_dark_hover = get_theme_mod( 'accent_color_dark_hover', '' );
+	if ( ! empty( $accent_color_dark_hover ) ) {
+		?>
+
+		@media (prefers-color-scheme: dark) {
+			body {
+				--accent-hover: <?php echo $accent_color_dark_hover; ?>;
+			}
+		}
+		<?php
+	}
+
+	$input_color_dark = get_theme_mod( 'input_color_dark', '' );
+	if ( ! empty( $input_color_dark ) ) {
+		?>
+
+		@media (prefers-color-scheme: dark) {
+			body {
+				--input: <?php echo $input_color_dark; ?>;
+			}
+		}
+		<?php
+	}
+
+	$input_color_dark_shadow_hover = get_theme_mod( 'input_color_dark_shadow_hover', '' );
+	if ( ! empty( $input_color_dark_shadow_hover ) ) {
+		?>
+
+		@media (prefers-color-scheme: dark) {
+			body {
+				--input-shadow-hover: <?php echo $input_color_dark_shadow_hover; ?>;
+			}
+		}
+		<?php
+	}
+
+	$search_bg_dark = get_theme_mod( 'search_bg_dark', '' );
+	if ( ! empty( $search_bg_dark ) ) {
+		?>
+
+		@media (prefers-color-scheme: dark) {
+			body {
+				--search-bg: <?php echo $search_bg_dark; ?>;
+			}
+		}
+		<?php
+	}
+
+	$search_status_text_dark = get_theme_mod( 'search_status_text_dark', '' );
+	if ( ! empty( $search_status_text_dark ) ) {
+		?>
+
+		@media (prefers-color-scheme: dark) {
+			body {
+				--search-status-text: <?php echo $search_status_text_dark; ?>;
+			}
+		}
+		<?php
+	}
+
+	$search_icon_dark = get_theme_mod( 'search_icon_dark', '' );
+	if ( ! empty( $search_icon_dark ) ) {
+		?>
+
+		@media (prefers-color-scheme: dark) {
+			body {
+				--search-icon: <?php echo $search_icon_dark; ?>;
+			}
+		}
+		<?php
+	}
+
+	$search_result_text_dark = get_theme_mod( 'search_result_text_dark', '' );
+	if ( ! empty( $search_result_text_dark ) ) {
+		?>
+
+		@media (prefers-color-scheme: dark) {
+			body {
+				--search-result-text: <?php echo $search_result_text_dark; ?>;
+			}
+		}
+		<?php
+	}
+
+	$search_result_text_hover_dark = get_theme_mod( 'search_result_text_hover_dark', '' );
+	if ( ! empty( $search_result_text_hover_dark ) ) {
+		?>
+
+		@media (prefers-color-scheme: dark) {
+			body {
+				--search-result-text-hover: <?php echo $search_result_text_hover_dark; ?>;
+			}
+		}
+		<?php
+	}
 
     $css = ob_get_clean();
     return $css;
