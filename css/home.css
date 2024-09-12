@@ -639,11 +639,12 @@ body {
 #searchBox.focused #searchBox__label #datafetch a {
   color: var(--search-result-text);
   text-decoration: none;
+  display: flex;
+  align-items: center;
 }
 #searchBox.focused #searchBox__label #datafetch a:hover {
   background-color: var(--search-result-text-hover);
   text-decoration: underline;
-  display: block;
   border-radius: 9px;
 }
 #searchBox.focused #searchBox__label #datafetch a h2 {
@@ -652,6 +653,12 @@ body {
   font-weight: 400;
   padding: 12px;
   margin: 0;
+}
+#searchBox.focused #searchBox__label #datafetch a img {
+  padding: 12px 0 12px 12px;
+  width: 50px;
+  height: auto;
+  margin-right: 10px;
 }
 #searchBox.focused #searchBox__label #datafetch.datafetch-Transparent {
   background-color: transparent;

@@ -229,7 +229,14 @@ function data_fetch2(){
 	  if( $the_query->have_posts() ) :
 		  while( $the_query->have_posts() ): $the_query->the_post(); ?>
   
-  		  <a href="<?php echo esc_url( post_permalink() ); ?>"><h2><?php the_title();?></h2></a>
+		<a href="<?php echo esc_url( post_permalink() ); ?>">
+			<?php 
+			$thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
+			if ( $thumbnail_url ) : ?>
+				<img src="<?php echo $thumbnail_url; ?>">
+			<?php endif; ?>
+			<h2><?php the_title(); ?></h2>
+		</a>	
   
 		  <?php endwhile;
 		  wp_reset_postdata();  

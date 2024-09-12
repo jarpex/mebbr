@@ -291,11 +291,12 @@ body {
         a {
           color: var(--search-result-text);
           text-decoration: none;
+          display: flex;
+          align-items: center;
 
           &:hover {
             background-color: var(--search-result-text-hover);
             text-decoration: underline;
-            display: block;
             border-radius: 9px;
           }
 
@@ -305,6 +306,13 @@ body {
             font-weight: 400;
             padding: 12px;
             margin: 0;
+          }
+
+          img {
+            padding: 12px 0 12px 12px;
+            width: 50px;
+            height: auto;
+            margin-right: 10px;
           }
         }
 
