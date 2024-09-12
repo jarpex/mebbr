@@ -1,16 +1,69 @@
+@media (max-width: 1199px) {
+  #header {
+    padding: 16px;
 
-@media (max-width: 1199px) { 
-    #header {
-        #header__left-box {
-            #header__naming {
-            display: none;
-            }
+    #header__left-box {
+      height: 64px;
+      #logo {
+        margin: 0;
+        padding: 0 16px 0 0;
+        height: 56px;
+
+        .custom-logo-link {
+          height: 56px;
+          width: 64px;
+
+          .custom-logo {
+            height: 56px;
+            width: 64px;
+          }
         }
+      }
+      #header__naming {
+        display: none;
+      }
+    }
+    #header__right-box {
+      display: none;
     }
 
-    #searchBox {
-        min-width: auto;
-        max-width: inherit;
-        width: 90vw;
+    #header__right-box--mobile {
+      .header__button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        height: 44px;
+        margin: 4px;
+
+        border-radius: 16px;
+        border: none;
+
+        background-color: transparent;
+        color: var(--text);
+
+        transition: background-color ease-out 0.15s;
+        will-change: background-color;
+
+        font-family: 'GolosUIWebMedium';
+
+        cursor: pointer;
+
+        &:hover {
+          background-color: transparent;
+        }
+
+        &.icon {
+          min-width: 56px;
+          height: 56px;
+        }
+      }
     }
+  }
+
+  #searchBox {
+    min-width: auto;
+    max-width: inherit;
+    width: 90vw;
+  }
 }

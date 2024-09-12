@@ -1,1 +1,7 @@
-
+@media (min-width: 1200px) {
+  #header {
+    #header__right-box--mobile {
+      display: none;
+    }
+  }
+}

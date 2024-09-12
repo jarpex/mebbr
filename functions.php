@@ -363,6 +363,17 @@ function theme_customize_register( $wp_customize ) {
 		'label'   => esc_html__( 'Search background light', 'theme' ),
 	) ) );
 
+	$wp_customize->add_setting( 'accent_text_light', array(
+		'default'   => '',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_hex_color',
+	  ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'accent_text_light', array(
+		'section' => 'colors',
+		'label'   => esc_html__( 'Text on accent color light', 'theme' ),
+	) ) );
+
 	$wp_customize->add_setting( 'search_icon_light', array(
 		'default'   => '',
 		'transport' => 'refresh',
@@ -678,6 +689,22 @@ function theme_customize_register( $wp_customize ) {
 		@media (prefers-color-scheme: light) {
             body {
 				--search-bg: <?php echo $search_bg_light; ?>;
+			}
+		}
+      <?php
+    }
+
+	$accent_text_light = get_theme_mod( 'accent_text_light', '' );
+    if ( ! empty( $accent_text_light ) ) {
+      ?>
+
+		body {
+			--accent-text: <?php echo $accent_text_light; ?>;
+		}
+
+		@media (prefers-color-scheme: light) {
+            body {
+				--accent-text: <?php echo $accent_text_light; ?>;
 			}
 		}
       <?php

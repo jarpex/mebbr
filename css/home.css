@@ -690,7 +690,7 @@ body {
 }
 #category li a:hover {
   background: var(--accent);
-  color: #fff;
+  color: var(--accent-text);
 }
 
 #loading-icon {
@@ -716,12 +716,61 @@ body {
 }
 
 @media (max-width: 1199px) {
+  #header {
+    padding: 16px;
+  }
+  #header #header__left-box {
+    height: 64px;
+  }
+  #header #header__left-box #logo {
+    margin: 0;
+    padding: 0 16px 0 0;
+    height: 56px;
+  }
+  #header #header__left-box #logo .custom-logo-link {
+    height: 56px;
+    width: 64px;
+  }
+  #header #header__left-box #logo .custom-logo-link .custom-logo {
+    height: 56px;
+    width: 64px;
+  }
   #header #header__left-box #header__naming {
     display: none;
+  }
+  #header #header__right-box {
+    display: none;
+  }
+  #header #header__right-box--mobile .header__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    margin: 4px;
+    border-radius: 16px;
+    border: none;
+    background-color: transparent;
+    color: var(--text);
+    transition: background-color ease-out 0.15s;
+    will-change: background-color;
+    font-family: "GolosUIWebMedium";
+    cursor: pointer;
+  }
+  #header #header__right-box--mobile .header__button:hover {
+    background-color: transparent;
+  }
+  #header #header__right-box--mobile .header__button.icon {
+    min-width: 56px;
+    height: 56px;
   }
   #searchBox {
     min-width: auto;
     max-width: inherit;
     width: 90vw;
+  }
+}
+@media (min-width: 1200px) {
+  #header #header__right-box--mobile {
+    display: none;
   }
 }
