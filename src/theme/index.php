@@ -25,7 +25,7 @@ wp_head();
     <meta name="twitter:domain" content="{site:domain}">
     <meta name="twitter:site" content="{twitter:site}">
     <meta name="twitter:creator" content="{twitter:creator}">
-    <link rel="alternate" type="application/rss+xml" title={RSS:Title} href="{RSS:href}">
+    <link rel="alternate" type="application/rss+xml" title={index:rss_title} href="{RSS:href}">
     <link rel="next" href="<?php the_permalink(); ?>">
     {index:link:preconnect}
     {index:link:preload}
@@ -74,7 +74,7 @@ wp_head();
   </script>
     <aside class="header" role="complementary">
         <a href="{site:url}" class="logo">
-            {site:name}
+            {index:site_name}
         </a>
         <p class="header_desc">
             {site_description}

@@ -9,7 +9,7 @@ wp_head();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="twitter:creator" content="{twitter:creator}">
     {article:extra_meta}
-    <link rel="alternate" type="application/rss+xml" title={RSS:Title} href="{RSS:href}">
+    <link rel="alternate" type="application/rss+xml" title={article:rss_title} href="{RSS:href}">
     <link rel="next" href="{site:url}">
     {index:link:preconnect}
     {site_icon}
@@ -185,7 +185,7 @@ wp_head();
             />
           </svg>
         </figure>
-        <a href="{site:url}" class="logo"> {site:name} </a>
+        <a href="{site:url}" class="logo"> {article:site_name} </a>
         <p class="header_desc">{site_description}</p>
         <div class="nav_flex">
           <nav class="nav" role="navigation">
@@ -203,7 +203,7 @@ wp_head();
             />
           </svg>
         </figure>
-        <a href="{site:url}" class="logo"> {site:name} </a>
+        <a href="{site:url}" class="logo"> {article:site_name} </a>
         <p class="header_desc">{site_description}</p>
         <p class="settings-popup__bg-heading">🌙 Выбор темы:</p>
         <form name="theme" class="segmented-control" id="theme-switcher">
