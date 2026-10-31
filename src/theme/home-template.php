@@ -34,10 +34,6 @@ wp_head();
     <link rel="alternate" type="application/rss+xml" title={RSS:Title} href="{RSS:href}">
     <link rel="next" href="<?php the_permalink(); ?>">
     {index:link:preconnect}
-    <link rel="preload" href="{index:stylesheet}" as="style"
-        onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet" href="{index:stylesheet}"></noscript>
     {index:link:preload}
     {index:dns:prefetch}
     <title>{site_title}</title>
