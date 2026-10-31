@@ -12,13 +12,13 @@ wp_head();
     {msapplication-TileColor}
     {msapplication-config}
     <meta name="description" content="{site_description}" />
-    <meta property="og:title" content="{site_title}" />
+    <meta property="og:title" content="{index:og_title}" />
     <meta property="og:description" content="{site_description}" />
     <meta property="og:image" content="{og:image}" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https:{site:url}" />
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{site_title}">
+    <meta name="twitter:title" content="{index:og_title}">
     <meta name="twitter:description" content="{site_description}">
     <meta name="twitter:url" content="https:{site:url}">
     <meta name="twitter:image" content="{og:image}" />
