@@ -30,7 +30,7 @@ wp_head();
     {index:link:preconnect}
     {index:link:preload}
     {index:dns:prefetch}
-    <title>{site_title}</title>
+    <title>{index:title}</title>
     {index:style}
 
 </head>
