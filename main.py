@@ -153,8 +153,9 @@ def main(ver_upd, cfg_file):
     config["{Theme_Version}"] = [(f"{current_ver[0]}.{current_ver[1]}.{current_ver[2]}")]
     cleaning()
     ####################BUILDING######################
-    system("gulp styles")
+    system("npx gulp styles")
     build_file("/src/theme/style.css", "/build/theme/", "/build/theme/style.css", config)
+    copyfile(getcwd() + "/css/min/page.css", getcwd() + "/build/theme/page.css")
     copy_file("{Theme_Icon}","/build/theme/screenshot.png", config)
     copy_file("{Theme_Functions}","/build/theme/functions.php", config)
     copy_file("{Theme_Comments}","/build/theme/comments.php", config)

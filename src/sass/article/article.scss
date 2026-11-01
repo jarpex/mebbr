@@ -27,6 +27,8 @@ body {
   max-width: 650px;
   margin: 0 auto;
   box-sizing: border-box;
+  hyphens: auto;
+  text-align: justify;
 
   a:not(.spotlight) {
     color: var(--text);

@@ -1,2 +1,8 @@
-build/*
-node_modules
+# Deployment secrets
+.env
+.env.*
+!.env.example
+
+# Build artifacts & dependencies
+build/
+node_modules/

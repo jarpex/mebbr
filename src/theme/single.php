@@ -7,12 +7,13 @@ wp_head();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {article:extra_meta}
     <meta name="twitter:creator" content="{twitter:creator}">
-    <link rel="alternate" type="application/rss+xml" title={RSS:Title} href="{RSS:href}">
+    <link rel="alternate" type="application/rss+xml" title={article:rss_title} href="{RSS:href}">
     <link rel="next" href="{site:url}">
     {index:link:preconnect}
     {site_icon}
-    <title><?php the_title();?></title>
+    <title>{article:title}</title>
     {article:stylesheet}
     {article:preload}
     {article:dns-prefetch}
@@ -129,106 +130,12 @@ wp_head();
         }
       }
 
-      const notify = ({type,title,content,link,src}) => {
-      let notificationArea = document.getElementById("notification-area");
-      if (type === "text"){
-        if (title && content) {
-          let html = `<div class="notification notification-text slide-in-right">
-                        <div class="notification-header--box">
-                          <span data-nosnippet class="notification-header">${title}</span>
-                          <figure class="icon" onclick="remove(this)">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                              <path d="M23.707.293a1 1 0 0 0-1.414 0L12 10.586 1.707.293a1 1 0 0 0-1.414 0 1 1 0 0 0 0 1.414L10.586 12 .293 22.293a1 1 0 0 0 0 1.414 1 1 0 0 0 1.414 0L12 13.414l10.293 10.293a1 1 0 0 0 1.414 0 1 1 0 0 0 0-1.414L13.414 12 23.707 1.707a1 1 0 0 0 0-1.414Z"></path>
-                            </svg>
-                          </figure>
-                        </div>
-                        <p data-nosnippet class="notification-content">${content}</p>
-                    </div>`
-          notificationArea.insertAdjacentHTML( 'afterbegin', html);
-        } else {
-          throw "Произошла ошибка при вызове уведомления 😣";
-        }
-      } else if (type === "video"){
-        if (link && src) {
-          let html = `<div class="notification notification-video slide-in-right">
-                        <div class="notification-header--box">
-                          <span data-nosnippet class="notification-header">📺 По этой статье я сняла видео!</span>
-                          <figure class="icon" onclick="remove(this)">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                              <path d="M23.707.293a1 1 0 0 0-1.414 0L12 10.586 1.707.293a1 1 0 0 0-1.414 0 1 1 0 0 0 0 1.414L10.586 12 .293 22.293a1 1 0 0 0 0 1.414 1 1 0 0 0 1.414 0L12 13.414l10.293 10.293a1 1 0 0 0 1.414 0 1 1 0 0 0 0-1.414L13.414 12 23.707 1.707a1 1 0 0 0 0-1.414Z"></path>
-                            </svg>
-                          </figure>
-                        </div>
-                        <a href="${link}" class="notification-link" target="_blank"><img src="${src}" /></a>
-                    </div>`
-          notificationArea.insertAdjacentHTML( 'afterbegin', html);
-        } else {
-          throw "Произошла ошибка при вызове уведомления 😣";
-        }
-      } else if (type === "audio") {
-        if (src) {
-          let html = `<div class="notification notification-audio slide-in-right">
-                        <div class="notification-header--box">
-                          <span data-nosnippet class="notification-header">🎵 Эту статью можно прослушать!</span>
-                          <figure class="icon" onclick="remove(this)">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                              <path d="M23.707.293a1 1 0 0 0-1.414 0L12 10.586 1.707.293a1 1 0 0 0-1.414 0 1 1 0 0 0 0 1.414L10.586 12 .293 22.293a1 1 0 0 0 0 1.414 1 1 0 0 0 1.414 0L12 13.414l10.293 10.293a1 1 0 0 0 1.414 0 1 1 0 0 0 0-1.414L13.414 12 23.707 1.707a1 1 0 0 0 0-1.414Z"></path>
-                            </svg>
-                          </figure>
-                        </div>
-                        <audio controls controlsList="nodownload noplaybackrate" src="${src}">
-            Ваш браузер устарел 😣
-        </audio>
-                    </div>`
-          notificationArea.insertAdjacentHTML( 'afterbegin', html);
-        } else {
-          throw "Произошла ошибка при вызове уведомления 😣";
-        }
-      }else {
-        throw "Произошла ошибка при вызове уведомления 😣";
-      }
-    }
+{article:notify_script}
     </script>
     <div id="progress">
       <div id="progress-bar"></div>
     </div>
-    <div id="notification-area">
-      <!-- <div class="notification notification-text">
-        <div class="notification-header--box">
-          <span data-nosnippet class="notification-header">Тестовое сообщение</span>
-          <figure class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path d="M23.707.293a1 1 0 0 0-1.414 0L12 10.586 1.707.293a1 1 0 0 0-1.414 0 1 1 0 0 0 0 1.414L10.586 12 .293 22.293a1 1 0 0 0 0 1.414 1 1 0 0 0 1.414 0L12 13.414l10.293 10.293a1 1 0 0 0 1.414 0 1 1 0 0 0 0-1.414L13.414 12 23.707 1.707a1 1 0 0 0 0-1.414Z"></path>
-            </svg>
-          </figure>
-        </div>
-        <p data-nosnippet class="notification-content">Всем пиривет :3 Сегодня мы с вами протестируем работу системы оповещаний на прекрасном сайтике https://mebbr.ru</p>
-      </div>
-      <div class="notification notification-video">
-        <div class="notification-header--box">
-          <span span data-nosnippet class="notification-header">📺 По этой статье я сняла видео!</span>
-          <figure class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path d="M23.707.293a1 1 0 0 0-1.414 0L12 10.586 1.707.293a1 1 0 0 0-1.414 0 1 1 0 0 0 0 1.414L10.586 12 .293 22.293a1 1 0 0 0 0 1.414 1 1 0 0 0 1.414 0L12 13.414l10.293 10.293a1 1 0 0 0 1.414 0 1 1 0 0 0 0-1.414L13.414 12 23.707 1.707a1 1 0 0 0 0-1.414Z"></path>
-            </svg>
-          </figure>
-        </div>
-        <a href="//youtube.com/DefaultJarpex" class="notification-link"><img src="https://cdn.mebbr.ru/wp-content/uploads/2020/07/Обзор-монитора-Samsung-S32R750QEI.webp" /></a>
-      </div>
-      <div class="notification notification-audio">
-        <div class="notification-header--box">
-          <span data-nosnippet class="notification-header">🎵 Эту статью можно прослушать!</span>
-          <figure class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path d="M23.707.293a1 1 0 0 0-1.414 0L12 10.586 1.707.293a1 1 0 0 0-1.414 0 1 1 0 0 0 0 1.414L10.586 12 .293 22.293a1 1 0 0 0 0 1.414 1 1 0 0 0 1.414 0L12 13.414l10.293 10.293a1 1 0 0 0 1.414 0 1 1 0 0 0 0-1.414L13.414 12 23.707 1.707a1 1 0 0 0 0-1.414Z"></path>
-            </svg>
-          </figure>
-        </div>
-        <audio controls controlsList="nodownload noplaybackrate" src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3">
-            Ваш браузер устарел 😣
-        </audio>
-      </div> -->
-    </div>
+{article:notify_area}
     <div id="search-popup" class="cd-popup" role="alert">
       <div id="search-popup__bg" class="cd-popup-container">
         <figure class="cd-popup-mobile icon">
@@ -278,7 +185,7 @@ wp_head();
             />
           </svg>
         </figure>
-        <a href="{site:url}" class="logo"> {site:name} </a>
+        <a href="{site:url}" class="logo"> {article:site_name} </a>
         <p class="header_desc">{site_description}</p>
         <div class="nav_flex">
           <nav class="nav" role="navigation">
@@ -296,7 +203,7 @@ wp_head();
             />
           </svg>
         </figure>
-        <a href="{site:url}" class="logo"> {site:name} </a>
+        <a href="{site:url}" class="logo"> {article:site_name} </a>
         <p class="header_desc">{site_description}</p>
         <p class="settings-popup__bg-heading">🌙 Выбор темы:</p>
         <form name="theme" class="segmented-control" id="theme-switcher">
@@ -493,6 +400,7 @@ wp_head();
             </div>
         <?php  endif;  ?>
         <?php  echo '</div>'; ?>
+        <?php if ( comments_open() || get_comments_number() ) : ?>
         <div id="comments-box">
           <?php
             $comments = get_comments();
@@ -515,6 +423,7 @@ wp_head();
               <?php  if( get_comments_number() > 10){ the_comments_pagination(); }?> 
           <?php comment_form(); ?>
         </div>
+        <?php endif; ?>
         
 
         
