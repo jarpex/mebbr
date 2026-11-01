@@ -400,7 +400,11 @@ wp_head();
             </div>
         <?php  endif;  ?>
         <?php  echo '</div>'; ?>
-        {article:comments_open}
+        <?php if ( comments_open() || get_comments_number() ) : ?>
+        <div id="comments-box">
+          <?php
+            $comments = get_comments();
+            if( get_comments_number() ){ ?>
               <div id="comments">
                 <ol>
                   <?php
@@ -418,7 +422,8 @@ wp_head();
               <?php }?> 
               <?php  if( get_comments_number() > 10){ the_comments_pagination(); }?> 
           <?php comment_form(); ?>
-        {article:comments_close}
+        </div>
+        <?php endif; ?>
         
 
         
