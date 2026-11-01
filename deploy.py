@@ -2,7 +2,28 @@
 import os
 import sys
 import subprocess
-import shlex
+import shutil
+
+def sync_files(build_dir, target, ssh_key, ssh_port):
+    rsync_bin = shutil.which('rsync')
+    if rsync_bin:
+        ssh_cmd = f'ssh -i "{ssh_key}" -p {ssh_port} -o StrictHostKeyChecking=accept-new'
+        cmd = [rsync_bin, '-avz', '--delete', '-e', ssh_cmd, f'{build_dir}/', target]
+        res = subprocess.run(cmd)
+        return res.returncode == 0
+
+    scp_bin = shutil.which('scp')
+    if scp_bin:
+        print('[deploy] rsync not found on Windows; falling back to native scp -r')
+        cmd = [scp_bin, '-P', str(ssh_port), '-i', ssh_key, '-o', 'StrictHostKeyChecking=accept-new', '-r']
+        for item in os.listdir(build_dir):
+            cmd.append(os.path.join(build_dir, item))
+        cmd.append(target)
+        res = subprocess.run(cmd)
+        return res.returncode == 0
+
+    print('Error: neither rsync nor scp was found on the system.', file=sys.stderr)
+    return False
 
 def main():
     # Determine bump argument
@@ -39,12 +60,9 @@ def main():
             sys.exit(res.returncode)
 
         print(f'Syncing ./build/theme/ -> {target}')
-        ssh_cmd = f'ssh -i "{ssh_key}" -p {ssh_port} -o StrictHostKeyChecking=accept-new'
-        rsync_cmd = ['rsync', '-avz', '--delete', '-e', ssh_cmd, './build/theme/', target]
-        res_sync = subprocess.run(rsync_cmd)
-        if res_sync.returncode != 0:
+        if not sync_files('./build/theme', target, ssh_key, ssh_port):
             print(f'Sync failed for {site}', file=sys.stderr)
-            sys.exit(res_sync.returncode)
+            sys.exit(1)
 
         print(f'Successfully deployed {site}')
 
