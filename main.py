@@ -40,8 +40,8 @@ def version():
     try:
         with open("version", mode="r", encoding="utf-8") as ver:
             ver_line = ver.readline()
-    except:
-        print(bcolors.RED + 'There is a problem with your version file' + bcolors.ENDC)
+    except OSError as e:
+        print(f"{bcolors.RED}There is a problem with your version file: {e}{bcolors.ENDC}")
         quit()
     current_ver = ver_line.split('.')
     match ver_upd:
@@ -75,7 +75,7 @@ def configuration():
                     continue
                 key, *value = parts
                 config[key] = value
-    except Exception as e:
+    except OSError as e:
         print(f"{bcolors.RED}There is a problem with your config file \"{cfg_file}\": {e}{bcolors.ENDC}")
         quit()
     print(f"{bcolors.GREEN}Config was parsed{bcolors.ENDC}")
@@ -90,18 +90,12 @@ def cleaning():
             print(f"{bcolors.GREEN}DONE{bcolors.ENDC}")
         else:
             print(f"{bcolors.GREEN}There is nothing to clean{bcolors.ENDC}")
-    except:
-        print(f"{bcolors.RED}There's a problem with cleaning build folder{bcolors.ENDC}")
+    except OSError as e:
+        print(f"{bcolors.RED}There's a problem with cleaning build folder: {e}{bcolors.ENDC}")
         quit() 
 
 def sanitaze_key(key, args_dict):
-    val = ""
-    for i in range(len(args_dict[key])):
-        if i != 0:
-            val = val + " " + str(args_dict[key][i])
-        else:
-            val = str(args_dict[key][i])
-    return val
+    return " ".join(str(x) for x in args_dict[key])
 
 def replace_values(text, args_dict):
     for key in args_dict.keys():        
@@ -115,8 +109,8 @@ def build_file(fin, dout, fout, config):
     try:
         with open(getcwd() + fin, mode="r", encoding="utf-8") as f:
             read_data = f.read()
-    except:
-        print(f"{bcolors.RED}There's a problem with {fin}{bcolors.ENDC}")
+    except OSError as e:
+        print(f"{bcolors.RED}There's a problem with {fin}: {e}{bcolors.ENDC}")
         quit()
     try:
         path_dout = (getcwd() + dout)
@@ -125,16 +119,19 @@ def build_file(fin, dout, fout, config):
         with open(getcwd() + fout, mode="w", encoding="utf-8") as f:
             f.write(replace_values(read_data, config))
         print(f"{bcolors.GREEN}DONE: File {fout} was built successful{bcolors.ENDC}")
-    except:
-        print(f"{bcolors.RED}There's a problem with saving {fout}{bcolors.ENDC}")
+    except OSError as e:
+        print(f"{bcolors.RED}There's a problem with saving {fout}: {e}{bcolors.ENDC}")
         quit()
 
 def copy_file(fin, fout, config):
     try:
         copyfile(getcwd() + config[fin][0], getcwd() + fout)
         print(f"{bcolors.GREEN}DONE: File {fout} was copied successful{bcolors.ENDC}")
-    except:
-        print(f"{bcolors.RED}Cannot create {fout}{bcolors.ENDC}")
+    except OSError as e:
+        print(f"{bcolors.RED}Cannot create {fout}: {e}{bcolors.ENDC}")
+        quit()
+    except KeyError as e:
+        print(f"{bcolors.RED}Missing config key {e} for {fout}{bcolors.ENDC}")
         quit()
 
 def updating_ver(config):
@@ -149,8 +146,8 @@ def updating_ver(config):
     try:
         with open("version", mode="w", encoding="utf-8") as ver:
             ver.write(str(config["{Theme_Version}"][0]))
-    except:
-        print(f"{bcolors.RED}Failed to update your version file{bcolors.ENDC}")
+    except OSError as e:
+        print(f"{bcolors.RED}Failed to update your version file: {e}{bcolors.ENDC}")
         quit()
 
 def main(ver_upd, cfg_file):
