@@ -17,7 +17,13 @@ styles:
 build site="mebbr" bump="--skip":
     #!/usr/bin/env bash
     set -euo pipefail
-    PY=$(command -v python3 2>/dev/null || command -v python 2>/dev/null || echo python)
+    if python --version >/dev/null 2>&1; then
+        PY="python"
+    elif python3 --version >/dev/null 2>&1; then
+        PY="python3"
+    else
+        PY="python"
+    fi
     cfg="{{site}}"
     if [[ "$cfg" != *.cfg ]]; then
         cfg="${cfg}.cfg"
@@ -34,7 +40,13 @@ deploy bump="--patch":
         exit 1
     fi
 
-    PY=$(command -v python3 2>/dev/null || command -v python 2>/dev/null || echo python)
+    if python --version >/dev/null 2>&1; then
+        PY="python"
+    elif python3 --version >/dev/null 2>&1; then
+        PY="python3"
+    else
+        PY="python"
+    fi
 
     FIRST_RUN=1
     for site in $DEPLOY_SITES; do
