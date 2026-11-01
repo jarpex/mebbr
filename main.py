@@ -1,8 +1,15 @@
 #!/usr/bin/python
+from pathlib import Path
 from sys import argv
 from re import match as regmatch
-from os import path, getcwd, makedirs, system
 from shutil import rmtree, copyfile
+import subprocess
+
+BASE_DIR = Path(__file__).resolve().parent
+BUILD_DIR = BASE_DIR / "build" / "theme"
+SRC_THEME_DIR = BASE_DIR / "src" / "theme"
+CONFIG_DIR = BASE_DIR / "config"
+VERSION_FILE = BASE_DIR / "version"
 
 class bcolors:
     RED   =  '\033[91m'
@@ -34,11 +41,18 @@ def help():
     print(f"Also, you should manually place static files from {bcolors.CYAN}/src/css/{bcolors.ENDC} and {bcolors.CYAN}/src/js/{bcolors.ENDC} into you CDN.")
     quit()
 
+def to_path(p):
+    if isinstance(p, Path):
+        return p if p.is_absolute() else BASE_DIR / p
+    p_str = str(p).lstrip("/\\")
+    p_obj = Path(p_str)
+    return p_obj if p_obj.is_absolute() else BASE_DIR / p_obj
+
 def version():
     ver_line = ""
-    print("Reading " + bcolors.CYAN + "version" + bcolors.ENDC)
+    print(f"Reading {bcolors.CYAN}{VERSION_FILE.name}{bcolors.ENDC}")
     try:
-        with open("version", mode="r", encoding="utf-8") as ver:
+        with open(VERSION_FILE, mode="r", encoding="utf-8") as ver:
             ver_line = ver.readline()
     except OSError as e:
         print(f"{bcolors.RED}There is a problem with your version file: {e}{bcolors.ENDC}")
@@ -62,10 +76,11 @@ def version():
     print(f"Build version: {bcolors.GREEN}{str(current_ver[0])}.{str(current_ver[1])}.{str(current_ver[2])}{bcolors.ENDC}")
     return current_ver
 
-def configuration():
+def configuration(cfg_target):
     config = {}
+    cfg_file_path = to_path(cfg_target)
     try:
-        with open(cfg_file, mode="r", encoding="utf-8") as cfg:
+        with open(cfg_file_path, mode="r", encoding="utf-8") as cfg:
             for line_no, raw_line in enumerate(cfg, 1):
                 line = raw_line.strip()
                 if not line or line.startswith("#"):
@@ -76,23 +91,23 @@ def configuration():
                 key, *value = parts
                 config[key] = value
     except OSError as e:
-        print(f"{bcolors.RED}There is a problem with your config file \"{cfg_file}\": {e}{bcolors.ENDC}")
+        print(f"{bcolors.RED}There is a problem with your config file \"{cfg_file_path}\": {e}{bcolors.ENDC}")
         quit()
     print(f"{bcolors.GREEN}Config was parsed{bcolors.ENDC}")
     return config
 
 def cleaning():
     print(f"{bcolors.CYAN}Cleaning the build directory...{bcolors.ENDC}")
-    build_path = (getcwd() + "/build")
+    build_path = BASE_DIR / "build"
     try:
-        if path.exists(build_path):
+        if build_path.exists():
             rmtree(build_path)
             print(f"{bcolors.GREEN}DONE{bcolors.ENDC}")
         else:
             print(f"{bcolors.GREEN}There is nothing to clean{bcolors.ENDC}")
     except OSError as e:
         print(f"{bcolors.RED}There's a problem with cleaning build folder: {e}{bcolors.ENDC}")
-        quit() 
+        quit()
 
 def sanitaze_key(key, args_dict):
     return " ".join(str(x) for x in args_dict[key])
@@ -105,28 +120,32 @@ def replace_values(text, args_dict):
     return text
 
 def build_file(fin, dout, fout, config):
-    print(f"Reading {bcolors.CYAN}{getcwd()}{fin}{bcolors.ENDC}")
+    src_file = to_path(fin)
+    dest_file = to_path(fout)
+    dest_dir = to_path(dout) if dout else dest_file.parent
+    print(f"Reading {bcolors.CYAN}{src_file}{bcolors.ENDC}")
     try:
-        with open(getcwd() + fin, mode="r", encoding="utf-8") as f:
+        with open(src_file, mode="r", encoding="utf-8") as f:
             read_data = f.read()
     except OSError as e:
-        print(f"{bcolors.RED}There's a problem with {fin}: {e}{bcolors.ENDC}")
+        print(f"{bcolors.RED}There's a problem with {src_file}: {e}{bcolors.ENDC}")
         quit()
     try:
-        path_dout = (getcwd() + dout)
-        if not path.exists(path_dout):
-            makedirs(path_dout)
-        with open(getcwd() + fout, mode="w", encoding="utf-8") as f:
+        dest_dir.mkdir(parents=True, exist_ok=True)
+        with open(dest_file, mode="w", encoding="utf-8") as f:
             f.write(replace_values(read_data, config))
-        print(f"{bcolors.GREEN}DONE: File {fout} was built successful{bcolors.ENDC}")
+        print(f"{bcolors.GREEN}DONE: File {dest_file.name} was built successful{bcolors.ENDC}")
     except OSError as e:
-        print(f"{bcolors.RED}There's a problem with saving {fout}: {e}{bcolors.ENDC}")
+        print(f"{bcolors.RED}There's a problem with saving {dest_file}: {e}{bcolors.ENDC}")
         quit()
 
 def copy_file(fin, fout, config):
     try:
-        copyfile(getcwd() + config[fin][0], getcwd() + fout)
-        print(f"{bcolors.GREEN}DONE: File {fout} was copied successful{bcolors.ENDC}")
+        src_file = to_path(config[fin][0])
+        dest_file = to_path(fout)
+        dest_file.parent.mkdir(parents=True, exist_ok=True)
+        copyfile(src_file, dest_file)
+        print(f"{bcolors.GREEN}DONE: File {dest_file.name} was copied successful{bcolors.ENDC}")
     except OSError as e:
         print(f"{bcolors.RED}Cannot create {fout}: {e}{bcolors.ENDC}")
         quit()
@@ -144,7 +163,7 @@ def updating_ver(config):
             case 2:
                 print(f"Updating {bcolors.CYAN}major version{bcolors.ENDC}")
     try:
-        with open("version", mode="w", encoding="utf-8") as ver:
+        with open(VERSION_FILE, mode="w", encoding="utf-8") as ver:
             ver.write(str(config["{Theme_Version}"][0]))
     except OSError as e:
         print(f"{bcolors.RED}Failed to update your version file: {e}{bcolors.ENDC}")
@@ -152,21 +171,21 @@ def updating_ver(config):
 
 def main(ver_upd, cfg_file):
     current_ver = version()
-    config = configuration()
+    config = configuration(cfg_file)
     config["{Theme_Version}"] = [(f"{current_ver[0]}.{current_ver[1]}.{current_ver[2]}")]
     cleaning()
     ####################BUILDING######################
-    system("npx gulp styles")
-    build_file("/src/theme/style.css", "/build/theme/", "/build/theme/style.css", config)
-    copyfile(getcwd() + "/css/min/page.css", getcwd() + "/build/theme/page.css")
-    copy_file("{Theme_Icon}","/build/theme/screenshot.png", config)
-    copy_file("{Theme_Functions}","/build/theme/functions.php", config)
-    copy_file("{Theme_Comments}","/build/theme/comments.php", config)
-    copy_file("{Theme_Content_None}","/build/theme/content-none.php", config)
-    build_file("/src/theme/index.php", "/build/theme/", "/build/theme/index.php", config)
-    build_file("/src/theme/home-template.php", "/build/theme/", "/build/theme/home-template.php", config)
-    build_file("/src/theme/single.php", "/build/theme/", "/build/theme/single.php", config)
-    build_file("/src/theme/single.php", "/build/theme/", "/build/theme/page.php", config)
+    subprocess.run(["npx", "gulp", "styles"], cwd=BASE_DIR, shell=True, check=True)
+    build_file(SRC_THEME_DIR / "style.css", BUILD_DIR, BUILD_DIR / "style.css", config)
+    copyfile(BASE_DIR / "css" / "min" / "page.css", BUILD_DIR / "page.css")
+    copy_file("{Theme_Icon}", BUILD_DIR / "screenshot.png", config)
+    copy_file("{Theme_Functions}", BUILD_DIR / "functions.php", config)
+    copy_file("{Theme_Comments}", BUILD_DIR / "comments.php", config)
+    copy_file("{Theme_Content_None}", BUILD_DIR / "content-none.php", config)
+    build_file(SRC_THEME_DIR / "index.php", BUILD_DIR, BUILD_DIR / "index.php", config)
+    build_file(SRC_THEME_DIR / "home-template.php", BUILD_DIR, BUILD_DIR / "home-template.php", config)
+    build_file(SRC_THEME_DIR / "single.php", BUILD_DIR, BUILD_DIR / "single.php", config)
+    build_file(SRC_THEME_DIR / "single.php", BUILD_DIR, BUILD_DIR / "page.php", config)
     #################################################
     updating_ver(config)
     print(f"{bcolors.GREEN}THEME {sanitaze_key('{Theme_Name}', config)} FOR SITE {sanitaze_key('{site:domain}', config)} WAS BUILT SUCESS{bcolors.ENDC}")
@@ -174,7 +193,7 @@ def main(ver_upd, cfg_file):
 
 if __name__ == "__main__":
     argsize = len (argv)
-    cfg_file = "config/mebbr.cfg"
+    cfg_file = CONFIG_DIR / "mebbr.cfg"
     # ----------------------------------------------------
     # ver_upd defines auto-update of the theme version. 
     # 0 - default value, means updating the patch version. 
@@ -199,10 +218,10 @@ if __name__ == "__main__":
                     case "--skip":
                         ver_upd = 3
 
-            elif (regmatch("^[a-z.]+.cfg", x)):
-                cfg_file = f"config/{x}"
+            elif (regmatch("^[a-z.]+\.cfg", x)):
+                cfg_file = CONFIG_DIR / x
             else:
-                cfg_file = f"config/{x}.cfg"
+                cfg_file = CONFIG_DIR / f"{x}.cfg"
     del argsize
     if cfg_file == "":
         print(f"{bcolors.RED}Configuration file not defined{bcolors.ENDC}")
