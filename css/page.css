@@ -416,7 +416,7 @@ template {
 }
 
 #progress {
-  position: fixed;
+  position: sticky;
   top: 0;
   z-index: 15 !important;
   background-color: var(--bg);
@@ -609,6 +609,8 @@ template {
 .cd-popup.is-visible {
   opacity: 1;
   visibility: visible;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
   -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
   transition: opacity 0.3s 0s, visibility 0s 0s;
@@ -672,6 +674,9 @@ template {
   #category-popup .nav_flex {
     margin-top: 2em;
     font-size: 1.25em;
+  }
+  #category-popup .nav_flex li {
+    margin: 0.5vw 0;
   }
   #category-popup .nav_href {
     margin: 1em 0 -0.2em;
@@ -887,6 +892,9 @@ template {
     margin-bottom: 5vw;
     font-size: 1.1vw;
   }
+  #category-popup .nav_flex li {
+    margin: 0.5vw 0;
+  }
   #category-popup .nav_href {
     margin: 1.7em 0 -0.2em;
   }
@@ -936,7 +944,7 @@ template {
   .cd-popup-container {
     width: 90%;
     max-width: 720px;
-    border-radius: 0.65vw;
+    border-radius: 1.3vw;
     padding: 0.75vw;
     border: 1px solid var(--border);
     -webkit-transform: translateY(80px);
@@ -1077,6 +1085,8 @@ body ::selection {
   max-width: 650px;
   margin: 0 auto;
   box-sizing: border-box;
+  hyphens: auto;
+  text-align: justify;
 }
 #main a:not(.spotlight) {
   color: var(--text);

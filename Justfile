@@ -1,9 +1,6 @@
 # Automatically load environment variables from .env
 set dotenv-load := true
 
-# Choose python command: prefer python3 if available, otherwise python
-python := if which("python3") != "" { "python3" } else { "python" }
-
 # List available commands by default
 default:
     @just --list
@@ -14,17 +11,18 @@ setup:
 
 # Compile SCSS to CSS via Gulp
 styles:
-    node node_modules/gulp/bin/gulp.js styles
+    npx gulp styles
 
 # Build theme locally for a single config (e.g. `just build mebbr --skip` or `just build mebbr.cfg`)
 build site="mebbr" bump="--skip":
     #!/usr/bin/env bash
     set -euo pipefail
+    PY=$(command -v python3 2>/dev/null || command -v python 2>/dev/null || echo python)
     cfg="{{site}}"
     if [[ "$cfg" != *.cfg ]]; then
         cfg="${cfg}.cfg"
     fi
-    {{python}} ./main.py "$cfg" {{bump}}
+    "$PY" ./main.py "$cfg" {{bump}}
 
 # Build and deploy all sites listed in DEPLOY_SITES (bumps version once)
 deploy bump="--patch":
@@ -35,6 +33,8 @@ deploy bump="--patch":
         echo "Error: DEPLOY_SITES is not set in .env"
         exit 1
     fi
+
+    PY=$(command -v python3 2>/dev/null || command -v python 2>/dev/null || echo python)
 
     FIRST_RUN=1
     for site in $DEPLOY_SITES; do
@@ -62,7 +62,7 @@ deploy bump="--patch":
         echo "=========================================="
         echo "Building site: ${site} (${current_bump})"
         echo "=========================================="
-        {{python}} ./main.py "${cfg}" "${current_bump}"
+        "$PY" ./main.py "${cfg}" "${current_bump}"
 
         echo "Syncing /build/theme/ -> ${target}"
         rsync -avz --delete \
