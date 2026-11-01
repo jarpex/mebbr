@@ -7,8 +7,8 @@ wp_head();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="twitter:creator" content="{twitter:creator}">
     {article:extra_meta}
+    <meta name="twitter:creator" content="{twitter:creator}">
     <link rel="alternate" type="application/rss+xml" title={article:rss_title} href="{RSS:href}">
     <link rel="next" href="{site:url}">
     {index:link:preconnect}
