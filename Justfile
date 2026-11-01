@@ -1,7 +1,7 @@
 # Automatically load environment variables from .env
 set dotenv-load := true
 
-# Windows shell fallback for CMD/PowerShell
+# Windows shell fallback for CMD / PowerShell
 set windows-shell := ["cmd.exe", "/c"]
 
 # List available commands by default
@@ -18,75 +18,13 @@ styles:
 
 # Build theme locally for a single config (e.g. `just build mebbr --skip` or `just build mebbr.cfg`)
 build site="mebbr" bump="--skip":
-    #!/usr/bin/env bash
-    set -euo pipefail
-    if python --version >/dev/null 2>&1; then
-        PY="python"
-    elif python3 --version >/dev/null 2>&1; then
-        PY="python3"
-    else
-        PY="python"
-    fi
-    cfg="{{site}}"
-    if [[ "$cfg" != *.cfg ]]; then
-        cfg="${cfg}.cfg"
-    fi
-    "$PY" ./main.py "$cfg" {{bump}}
+    python -c "import sys, os, subprocess; cfg = sys.argv[1] if sys.argv[1].endswith('.cfg') else sys.argv[1] + '.cfg'; subprocess.run([sys.executable, 'main.py', cfg, sys.argv[2]], check=True)" {{site}} {{bump}}
 
 # Build and deploy all sites listed in DEPLOY_SITES (bumps version once)
 deploy bump="--patch":
-    #!/usr/bin/env bash
-    set -euo pipefail
-
-    if [ -z "${DEPLOY_SITES:-}" ]; then
-        echo "Error: DEPLOY_SITES is not set in .env"
-        exit 1
-    fi
-
-    if python --version >/dev/null 2>&1; then
-        PY="python"
-    elif python3 --version >/dev/null 2>&1; then
-        PY="python3"
-    else
-        PY="python"
-    fi
-
-    FIRST_RUN=1
-    for site in $DEPLOY_SITES; do
-        target_var="DEPLOY_TARGET_${site}"
-        target="${!target_var:-}"
-
-        if [ -z "$target" ]; then
-            echo "Error: ${target_var} is not defined in .env"
-            exit 1
-        fi
-
-        # Only increment version on the first site; use --skip for the rest
-        if [ "$FIRST_RUN" -eq 1 ]; then
-            current_bump="{{bump}}"
-            FIRST_RUN=0
-        else
-            current_bump="--skip"
-        fi
-
-        cfg="${site}"
-        if [[ "$cfg" != *.cfg ]]; then
-            cfg="${cfg}.cfg"
-        fi
-
-        echo "=========================================="
-        echo "Building site: ${site} (${current_bump})"
-        echo "=========================================="
-        "$PY" ./main.py "${cfg}" "${current_bump}"
-
-        echo "Syncing /build/theme/ -> ${target}"
-        rsync -avz --delete \
-            -e "ssh -i ${SSH_KEY_PATH:-~/.ssh/id_ed25519} -p ${SSH_PORT:-22} -o StrictHostKeyChecking=accept-new" \
-            ./build/theme/ "${target}"
-
-        echo "Successfully deployed ${site}"
-    done
+    python deploy.py {{bump}}
 
 # Build and deploy a single specific site without bumping version by default
 deploy-one site bump="--skip":
-    DEPLOY_SITES="{{site}}" just deploy {{bump}}
+    python -c "import os, subprocess; env = dict(os.environ, DEPLOY_SITES='{{site}}'); subprocess.run(['python', 'deploy.py', '{{bump}}'], env=env, check=True)"
+
