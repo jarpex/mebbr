@@ -1,6 +1,9 @@
 # Automatically load environment variables from .env
 set dotenv-load := true
 
+# Windows shell fallback for CMD/PowerShell
+set windows-shell := ["cmd.exe", "/c"]
+
 # List available commands by default
 default:
     @just --list
