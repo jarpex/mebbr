@@ -220,6 +220,8 @@ $opacity: 0.1s;
 .cd-popup.is-visible {
   opacity: 1;
   visibility: visible;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
   -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
   transition: opacity 0.3s 0s, visibility 0s 0s;
