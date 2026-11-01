@@ -1,20 +1,26 @@
 {
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^8.2.5",
-    "babel-preset-env": "^1.7.0",
     "del": "^6.1.1",
     "gulp": "^4.0.2",
     "gulp-clean-css": "^4.3.0",
     "gulp-csso": "^4.0.1",
     "gulp-rename": "^2.0.0",
-    "gulp-sass": "^5.1.0",
-    "gulp-uglify": "^3.0.2",
-    "webpack": "^5.104.1",
-    "webpack-stream": "^7.0.0"
+    "gulp-sass": "^5.1.0"
   },
   "dependencies": {
     "normalize-scss": "^7.0.1",
-    "sass": "^1.53.0"
+    "sass": "^1.89.2"
+  },
+  "overrides": {
+    "decode-uri-component": "0.2.2",
+    "braces": "^3.0.3",
+    "micromatch": "^4.0.8",
+    "immutable": "^4.3.8",
+    "source-map-js": "^1.2.2",
+    "brace-expansion": "^1.1.21",
+    "minimatch": "^3.1.5",
+    "fast-glob": {
+      "picomatch": "^2.3.2"
+    }
   }
 }
