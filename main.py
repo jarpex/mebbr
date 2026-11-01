@@ -66,11 +66,17 @@ def configuration():
     config = {}
     try:
         with open(cfg_file, mode="r", encoding="utf-8") as cfg:
-            for line in cfg:
-                key, *value = line.split()
+            for line_no, raw_line in enumerate(cfg, 1):
+                line = raw_line.strip()
+                if not line or line.startswith("#"):
+                    continue
+                parts = line.split()
+                if not parts:
+                    continue
+                key, *value = parts
                 config[key] = value
-    except:
-        print(f"{bcolors.RED}There is a problem with your config file \"{cfg_file}\"{bcolors.ENDC}")
+    except Exception as e:
+        print(f"{bcolors.RED}There is a problem with your config file \"{cfg_file}\": {e}{bcolors.ENDC}")
         quit()
     print(f"{bcolors.GREEN}Config was parsed{bcolors.ENDC}")
     return config
