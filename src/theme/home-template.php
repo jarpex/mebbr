@@ -42,21 +42,25 @@ Template Name: Home
       var style = document.getElementsByTagName("body")[0].style;
 
       const setDark = () => {
-        style.setProperty("--text", "rgba(232, 230, 227, 0.999)");
-        style.setProperty("--bg", "rgba(14, 15, 15, 0.999)");
-        style.setProperty("--selection", "rgba(53, 59, 72, 0.99)");
-        style.setProperty("--button", "rgba(255, 255, 255, 0.999)");
-        style.setProperty("--border", "rgba(255, 255, 255, 0.1)");
-        style.setProperty("--primary", "#6d5dfc");
+        style.setProperty("--bg", "#121214");
+        style.setProperty("--text", "#f2f2ee");
+        style.setProperty("--text-muted", "#848480");
+        style.setProperty("--border", "#262629");
+        style.setProperty("--border-hover", "#48484d");
+        style.setProperty("--border-focus", "#f2f2ee");
+        style.setProperty("--input-bg", "#18181b");
+        style.setProperty("--selection", "#2f3036");
       };
 
       const setLight = () => {
-        style.setProperty("--text", "rgba(41, 41, 41, 0.999)");
-        style.setProperty("--bg", "rgba(255, 255, 255, 0.999)");
-        style.setProperty("--selection", "rgba(254, 235, 239, 0.99)");
-        style.setProperty("--button", "rgba(0, 0, 0)");
-        style.setProperty("--border", "rgba(0, 0, 0, 0.1)");
-        style.setProperty("--primary", "#6d5dfc");
+        style.setProperty("--bg", "#f7f6f2");
+        style.setProperty("--text", "#121212");
+        style.setProperty("--text-muted", "#6e6d68");
+        style.setProperty("--border", "#dcd9d0");
+        style.setProperty("--border-hover", "#98968d");
+        style.setProperty("--border-focus", "#121212");
+        style.setProperty("--input-bg", "#ffffff");
+        style.setProperty("--selection", "#dedbd2");
       };
       var theme = localStorage.getItem("theme");
       if (theme) {
