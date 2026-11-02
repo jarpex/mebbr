@@ -80,11 +80,17 @@ Template Name: Home
       action="{site:url}"
       autocomplete="off"
     >
-      <label id="searchBox__label" class="inputBox__label">
+      <div class="search-icon-wrap" aria-hidden="true">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </div>
+      <label id="searchBox__label" class="inputBox__label" for="searchBox__input">
         <input
           name="s"
           type="text"
-          placeholder="Поиск по сайту"
+          placeholder="Поиск по сайту..."
           minlength="1"
           maxlength="150"
           required
@@ -92,16 +98,15 @@ Template Name: Home
           id="searchBox__input"
           autofocus
         />
-        <button type="submit" id="searchsubmit" class="icon" aria-label="Поиск">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path
-              d="m23.707 22.293-5.969-5.969a10.016 10.016 0 1 0-1.414 1.414l5.969 5.969a1 1 0 0 0 1.414-1.414ZM10 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8Z"
-            />
-          </svg>
-        </button>
       </label>
+      <button type="submit" id="searchsubmit" class="search-kbd" aria-label="Поиск" title="Нажмите Enter для поиска">
+        <span>↵</span>
+      </button>
     </form>
-    <ul id="category"><?php wp_list_categories('title_li='); ?></ul>
+    <div class="home-categories-wrap">
+      <div class="home-categories__title">Рубрики</div>
+      <ul id="category"><?php wp_list_categories('title_li='); ?></ul>
+    </div>
   </main>
   <script>
     document.getElementById('searchBox__input').addEventListener('focus', function(){
