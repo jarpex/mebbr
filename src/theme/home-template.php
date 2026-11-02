@@ -42,25 +42,27 @@ Template Name: Home
       var style = document.getElementsByTagName("body")[0].style;
 
       const setDark = () => {
-        style.setProperty("--bg", "#121214");
-        style.setProperty("--text", "#f2f2ee");
-        style.setProperty("--text-muted", "#848480");
-        style.setProperty("--border", "#262629");
-        style.setProperty("--border-hover", "#48484d");
-        style.setProperty("--border-focus", "#f2f2ee");
-        style.setProperty("--input-bg", "#18181b");
-        style.setProperty("--selection", "#2f3036");
+        style.setProperty("--bg", "#0c0d10");
+        style.setProperty("--text", "#f5f5f7");
+        style.setProperty("--text-muted", "#86868b");
+        style.setProperty("--card-bg", "rgba(255, 255, 255, 0.04)");
+        style.setProperty("--card-border", "rgba(255, 255, 255, 0.08)");
+        style.setProperty("--card-border-hover", "rgba(255, 255, 255, 0.18)");
+        style.setProperty("--focus-ring", "rgba(255, 255, 255, 0.15)");
+        style.setProperty("--focus-border", "rgba(255, 255, 255, 0.35)");
+        style.setProperty("--selection", "rgba(255, 255, 255, 0.15)");
       };
 
       const setLight = () => {
-        style.setProperty("--bg", "#f7f6f2");
-        style.setProperty("--text", "#121212");
-        style.setProperty("--text-muted", "#6e6d68");
-        style.setProperty("--border", "#dcd9d0");
-        style.setProperty("--border-hover", "#98968d");
-        style.setProperty("--border-focus", "#121212");
-        style.setProperty("--input-bg", "#ffffff");
-        style.setProperty("--selection", "#dedbd2");
+        style.setProperty("--bg", "#f5f5f7");
+        style.setProperty("--text", "#1d1d1f");
+        style.setProperty("--text-muted", "#6e6e73");
+        style.setProperty("--card-bg", "rgba(255, 255, 255, 0.7)");
+        style.setProperty("--card-border", "rgba(0, 0, 0, 0.07)");
+        style.setProperty("--card-border-hover", "rgba(0, 0, 0, 0.14)");
+        style.setProperty("--focus-ring", "rgba(0, 0, 0, 0.06)");
+        style.setProperty("--focus-border", "rgba(0, 0, 0, 0.25)");
+        style.setProperty("--selection", "rgba(0, 0, 0, 0.08)");
       };
       var theme = localStorage.getItem("theme");
       if (theme) {
@@ -74,7 +76,7 @@ Template Name: Home
   <main class="home-hero">
     <header class="home-header">
       <h1 class="logo"><a href="{site:url}">{site:name}</a></h1>
-      <p class="header_desc">{site_description}</p>
+      <p class="header_desc"><?php echo rtrim('{site_description}', '.'); ?></p>
     </header>
     <form
       id="searchBox"
@@ -109,7 +111,32 @@ Template Name: Home
     </form>
     <div class="home-categories-wrap">
       <div class="home-categories__title">Рубрики</div>
-      <ul id="category"><?php wp_list_categories('title_li='); ?></ul>
+      <ul id="category">
+        <?php
+          $categories = get_categories([
+            'orderby' => 'name',
+            'order'   => 'ASC',
+            'hide_empty' => true
+          ]);
+          foreach( $categories as $category ) {
+            $cat_name = esc_html( $category->name );
+            if (preg_match('/^(\S+)\s+(.*)$/u', $cat_name, $matches)) {
+              $emoji = trim($matches[1]);
+              $label = trim($matches[2]);
+              $inner = '<span class="cat-icon">' . $emoji . '</span><span class="cat-label">' . $label . '</span>';
+            } else {
+              $inner = '<span class="cat-label">' . $cat_name . '</span>';
+            }
+            printf(
+              '<li class="cat-item cat-item-%1$d"><a href="%2$s" title="%3$s">%4$s</a></li>',
+              $category->term_id,
+              esc_url( get_category_link( $category->term_id ) ),
+              esc_attr( sprintf( __( 'Посмотреть все записи в рубрике %s', 'suckless' ), $category->name ) ),
+              $inner
+            );
+          }
+        ?>
+      </ul>
     </div>
   </main>
   <script>
