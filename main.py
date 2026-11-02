@@ -178,6 +178,7 @@ def main(ver_upd, cfg_file):
     subprocess.run(["npx", "gulp", "styles"], cwd=BASE_DIR, shell=True, check=True)
     build_file(SRC_THEME_DIR / "style.css", BUILD_DIR, BUILD_DIR / "style.css", config)
     copyfile(BASE_DIR / "css" / "min" / "page.css", BUILD_DIR / "page.css")
+    copyfile(BASE_DIR / "src" / "css" / "mebbr_index.css", BUILD_DIR / "mebbr_index.css")
     copy_file("{Theme_Icon}", BUILD_DIR / "screenshot.png", config)
     copy_file("{Theme_Functions}", BUILD_DIR / "functions.php", config)
     copy_file("{Theme_Comments}", BUILD_DIR / "comments.php", config)
@@ -218,7 +219,7 @@ if __name__ == "__main__":
                     case "--skip":
                         ver_upd = 3
 
-            elif (regmatch("^[a-z.]+\.cfg", x)):
+            elif (regmatch(r"^[a-z.]+\.cfg", x)):
                 cfg_file = CONFIG_DIR / x
             else:
                 cfg_file = CONFIG_DIR / f"{x}.cfg"

@@ -67,52 +67,51 @@ Template Name: Home
         }
       }
   </script>
-  <h1 href="{site:url}" class="logo">
-    {site:name}
-  </h1>
-  <p class="header_desc">
-    {site_description}
-  </p>
-  <form
-    id="searchBox"
-    class="inputBox"
-    role="search"
-    method="get"
-    id="searchform"
-    action="{site:url}"
-    autocomplete="off"
-  >
-    <label id="searchBox__label" class="inputBox__label">
-      <input
-        name="s"
-        type="text"
-        placeholder="Поиск по сайту"
-        minlength="1"
-        maxlength="150"
-        required
-        class="inputBox__input"
-        id="searchBox__input"
-        autofocus
-      />
-      <button type="submit" id="searchsubmit" class="icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path
-            d="m23.707 22.293-5.969-5.969a10.016 10.016 0 1 0-1.414 1.414l5.969 5.969a1 1 0 0 0 1.414-1.414ZM10 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8Z"
-          />
-        </svg>
-      </button>
-    </label>
-  </form>
-  <ul id="category"><?php wp_list_categories('title_li='); ?></ul>
+  <main class="home-hero">
+    <header class="home-header">
+      <h1 class="logo"><a href="{site:url}">{site:name}</a></h1>
+      <p class="header_desc">{site_description}</p>
+    </header>
+    <form
+      id="searchBox"
+      class="inputBox"
+      role="search"
+      method="get"
+      action="{site:url}"
+      autocomplete="off"
+    >
+      <label id="searchBox__label" class="inputBox__label">
+        <input
+          name="s"
+          type="text"
+          placeholder="Поиск по сайту"
+          minlength="1"
+          maxlength="150"
+          required
+          class="inputBox__input"
+          id="searchBox__input"
+          autofocus
+        />
+        <button type="submit" id="searchsubmit" class="icon" aria-label="Поиск">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path
+              d="m23.707 22.293-5.969-5.969a10.016 10.016 0 1 0-1.414 1.414l5.969 5.969a1 1 0 0 0 1.414-1.414ZM10 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8Z"
+            />
+          </svg>
+        </button>
+      </label>
+    </form>
+    <ul id="category"><?php wp_list_categories('title_li='); ?></ul>
+  </main>
+  <script>
+    document.getElementById('searchBox__input').addEventListener('focus', function(){
+      document.getElementById('searchBox').classList.add("focused");
+    });
+    document.getElementById('searchBox__input').addEventListener('focusout', function(){
+      document.getElementById('searchBox').classList.remove("focused");
+    });
+  </script>
   <?php wp_footer(); ?>
 </body>
-<script>
-  document.getElementById('searchBox__input').addEventListener('focus', function(){
-    document.getElementById('searchBox').classList.add("focused");
-  });
-  document.getElementById('searchBox__input').addEventListener('focusout', function(){
-    document.getElementById('searchBox').classList.remove("focused");
-  });
-</script>
 {index:js}
 </html>
