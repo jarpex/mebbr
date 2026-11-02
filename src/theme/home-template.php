@@ -34,7 +34,7 @@ Template Name: Home
     {index:dns:prefetch}
     <title>{site_title}</title>
     {home:style}
-  
+    <?php wp_head(); ?>
 </head>
 <body>
   <script>
