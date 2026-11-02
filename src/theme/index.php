@@ -1,7 +1,3 @@
-<?php
-wp_deregister_script('jquery');
-wp_head();
-?>
 <!DOCTYPE html>
 {html_lang}
 <head>
@@ -32,7 +28,7 @@ wp_head();
     {index:dns:prefetch}
     <title>{index:title}</title>
     {index:style}
-
+    <?php wp_head(); ?>
 </head>
 
 <body>

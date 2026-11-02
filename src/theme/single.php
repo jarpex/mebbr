@@ -1,7 +1,3 @@
-<?php
-wp_deregister_script('jquery');
-wp_head();
-?>
 <!DOCTYPE html>
 {html_lang}
 <head>
@@ -84,6 +80,7 @@ wp_head();
           opacity: 0;
         }
     </style>
+    <?php wp_head(); ?>
 </head>
 <body>
 <script>

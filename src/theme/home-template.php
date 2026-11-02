@@ -3,10 +3,6 @@
 Template Name: Home
 */
 ?>
-<?php
-wp_deregister_script('jquery');
-wp_head();
-?>
 <!DOCTYPE html>
 {html_lang}
 <head>
@@ -108,6 +104,7 @@ wp_head();
     </label>
   </form>
   <ul id="category"><?php wp_list_categories('title_li='); ?></ul>
+  <?php wp_footer(); ?>
 </body>
 <script>
   document.getElementById('searchBox__input').addEventListener('focus', function(){
